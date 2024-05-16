@@ -1,6 +1,12 @@
-
+import { useNavigate } from "react-router";
 
 export const Person = ({ name, age, img }) => {
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        navigate(`/${name}`)
+    }
+
     return (
       <div>
         <a>
@@ -8,7 +14,7 @@ export const Person = ({ name, age, img }) => {
         </a>
         <p> {name}, {age} </p>
         <p className="click">
-          <button text={`${name}'s books`} ></button>
+          <button onClick={handleClick}>{`${name}'s books`}</button>
         </p>
       </div>
     );
