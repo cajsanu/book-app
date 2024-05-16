@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ErrorPage, HomePage, User } from "./routes";
+import { ErrorPage, HomePage, User, Users, Book } from "./routes";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -11,8 +11,18 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+    path: "/users",
+    element: <Users />,
+    errorElement: <ErrorPage />,
+  },
+  {
     path: "/:name",
     element: <User />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/book/:id",
+    element: <Book />,
     errorElement: <ErrorPage />,
   },
 ]);

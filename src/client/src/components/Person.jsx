@@ -8,14 +8,12 @@ export const Person = ({ name, age, img }) => {
     }
 
     return (
-      <div>
+      <div className="person">
         <a>
           <img className="pic" src={`src/images/${img}`} alt={`${name}'s picture`} />
         </a>
         <p> {name}, {age} </p>
-        <p className="click">
           <button onClick={handleClick}>{`${name}'s books`}</button>
-        </p>
       </div>
     );
   };

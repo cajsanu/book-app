@@ -24,8 +24,10 @@ export const User = () => {
 
   return (
     <div>
-      <h1>{name}' books</h1>
-      <p>Here are my books</p>
+      <h1>{name}'s books</h1>
+      <p>Here are my books that I have read</p>
+      <Books books={books}/>
+      <p>And here are the ones I want to read next</p>
       <Books books={books}/>
     </div>
   );
