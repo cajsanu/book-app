@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+.pic {
+  width: 120px;
+  height: 160px;
+  margin: 0 auto;
+  padding: 20px;
+  transition: transform 0.6s ease;
+}
+
+.people {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
