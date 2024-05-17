@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/:name",
+    path: "books/:name",
     element: <User />,
     errorElement: <ErrorPage />,
   },
@@ -24,6 +24,7 @@ const router = createBrowserRouter([
     path: "/book/:id",
     element: <Book />,
     errorElement: <ErrorPage />,
+    // maybe change the path to be books/:id. But need to figure out how to make it not show all the books
   },
 ]);
 

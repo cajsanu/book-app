@@ -4,7 +4,7 @@ export const Person = ({ name, age, img }) => {
     const navigate = useNavigate()
 
     const handleClick = () => {
-        navigate(`/${name}`)
+        navigate(`/books/${name}`)
     }
 
     return (
