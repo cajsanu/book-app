@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "api/ping";
+const URL = "/api/ping";
 
 const getAll = async () => {
   const response = await axios.get(URL);

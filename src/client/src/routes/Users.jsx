@@ -16,21 +16,6 @@ export const Users = () => {
     getUsers()
   }, [])
 
-  useEffect(() => {
-    const getUser = async () => {
-      const user = await userRequests.getById(1)
-      console.log(user);
-    };
-    getUser()
-  }, [])
-
-  useEffect(() => {
-    const getBooks = async () => {
-      const books = await bookRequests.getByUserId(1)
-      console.log("hello", books)
-    };
-    getBooks()
-  }, [])
 
   // age of the user is kinda missing
 

@@ -3,39 +3,32 @@ import { Books } from "../components/Books";
 import userRequests from "../requests/users";
 import bookRequests from "../requests/books";
 import { useEffect, useState } from "react";
+import ErrorPage from "./ErrorPage";
 
 export const User = () => {
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState(null);
   const { id } = useParams();
-  console.log(id)
 
   useEffect(() => {
     const getUser = async () => {
-      const user = await userRequests.getById(id)
+      const user = await userRequests.getById(id);
       console.log(user);
-      setUser(user)
+      setUser(user);
     };
-    getUser()
-  }, [])
+    getUser();
+  }, []);
 
-  useEffect(() => {
-    const getBooks = async () => {
-      const books = await bookRequests.getByUserId(id)
-      console.log(books)
-    };
-    getBooks()
-  }, [])
-
-  //getting the user doesn't work. The api endpoint or smth is wrong but in Users it works...
+  if (!user) {
+    return <div>No user found</div>
+  }
 
   return (
     <div>
-      <h1>{name}'s books</h1>
-      {/* <p>Here are my books that I have read</p>
-      <Books books={books} />
-      <p>And here are the ones I want to read next</p>
+      <h1>{user.name}'s books</h1>
+      <p>Here are my books that I have read</p>
+      <Books books={user.books} />
+      {/* <p>And here are the ones I want to read next</p>
       <Books books={books} /> */}
     </div>
   );
 };
-

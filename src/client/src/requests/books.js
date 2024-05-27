@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "api/books";
+const URL = "/api/books";
 
 const getAll = async () => {
   const response = await axios.get(URL);
@@ -11,9 +11,9 @@ const create = async (newBook) => {
   return response.data;
 };
 
-const getByUserId = async (id) => {
+const getByBookId = async (id) => {
   const response = await axios.get(`${URL}/${id}`);
   return response.data;
 };
 
-export default { getAll, getByUserId, create };
+export default { getAll, create, getByBookId };

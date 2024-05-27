@@ -1,14 +1,24 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-const book = {
-  title: "My first book",
-  author: "Me",
-  description: "It was awesome!",
-};
+import bookRequests from "../requests/books"
 
 export const Book = () => {
+  const [book, setBook] = useState(null)
   const { id } = useParams();
-  console.log(id);
+
+  useEffect(() => {
+    const getBook = async () => {
+      const book = await bookRequests.getByBookId(id);
+      console.log(book);
+      setBook(book);
+    };
+    getBook();
+  }, []);
+
+  if (!book) {
+    return <div>No book found</div>
+  }
+
   return (
     <>
       <h2>{book.title}</h2>

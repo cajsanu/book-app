@@ -7,9 +7,9 @@ router.get("/", async (req, res) => {
   res.json(JSON.stringify(books));
 });
 
-router.get("/:userId", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const books = await Book.findAll({ where: { userId: req.params.userId } });
+    const books = await Book.findByPk(req.params.id);
     res.json(JSON.stringify(books));
   } catch (err) {
     console.log(err);
