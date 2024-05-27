@@ -9,7 +9,7 @@ export const Book = () => {
   useEffect(() => {
     const getBook = async () => {
       const book = await bookRequests.getByBookId(id);
-      console.log(book);
+      console.log(book)
       setBook(book);
     };
     getBook();
@@ -19,11 +19,13 @@ export const Book = () => {
     return <div>No book found</div>
   }
 
+  // add rote for seeing the user that added the book
   return (
     <>
       <h2>{book.title}</h2>
       <h3>by {book.author}</h3>
-      <p>{book.description}</p>
+      <p>{book.comment}</p>
+      <p>{book.rating}</p>
     </>
   );
 };
