@@ -32,11 +32,11 @@ Book.init(
     },
     year: {
       type: DataTypes.INTEGER,
-        allowNull: false
+      allowNull: false,
     },
     comment: {
-        type: DataTypes.TEXT,
-      },
+      type: DataTypes.TEXT,
+    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -45,6 +45,7 @@ Book.init(
   },
   {
     sequelize,
+    timestamps: false,
     underscored: true,
     modelName: "book",
   }

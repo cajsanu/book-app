@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 const Book = ({ title, author, id }) => {
     const navigate = useNavigate()
     const handleClick = () => {
-        navigate(`/book/${id}`)
+        navigate(`/books/${id}`)
     }
 
   return (

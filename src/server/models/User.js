@@ -1,39 +1,38 @@
-const { Model, DataTypes } = require('sequelize')
-const { sequelize } = require('../utils/db')
+const { Model, DataTypes } = require("sequelize");
+const { sequelize } = require("../utils/db");
 
 class User extends Model {}
 
-User.init({
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
+User.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    username: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    admin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
-  username: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false,
-    validate: {
-      isEmail: true,
-    }
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  admin: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false
-  },
-  bookId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: { model: "books", key: "id" },
-  },
-}, {
-  sequelize,
-  underscored: true,
-  modelName: 'user'
-})
+  {
+    sequelize,
+    timestamps: false,
+    underscored: true,
+    modelName: "user",
+  }
+);
 
-module.exports = User
+module.exports = User;

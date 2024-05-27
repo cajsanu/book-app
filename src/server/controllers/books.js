@@ -1,18 +1,19 @@
 const router = require("express").Router();
 const { sequelize } = require("../utils/db");
-const { Book } = require("../models/Book");
+const { Book } = require("../models");
 
 router.get("/", async (req, res) => {
   const books = await Book.findAll({});
   res.json(JSON.stringify(books));
 });
 
-router.get("/:id", async (req,res) => {
-    try {
-        const book = await Book.findByPk(req.params.id)
-    } catch (err) {
-        console.log(err)
-    }
-})
+router.get("/:userId", async (req, res) => {
+  try {
+    const books = await Book.findAll({ where: { userId: req.params.userId } });
+    res.json(JSON.stringify(books));
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 module.exports = router;

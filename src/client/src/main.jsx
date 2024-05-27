@@ -16,15 +16,14 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "books/:name",
+    path: "/users/:id",
     element: <User />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/book/:id",
+    path: "/books/:id",
     element: <Book />,
     errorElement: <ErrorPage />,
-    // maybe change the path to be books/:id. But need to figure out how to make it not show all the books
   },
 ]);
 

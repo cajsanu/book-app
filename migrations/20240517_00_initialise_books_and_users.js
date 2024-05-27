@@ -58,13 +58,8 @@ module.exports = {
         type: DataTypes.BOOLEAN,
         defaultValue: false
       },
-      book_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: { model: "books", key: "id" },
-      },
     });
-    await queryInterface.addColumn("blogs", "user_id", {
+    await queryInterface.addColumn("books", "user_id", {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: "users", key: "id" },

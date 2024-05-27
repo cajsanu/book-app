@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors')
 const requestRouter = require( "./controllers/ping")
 const booksRouter = require("./controllers/books")
+const usersRouter = require("./controllers/users")
 
 const { PORT } = require("./utils/config");
 const { connectToDatabase } = require("./utils/db");
@@ -10,8 +11,9 @@ const { connectToDatabase } = require("./utils/db");
 app.use(cors())
 app.use(express.json());
 
-app.use("/api/ping", requestRouter)
-app.use("/api/books", requestRouter)
+app.use("/api/ping/", requestRouter)
+app.use("/api/books/", booksRouter)
+app.use("/api/users/", usersRouter)
 app.use(express.static('dist'))
 
 const start = async () => {
