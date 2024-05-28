@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { sequelize } = require("../utils/db");
 const { User, Book } = require("../models/");
+const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res) => {
   const users = await User.findAll({
@@ -10,6 +11,26 @@ router.get("/", async (req, res) => {
     },
   });
   res.json(users);
+});
+
+router.post("/", async (req, res) => {
+  if (req.body.password.length < 10) {
+    return res
+      .status(400)
+      .json({ error: "password must be more than 10 characters" });
+  }
+  try {
+    const saltRounds = 10;
+    const passwordHash = await bcrypt.hash(req.body.password, saltRounds);
+    const newUser = await User.create({
+      name: req.body.name,
+      username: req.body.username,
+      password: passwordHash,
+    });
+    return res.json(newUser);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.get("/:id", async (req, res) => {

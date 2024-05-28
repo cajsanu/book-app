@@ -7,7 +7,6 @@ const getAll = async () => {
 };
 
 const create = async (newUser) => {
-  console.log(newUser);
   const response = await axios.post(URL, newUser);
   return response.data;
 };

@@ -21,7 +21,6 @@ User.init(
       validate: {
         notEmpty: true,
         len: [10,100],
-        // add more validators later 
       }
     },
     name: {
