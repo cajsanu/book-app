@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { SECRET } = require("../utils/config");
-// const { ActiveToken } = require("../models");
+const { ActiveToken } = require("../models");
 
 const errorHandler = (error, request, response, next) => {
   console.log(error.message);
