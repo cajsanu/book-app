@@ -1,25 +1,37 @@
 import { useState } from "react";
-import { login } from "../requests/login";
+import { useNavigate } from "react-router";
+import userRequests from "../requests/users";
 
-export const LoginForm = () => {
+export const UserForm = () => {
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const logIn = (event) => {
+  const createUser = (event) => {
     event.preventDefault();
-    login({ username: username, password: password });
+    userRequests.create({ name: name, username: username, password: password });
+    setName("");
     setUsername("");
     setPassword("");
   };
 
   return (
     <div className="loginform">
-      <form onSubmit={logIn}>
+      <p>Sign up to rate and more</p>
+      <form onSubmit={createUser}>
+        <label>
+          name
+          <input
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </label>
         <label>
           username
           <input
             type="text"
-            id="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
@@ -28,13 +40,12 @@ export const LoginForm = () => {
           password
           <input
             type="password"
-            id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
         <button type="submit">
-          Login
+          Sign up
         </button>
       </form>
     </div>

@@ -2,6 +2,7 @@ import pingReq from "../requests/pings";
 import "../App.css";
 import { useNavigate } from "react-router";
 import  { LoginForm } from "../components/LoginForm";
+import { UserForm } from "../components/UserForm";
 
 const ping = await pingReq.getAll();
 console.log(ping, "!!!");
@@ -30,6 +31,7 @@ export const HomePage = () => {
         <button onClick={handleClick}>Users</button>
       </div>
       <LoginForm />
+      <UserForm />
     </>
   );
 };

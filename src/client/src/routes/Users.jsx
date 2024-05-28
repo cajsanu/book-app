@@ -11,6 +11,7 @@ export const Users = () => {
   useEffect(() => {
     const getUsers = async () => {
       const users = await userRequests.getAll()
+      console.log(users)
       setUsers(users)
     }
     getUsers()
