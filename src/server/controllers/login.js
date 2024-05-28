@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { sequelize } = require("../utils/db");
-const { User } = require("../models");
+const { User, ActiveToken } = require("../models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { SECRET } = require("../utils/config");
@@ -28,6 +28,11 @@ router.post("/", async (request, response) => {
   };
 
   const token = jwt.sign(userForToken, SECRET, { expiresIn: 60 * 60 });
+
+  await ActiveToken.create({
+    userId: user.id,
+    activeToken: token,
+  });
 
   response
     .status(200)

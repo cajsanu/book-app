@@ -10,7 +10,6 @@ export const User = () => {
   useEffect(() => {
     const getUser = async () => {
       const user = await userRequests.getById(id);
-      console.log(user);
       setUser(user);
     };
     getUser();
