@@ -4,5 +4,6 @@ import { User } from "./User";
 import { Users } from "./Users";
 import { Book } from "./Book";
 import { AllBooks } from "./AllBooks";
+import { LoginForm } from "../components/LoginForm";
 
-export { ErrorPage, HomePage, User, Users, Book, AllBooks }
+export { ErrorPage, HomePage, User, Users, Book, AllBooks, LoginForm }

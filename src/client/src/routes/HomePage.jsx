@@ -1,6 +1,7 @@
 import pingReq from "../requests/pings";
 import "../App.css";
 import { useNavigate } from "react-router";
+import  { LoginForm } from "../components/LoginForm";
 
 const ping = await pingReq.getAll();
 console.log(ping, "!!!");
@@ -28,6 +29,7 @@ export const HomePage = () => {
         <p>Click down below to se the users</p>
         <button onClick={handleClick}>Users</button>
       </div>
+      <LoginForm />
     </>
   );
 };
