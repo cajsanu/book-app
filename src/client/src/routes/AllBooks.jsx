@@ -8,7 +8,6 @@ export const AllBooks = () => {
   useEffect(() => {
     const getBooks = async () => {
       const books = await bookRequests.getAll();
-      console.log(books);
       setBooks(books);
     };
     getBooks();
@@ -20,6 +19,7 @@ export const AllBooks = () => {
 
   return (
     <>
+      <h2>All the books</h2>
       <Books books={books} />
     </>
   );

@@ -3,7 +3,6 @@ const URL = "/api/books";
 
 const getAll = async () => {
   const response = await axios.get(URL);
-  console.log(response.data)
   return response.data;
 };
 

@@ -7,13 +7,14 @@ const getAll = async () => {
 };
 
 const create = async (newUser) => {
-   const response = await axios.post(URL, newUser)
-   return response.data
-}
+  console.log(newUser);
+  const response = await axios.post(URL, newUser);
+  return response.data;
+};
 
 const getById = async (id) => {
-    const response = await axios.get(`${URL}/${id}`)
-    return response.data
-}
+  const response = await axios.get(`${URL}/${id}`);
+  return response.data;
+};
 
 export default { getAll, getById, create };

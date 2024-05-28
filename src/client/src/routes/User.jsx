@@ -1,9 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Books } from "../components/Books";
 import userRequests from "../requests/users";
-import bookRequests from "../requests/books";
 import { useEffect, useState } from "react";
-import ErrorPage from "./ErrorPage";
 
 export const User = () => {
   const [user, setUser] = useState(null);

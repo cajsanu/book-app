@@ -9,7 +9,6 @@ export const Book = () => {
   useEffect(() => {
     const getBook = async () => {
       const book = await bookRequests.getByBookId(id);
-      console.log(book)
       setBook(book);
     };
     getBook();

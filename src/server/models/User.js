@@ -18,6 +18,15 @@ User.init(
         isEmail: true,
       },
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        len: [10,100],
+        // add more validators later 
+      }
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
