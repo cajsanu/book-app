@@ -3,19 +3,14 @@ import { useNavigate } from "react-router";
 import  { LoginForm } from "../components/LoginForm";
 import { UserForm } from "../components/UserForm";
 import { useEffect, useState } from "react";
-import { LogoutButton } from "../components/LogoutButton";
 
 export const HomePage = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    const loggedInUser = window.localStorage.getItem("loggedInUser");
-    if (loggedInUser) {
-      const user = JSON.parse(loggedInUser);
-      setUser(user)
-    }
-  }, []);
+  // useEffect(() => {
+    
+  // }, []);
 
   const handleClick = () => {
     navigate("/users");
@@ -38,7 +33,7 @@ export const HomePage = () => {
         <button onClick={handleClick}>Users</button>
       </div>
       <UserForm />
-      {user ? <LogoutButton /> : <LoginForm />}
+      <LoginForm />
     </>
   );
 };

@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { login } from "../requests/login";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
-  const logIn = (event) => {
+  const logIn = async (event) => {
     event.preventDefault();
-    login({ username: username, password: password });
+    const data = await login({ username: username, password: password });
     setUsername("");
     setPassword("");
+    navigate(`/user/${data.id}`)
   };
 
   return (

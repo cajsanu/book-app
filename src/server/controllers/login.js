@@ -5,38 +5,43 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { SECRET } = require("../utils/config");
 
-router.post("/", async (request, response) => {
-  const { username, password } = request.body;
+router.post("/", async (req, res) => {
+  try {
+    const { username, password } = req.body;
 
-  const user = await User.findOne({
-    where: {
-      username: username,
-    },
-  });
-  const passwordCorrect =
-    user === null ? false : await bcrypt.compare(password, user.password);
-
-  if (!(user && passwordCorrect)) {
-    return response.status(401).json({
-      error: "invalid username or password",
+    const user = await User.findOne({
+      where: {
+        username: username,
+      },
     });
+    const passwordCorrect =
+      user === null ? false : await bcrypt.compare(password, user.password);
+
+    if (!(user && passwordCorrect)) {
+      return res.status(401).json({
+        error: "invalid username or password",
+      });
+    }
+
+    const userForToken = {
+      username: user.username,
+      id: user.id,
+    };
+
+    const token = jwt.sign(userForToken, SECRET, { expiresIn: 60 * 60 });
+
+    await ActiveToken.create({
+      userId: user.id,
+      activeToken: token,
+    });
+
+    res
+      .cookie("token", token, { maxAge: 60 * 60 * 1000, httpOnly: true })
+      .status(200)
+      .json({id: user.id});
+  } catch (err) {
+    console.log(err);
   }
-
-  const userForToken = {
-    username: user.username,
-    id: user.id,
-  };
-
-  const token = jwt.sign(userForToken, SECRET, { expiresIn: 60 * 60 });
-
-  await ActiveToken.create({
-    userId: user.id,
-    activeToken: token,
-  });
-
-  response
-    .status(200)
-    .send({ token, username: user.username, name: user.name });
 });
 
 module.exports = router;
