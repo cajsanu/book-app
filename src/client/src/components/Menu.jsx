@@ -7,6 +7,8 @@ import { useNavigate } from "react-router";
 export const Menu = () => {
   const navigate = useNavigate();
   const [status, setStatus] = useState(null);
+  const [userForm, setUserForm] = useState(false)
+  const [loginForm, setLoginForm] = useState(false)
 
   useEffect(() => {
     const response = window.localStorage.getItem("loginStatus")
@@ -18,10 +20,12 @@ export const Menu = () => {
     navigate("/users");
   };
   const handleClickSignUp = () => {
-    return <UserForm />;
+    setUserForm(true)
+    setLoginForm(false)
   };
   const handleClickLogin = () => {
-    return <LoginForm />;
+    setLoginForm(true)
+    setUserForm(false)
   };
   const handleClickBooks = () => {
     navigate("/books")
@@ -30,10 +34,12 @@ export const Menu = () => {
   return (
     <>
       <button onClick={handleClickUsers}>Users</button>
-      <button onClick={handleClickSignUp}>Sign up</button>
       <button onClick={handleClickLogin}>Log in</button>
+      <button onClick={handleClickSignUp}>Sign up</button>
       <button onClick={handleClickBooks}>Books</button>
       {status ? <LogoutButton /> : null}
+      {loginForm ? <LoginForm /> : null}
+      {userForm ? <UserForm /> : null}
     </>
   );
 };
