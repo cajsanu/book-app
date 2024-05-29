@@ -3,7 +3,6 @@ const { ActiveToken } = require("../models");
 const { tokenExtractor } = require("../utils/middleware");
 
 router.delete("/", tokenExtractor, async (req, res) => {
-    console.log("here!!!!!!!!!!")
   try {
     const token = req.activeToken;
     const activeToken = await ActiveToken.findOne({

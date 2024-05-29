@@ -3,11 +3,12 @@ const URL = "/api/logout";
 
 export const logout = async () => {
   try {
-    const user = window.localStorage.getItem("loggedInUser");
+    const loggedUser = window.localStorage.getItem("loggedInUser");
+    const user = JSON.parse(loggedUser)
     const token = user.token;
     console.log(user.token)
     const response = await axios.delete(URL, {
-      headers: { authorization: `Bearer ${token}`},
+      headers: { Authorization: `bearer ${token}`},
     });
     window.localStorage.removeItem("loggedInUser");
     return response.data;
