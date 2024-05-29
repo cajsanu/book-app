@@ -2,8 +2,8 @@ import "../App.css";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { LogoutButton } from "../components/LogoutButton";
+import { Books } from "../components/Books"
 import { BookForm } from "../components/BookForm";
-import Books from "../requests/books";
 import { useParams } from "react-router-dom";
 import userRequests from "../requests/users"
 
@@ -16,12 +16,12 @@ export const LoggedIn = () => {
   useEffect(() => {
     const getUser = async () => {
       const user = await userRequests.getById(id);
-      setUser(user);
+      setUser(user)
     };
+    getUser();
     const response = window.localStorage.getItem("loginStatus")
     const status = JSON.parse(response)
     setStatus(status.loggedIn)
-    getUser();
   }, []);
 
   const handleClick = () => {};
@@ -29,18 +29,21 @@ export const LoggedIn = () => {
   if (!status) {
     return <div>You are not logged in</div>
   }
+  if (!user) {
+    return <div>No user found</div>
+  }
 
   return (
     <>
       <h1>My books</h1>
-      {/* <Books /> */}
+      <Books books={user.books}/>
       <div>
         {" "}
         Add book
         <BookForm />
       </div>
       <div>
-        <button onClick={handleClick}>Add book</button>
+        <button onClick={handleClick}>What to do with this</button>
       </div>
       <LogoutButton />
     </>

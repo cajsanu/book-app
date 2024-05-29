@@ -7,16 +7,27 @@ export const BookForm = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [year, setYear] = useState("");
+  // make year so it cannot be negative
   const [url, setUrl] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(null);
   const [comment, setComment] = useState("");
 
   const createBook = (event) => {
     event.preventDefault();
-    bookRequests.create({ title: title });
+    bookRequests.create({
+      title: title,
+      author: author,
+      url: url,
+      year: year,
+      rating: rating,
+      comment: comment,
+    });
     setTitle("");
     setAuthor("");
     setYear("");
+    setUrl("");
+    setRating(null);
+    setComment("");
   };
 
   return (
@@ -58,35 +69,15 @@ export const BookForm = () => {
         <div>
           rating
           <label>1</label>
-          <input
-            type="radio"
-            name="visibility"
-            onChange={() => setRating(1)}
-          />
+          <input type="radio" name="visibility" onChange={() => setRating(1)} />
           <label>2</label>
-          <input
-            type="radio"
-            name="visibility"
-            onChange={() => setRating(2)}
-          />
-         <label>3</label>
-          <input
-            type="radio"
-            name="visibility"
-            onChange={() => setRating(3)}
-          />
-           <label>4</label>
-          <input
-            type="radio"
-            name="visibility"
-            onChange={() => setRating(4)}
-          />
+          <input type="radio" name="visibility" onChange={() => setRating(2)} />
+          <label>3</label>
+          <input type="radio" name="visibility" onChange={() => setRating(3)} />
+          <label>4</label>
+          <input type="radio" name="visibility" onChange={() => setRating(4)} />
           <label>5</label>
-          <input
-            type="radio"
-            name="visibility"
-            onChange={() => setRating(5)}
-          />
+          <input type="radio" name="visibility" onChange={() => setRating(5)} />
         </div>
         <div>
           comment

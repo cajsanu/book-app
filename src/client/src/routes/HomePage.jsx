@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import  { LoginForm } from "../components/LoginForm";
 import { UserForm } from "../components/UserForm";
 import { useEffect, useState } from "react";
+import { Menu } from "../components/Menu";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -29,11 +30,8 @@ export const HomePage = () => {
         id est laborum.
       </div>
       <div>
-        <p>Click down below to se the users</p>
-        <button onClick={handleClick}>Users</button>
+        <Menu />
       </div>
-      <UserForm />
-      <LoginForm />
     </>
   );
 };

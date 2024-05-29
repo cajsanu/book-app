@@ -9,6 +9,7 @@ const getAll = async () => {
 
 const create = async (newBook) => {
   const response = await axios.post(URL, newBook);
+  console.log(response.data)
   return response.data;
 };
 
