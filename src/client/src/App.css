@@ -5,34 +5,12 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
 .pic {
   width: 120px;
   height: 160px;
   margin: 0 auto;
   padding: 20px;
   transition: transform 0.6s ease;
-}
-
-.people {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 .person:hover {

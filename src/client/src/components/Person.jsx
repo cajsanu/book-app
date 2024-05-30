@@ -8,7 +8,7 @@ export const Person = ({ name, img, age, id }) => {
     }
 
     return (
-      <div className="person">
+      <div className="p-5">
         <a>
           <img className="pic" src={`src/images/${img}`} alt={`${name}'s picture`} />
         </a>

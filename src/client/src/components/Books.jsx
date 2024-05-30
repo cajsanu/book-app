@@ -9,7 +9,8 @@ const Book = ({ title, author, id }) => {
   return (
     <div>
         <ul>
-            <p>{title} by {author}</p>
+            <h2>{title}</h2>
+            <p>by {author}</p>
             <button onClick={handleClick}>Read more</button>
         </ul>
     </div>

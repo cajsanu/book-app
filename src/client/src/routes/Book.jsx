@@ -21,10 +21,11 @@ export const Book = () => {
   // add rote for seeing the user that added the book
   return (
     <>
-      <h2>{book.title}</h2>
+      <h1>{book.title}</h1>
       <h3>by {book.author}</h3>
       <p>{book.comment}</p>
       <p>{book.rating}</p>
+      <a className="hover:text-sky-400" target="_blank" href={book.url}>See on the internet</a>
     </>
   );
 };

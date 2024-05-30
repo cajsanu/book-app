@@ -35,7 +35,7 @@ export const LoggedIn = () => {
   return (
     <>
       <h1 className="text-5xl p-20">Welcome {user.username}</h1>
-      <div className="flex felx-row felx items-center">
+      <div className="flex felx-row felx justify-center p-10">
         <Togglable showContent="Show books" hideContent="Cancel">
           <Books books={user.books} />
         </Togglable>
