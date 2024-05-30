@@ -3,20 +3,31 @@ import { LoginForm } from "./LoginForm";
 import { LogoutButton } from "./LogoutButton";
 import { UserForm } from "./UserForm";
 import { Togglable } from "./Togglable";
+import { useNavigate } from "react-router-dom";
 
 export const Menu = () => {
-  const [status, setStatus] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const response = window.localStorage.getItem("loginStatus");
-    const status = JSON.parse(response);
-    setStatus(status.loggedIn);
+    const response = window.localStorage.getItem("user");
+    if (response) {
+      const user = JSON.parse(response);
+      setUserId(user.userId);
+    }
   }, []);
+
+  const handleClick = () => {
+    navigate(`/user/${userId}`);
+  };
 
   return (
     <div>
-      {status ? (
-        <LogoutButton />
+      {userId ? (
+        <>
+          <LogoutButton />
+          <button className="sticky top-0" onClick={handleClick}>My own page</button>
+        </>
       ) : (
         <div>
           <Togglable showContent="Sign in" hideContent="Cancel">

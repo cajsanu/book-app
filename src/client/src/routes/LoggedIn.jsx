@@ -11,7 +11,7 @@ import { Togglable } from "../components/Togglable";
 export const LoggedIn = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [status, setStatus] = useState(null);
+  const [userId, setUserId] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -20,12 +20,12 @@ export const LoggedIn = () => {
       setUser(user);
     };
     getUser();
-    const response = window.localStorage.getItem("loginStatus");
+    const response = window.localStorage.getItem("user");
     const status = JSON.parse(response);
-    setStatus(status.loggedIn);
+    setUserId(status.userId);
   }, []);
 
-  if (!status) {
+  if (!userId) {
     return <div>You are not logged in</div>;
   }
   if (!user) {

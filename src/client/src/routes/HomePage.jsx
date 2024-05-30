@@ -1,11 +1,9 @@
 import "../App.css";
 import { useNavigate } from "react-router";
-import { useEffect, useState } from "react";
 import { Menu } from "../components/Menu";
 
 export const HomePage = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
 
   const handleClickUsers = () => {
     navigate("/users");
@@ -21,7 +19,7 @@ export const HomePage = () => {
       </div>
       <div className="text-base/loose pt-28">
         <h1 className="text-5xl font-bold underline text-center">Book App</h1>
-        <div className="pt-20">
+        <div className="p-20">
           Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod
           tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim
           veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex

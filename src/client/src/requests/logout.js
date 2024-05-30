@@ -4,7 +4,7 @@ const URL = "/api/logout";
 
 export const logout = async () => {
   try {
-    window.localStorage.setItem("loginStatus", JSON.stringify({ loggedIn: false }));
+    window.localStorage.removeItem("user");
     const response = await axios.delete(URL);
     return response.data;
   } catch (err) {

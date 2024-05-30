@@ -11,7 +11,7 @@ export const LogoutButton = () => {
 
   return (
     <>
-      <button className="absolute top-0 right-0" onClick={handleClick}>Log out</button>
+      <button className="sticky top-0" onClick={handleClick}>Log out</button>
     </>
   );
 };
