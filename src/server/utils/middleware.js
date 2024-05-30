@@ -21,7 +21,6 @@ const errorHandler = (error, request, response, next) => {
 
 const tokenExtractor = async (req, res, next) => {
   const token = req.cookies['token'];
-  console.log(token, "!!!!!!!!!")
   if (token) {
     try {
       const decodedToken = jwt.verify(token, SECRET);

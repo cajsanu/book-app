@@ -9,9 +9,9 @@ const Book = ({ title, author, id }) => {
   return (
     <div>
         <ul>
-            <li>{title} by {author}</li>
+            <p>{title} by {author}</p>
+            <button onClick={handleClick}>Read more</button>
         </ul>
-        <button onClick={handleClick}>Read more</button>
     </div>
   );
 };

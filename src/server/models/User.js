@@ -23,6 +23,14 @@ User.init(
         len: [10,100],
       }
     },
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      validate: {
+        isInt: true,
+        min: 0
+      }
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,

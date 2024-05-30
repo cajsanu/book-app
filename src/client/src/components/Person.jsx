@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-export const Person = ({ name, img, id }) => {
+export const Person = ({ name, img, age, id }) => {
     const navigate = useNavigate()
 
     const handleClick = () => {
@@ -12,7 +12,7 @@ export const Person = ({ name, img, id }) => {
         <a>
           <img className="pic" src={`src/images/${img}`} alt={`${name}'s picture`} />
         </a>
-        <p> {name} </p>
+        <p> {name}, {age}</p>
           <button onClick={handleClick}>{`${name}'s books`}</button>
       </div>
     );
