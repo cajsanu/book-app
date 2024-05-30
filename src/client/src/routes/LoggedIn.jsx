@@ -12,7 +12,6 @@ export const LoggedIn = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [status, setStatus] = useState(null);
-  const [addBook, setAddBook] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -26,10 +25,6 @@ export const LoggedIn = () => {
     setStatus(status.loggedIn);
   }, []);
 
-  const handleClick = () => {
-    setAddBook(true);
-  };
-
   if (!status) {
     return <div>You are not logged in</div>;
   }
@@ -39,16 +34,15 @@ export const LoggedIn = () => {
 
   return (
     <>
-      <h1>My books</h1>
-      <Books books={user.books} />
-      <div>
-        <button onClick={handleClick}>Add book</button>
+      <h1 className="text-5xl p-20">Welcome {user.username}</h1>
+      <div className="flex felx-row felx items-center">
+        <Togglable showContent="Show books" hideContent="Cancel">
+          <Books books={user.books} />
+        </Togglable>
+        <Togglable showContent="Add book" hideContent="Cancel">
+          <BookForm />
+        </Togglable>
       </div>
-      <div>{addBook ? <BookForm /> : null}</div>
-      <Togglable showContent="Log In" hideContent="Cancel">
-        <LoginForm createUser={handleLogin} />
-      </Togglable>
-      <br />
       <LogoutButton />
     </>
   );

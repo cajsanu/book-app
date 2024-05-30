@@ -31,7 +31,6 @@ export const LoginForm = () => {
             </label>
             <div className="mt-2">
               <input
-                id="username"
                 name="username"
                 type="text"
                 value={username}
@@ -53,7 +52,6 @@ export const LoginForm = () => {
             </div>
             <div className="mt-2">
               <input
-                id="password"
                 name="password"
                 type="password"
                 value={password}

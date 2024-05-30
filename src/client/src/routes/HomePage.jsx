@@ -1,7 +1,5 @@
 import "../App.css";
 import { useNavigate } from "react-router";
-import { LoginForm } from "../components/LoginForm";
-import { UserForm } from "../components/UserForm";
 import { useEffect, useState } from "react";
 import { Menu } from "../components/Menu";
 
@@ -9,12 +7,11 @@ export const HomePage = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  // useEffect(() => {
-
-  // }, []);
-
-  const handleClick = () => {
+  const handleClickUsers = () => {
     navigate("/users");
+  };
+  const handleClickBooks = () => {
+    navigate("/books");
   };
 
   return (
@@ -32,6 +29,10 @@ export const HomePage = () => {
           esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat
           cupiditat non proident, sunt in culpa qui officia deserunt mollit anim
           id est laborum.
+        </div>
+        <div>
+          <button onClick={handleClickUsers}>Users</button>
+          <button onClick={handleClickBooks}>Books</button>
         </div>
       </div>
     </div>
