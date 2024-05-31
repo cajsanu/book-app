@@ -18,7 +18,7 @@ export const LoginForm = () => {
   // need to check that the route /signup works
 
   return (
-    <div className="justify-center px-6 py-12 lg:px-8">
+    <div className="justify-center px-6 py-12 lg:px-8 border-double border-8 border-teal-300 bg-emerald-100">
       <div className="">
         <h2 className="mt-10 text-2xl font-bold tracking-tight text-teal-600">
           Sign in to your account
@@ -64,7 +64,7 @@ export const LoginForm = () => {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+              className="transition delay-150 duration-300 flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
             >
               Sign in
             </button>
@@ -75,7 +75,7 @@ export const LoginForm = () => {
           Don't have an account?{" "}
           <a
             href="/signup"
-            className="flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+            className="transition delay-150 duration-300 flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
           >
             Sign up!
           </a>
