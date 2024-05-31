@@ -33,9 +33,6 @@ export const Menu = () => {
           <Togglable showContent="Sign in" hideContent="Cancel">
             <LoginForm />
           </Togglable>
-          <Togglable showContent="Sign up" hideContent="Cancel">
-            <UserForm />
-          </Togglable>
         </div>
       )}
     </div>
