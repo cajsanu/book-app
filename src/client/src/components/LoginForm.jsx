@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../requests/login";
 import { useNavigate } from "react-router-dom";
+import { BackButton } from "./BackButton";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -18,7 +19,7 @@ export const LoginForm = () => {
   // need to check that the route /signup works
 
   return (
-    <div className="justify-center px-6 py-12 lg:px-8 border-double border-8 border-teal-300 bg-emerald-100">
+    <div className="pb-20 py-12 lg:px-10 border-double border-8 border-teal-300 bg-emerald-100">
       <div className="">
         <h2 className="mt-10 text-2xl font-bold tracking-tight text-teal-600">
           Sign in to your account
@@ -46,7 +47,8 @@ export const LoginForm = () => {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium leading-6 text-teal-600 flex justify-right">
+              className="block text-sm font-medium leading-6 text-teal-600 flex justify-right"
+            >
               Password
             </label>
             <div className="mt-2">

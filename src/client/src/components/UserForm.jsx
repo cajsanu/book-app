@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import userRequests from "../requests/users";
+import { BackButton } from "./BackButton";
 
 export const UserForm = () => {
   const navigate = useNavigate();
@@ -17,10 +18,10 @@ export const UserForm = () => {
   };
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 border-double border-8 border-teal-300 bg-emerald-100">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-teal-600">
-          Sign in to your account
+          Create an account
         </h2>
       </div>
 
@@ -87,6 +88,10 @@ export const UserForm = () => {
             >
               Sign up
             </button>
+            <br />
+            <div className="transition delay-150 duration-300 flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600">
+              <BackButton />
+            </div>
           </div>
         </form>
       </div>

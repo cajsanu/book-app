@@ -8,10 +8,11 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  text-align: center;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #3236336e;
+  background-color: #82d3ba;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
