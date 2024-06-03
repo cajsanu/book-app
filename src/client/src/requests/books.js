@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 const URL = "/api/books";
 
 const getAll = async () => {
@@ -9,7 +9,12 @@ const getAll = async () => {
 
 const create = async (newBook) => {
   const response = await axios.post(URL, newBook);
-  console.log(response.data)
+  console.log(response.data);
+  return response.data;
+};
+
+const remove = async (id) => {
+  const response = await axios.delete(`${URL}/${id}`);
   return response.data;
 };
 
@@ -18,4 +23,4 @@ const getByBookId = async (id) => {
   return response.data;
 };
 
-export default { getAll, create, getByBookId };
+export default { getAll, create, getByBookId, remove };

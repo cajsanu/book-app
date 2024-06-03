@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { sequelize } = require("../utils/db");
-const { Book } = require("../models");
+const { Book, User } = require("../models");
 const { tokenExtractor } = require("../utils/middleware");
 
 router.get("/", async (req, res) => {
@@ -10,11 +10,26 @@ router.get("/", async (req, res) => {
 
 router.post("/", tokenExtractor, async (req, res) => {
   try {
-    const userId = req.decodedToken.id
+    const userId = req.decodedToken.id;
     const newBook = { ...req.body, userId };
     console.log(newBook);
     const book = await Book.create(newBook);
     return res.json(book.toJSON());
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.delete("/:id", tokenExtractor, async (req, res) => {
+  try {
+    const user = await User.findByPk(req.decodedToken.id);
+    const book = await Book.findByPk(req.params.id);
+    if (book.userId === user.id) {
+      await book.destroy();
+    } else {
+      return res.status(400).json({ error: "Action not permitted" });
+    }
+    return res.status(204).end();
   } catch (err) {
     console.log(err);
   }
