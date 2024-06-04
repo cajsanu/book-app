@@ -1,5 +1,3 @@
-import "../App.css";
-import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { LogoutButton } from "../components/LogoutButton";
 import { Books } from "../components/Books";
@@ -9,7 +7,6 @@ import userRequests from "../requests/users";
 import { Togglable } from "../components/Togglable";
 
 export const LoggedIn = () => {
-  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [userId, setUserId] = useState(null);
   const { id } = useParams();
@@ -33,17 +30,23 @@ export const LoggedIn = () => {
   }
 
   return (
-    <>
+    <div className="bg-teal-900 p-10">
       <h1 className="text-5xl p-20">Welcome {user.username}</h1>
-      <div className="flex felx-row felx justify-center p-10">
-        <Togglable showContent="Show books" hideContent="Cancel">
-          <Books books={user.books} />
-        </Togglable>
-        <Togglable showContent="Add book" hideContent="Cancel">
+      <div className="p-10">
+        <div>
+          <Togglable showContent="Show books" hideContent="Cancel">
+            <Books books={user.books} />
+          </Togglable>
+        </div>
+        <div className="p-10">
+          <Togglable showContent="Add book" hideContent="Cancel">
           <BookForm />
-        </Togglable>
+          </Togglable>
+        </div>
       </div>
-      <LogoutButton />
-    </>
+      <div className="p-10">
+        <LogoutButton />
+      </div>
+    </div>
   );
 };

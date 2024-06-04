@@ -19,7 +19,7 @@ export const AllBooks = () => {
 
   return (
     <>
-      <h2>All the books</h2>
+      <h1>All the books</h1>
       <Books books={books} />
     </>
   );

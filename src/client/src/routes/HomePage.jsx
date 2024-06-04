@@ -1,6 +1,5 @@
 import "../App.css";
 import { useNavigate } from "react-router";
-import { Menu } from "../components/Menu";
 import { LoginForm } from "../components/LoginForm"
 
 export const HomePage = () => {
@@ -51,7 +50,7 @@ export const HomePage = () => {
             </button>
           </div>
           <div>
-            <p className="p-1">logo and name</p>
+            <p className="p-1">Lorem ipsum dolor sit amet</p>
           </div>
           <div className="p-1">
             <LoginForm />

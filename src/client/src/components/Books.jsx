@@ -1,34 +1,40 @@
-import { useNavigate } from "react-router";
-
-const Book = ({ title, author, id }) => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate(`/books/${id}`);
-  };
-
+const Book = ({ title, author, year, id }) => {
   return (
-    <div>
-      <ul>
-        <h2>{title}</h2>
-        <p>by {author}</p>
-        {/* <button
-          className="transition delay-150 duration-300 flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
-          onClick={handleClick}
-        >
-          Book info
-        </button> */}
-        <a href={`/books/${id}`}>Book</a>
-      </ul>
-    </div>
+    <tr className="border-solid border-2 border-white text-white">
+      <td className="p-4 w-40">
+        <a className="hover:text-teal-200" href={`/books/${id}`}>
+          {title}
+        </a>
+      </td>
+      <td className="p-4 w-40">{author}</td>
+      <td className="p-4 w-40">{year}</td>
+    </tr>
   );
 };
 
 export const Books = ({ books }) => {
   return (
-    <div className="p-10">
-      {books.map((b) => (
-        <Book key={b.id} title={b.title} author={b.author} id={b.id} />
-      ))}
+    <div className="w-3/4 bg-gradient-to-r from-teal-600 to-teal-600">
+      <table className="table-fixed w-full p-10">
+        <thead>
+          <tr className="border-solid border-2 border-white text-teal-900 bg-teal-100">
+            <th className="p-4">Title</th>
+            <th>Author</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          {books.map((b) => (
+            <Book
+              key={b.id}
+              title={b.title}
+              author={b.author}
+              year={b.year}
+              id={b.id}
+            />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
