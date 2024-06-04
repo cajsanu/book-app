@@ -20,8 +20,9 @@ export const AllBooks = () => {
   return (
     <div className="p-20">
       <h1 className="pb-10">All the books</h1>
-      <div></div>
-      <Books books={books} />
+      <div className="flex justify-center">
+        <Books books={books} />
+      </div>
     </div>
   );
 };

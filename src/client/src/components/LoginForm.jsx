@@ -19,7 +19,7 @@ export const LoginForm = () => {
   // need to check that the route /signup works
 
   return (
-    <div className="p-20 lg:px-10 border-double border-8 border-teal-300 bg-emerald-100">
+    <div className="p-20 lg:px-10 border-double border-8 border-teal-300 bg-emerald-100 shadow-xl">
       <div className="">
         <h2 className="text-2xl font-bold tracking-tight text-teal-600">
           Sign in to your account
