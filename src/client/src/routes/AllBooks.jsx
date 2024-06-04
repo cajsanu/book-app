@@ -18,9 +18,10 @@ export const AllBooks = () => {
   }
 
   return (
-    <>
-      <h1>All the books</h1>
+    <div className="p-20">
+      <h1 className="pb-10">All the books</h1>
+      <div></div>
       <Books books={books} />
-    </>
+    </div>
   );
 };
