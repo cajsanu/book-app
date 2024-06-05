@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   res.json(books);
 });
 
-router.post("/", tokenExtractor, async (req, res) => {
+router.post("/", tokenExtractor, async (req, res, next) => {
   try {
     const userId = req.decodedToken.id;
     const newBook = { ...req.body, userId };
@@ -20,11 +20,11 @@ router.post("/", tokenExtractor, async (req, res) => {
     const book = await Book.create(newBook);
     return res.json(book.toJSON());
   } catch (err) {
-    console.log(err);
+    next(err)
   }
 });
 
-router.delete("/:id", tokenExtractor, async (req, res) => {
+router.delete("/:id", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
     const book = await Book.findByPk(req.params.id);
@@ -35,20 +35,20 @@ router.delete("/:id", tokenExtractor, async (req, res) => {
     }
     return res.status(204).end();
   } catch (err) {
-    console.log(err);
+    next(err)
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const books = await Book.findByPk(req.params.id);
     return res.json(books);
   } catch (err) {
-    console.log(err);
+    next(err)
   }
 });
 
-router.put("/:id", tokenExtractor, async (req, res) => {
+router.put("/:id", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
     const book = await Book.findByPk(req.params.id);
@@ -59,7 +59,7 @@ router.put("/:id", tokenExtractor, async (req, res) => {
       return res.status(400).json({ error: "Action not permitted" });
     }
   } catch (err) {
-    console.log(err);
+    next(err)
   }
 });
 

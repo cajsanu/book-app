@@ -3,17 +3,18 @@ const { sequelize } = require("../utils/db");
 const { User, Book } = require("../models/");
 const bcrypt = require("bcrypt");
 
+
 router.get("/", async (req, res) => {
   const users = await User.findAll({
     include: {
       model: Book,
-      attributes: { exclude: ["userId"] },
+      attributes: { exclude: ["userId"] }
     },
   });
   res.json(users);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
   if (req.body.password.length < 10) {
     return res
       .status(400)
@@ -29,11 +30,11 @@ router.post("/", async (req, res) => {
     });
     return res.json(newUser);
   } catch (err) {
-    console.log(err);
+    next(err)
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id, {
       include: [
@@ -45,7 +46,7 @@ router.get("/:id", async (req, res) => {
     });
     res.json(user);
   } catch (err) {
-    console.log(err);
+    next(err)
   }
 });
 
