@@ -11,7 +11,7 @@ export const DeleteButton = ({ bookId, userId }) => {
   };
 
   return (
-    <div className="p-10">
+    <div>
       <button
         className="transition duration-150 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200"
         onClick={handleClick}

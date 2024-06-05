@@ -5,6 +5,7 @@ import userRequests from "../requests/users";
 import { MyPageButton } from "../components/MyPageButton";
 import { DeleteButton } from "../components/DeleteButton";
 import { UpdateComment } from "../components/UpdateComment";
+import { Togglable } from "../components/Togglable";
 
 export const Book = () => {
   const [book, setBook] = useState(null);
@@ -56,7 +57,11 @@ export const Book = () => {
           <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
             {book.comment}
           </p>
-          <a className="hover:text-teal-200 underline" target="_blank" href={book.url}>
+          <a
+            className="hover:text-teal-200 underline"
+            target="_blank"
+            href={book.url}
+          >
             See on the internet
           </a>
         </div>
@@ -65,13 +70,13 @@ export const Book = () => {
   }
 
   return (
-    <div>
-      <div className="pt-24 ps-32 flex flex-col items-start bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400">
+    <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row">
+      <div className="pt-24 ps-32 flex flex-col items-start ">
         <p>You added this book in 2024</p>
         <h1 className="pt-10">{book.title}</h1>
         <p className="text-stone-900 font-semibold text-xl">By {book.author}</p>
 
-        <div className="p-10">
+        <div className="pt-10">
           <p className="font-semibold">
             You rated this book {book.rating} out of 5
           </p>
@@ -80,15 +85,23 @@ export const Book = () => {
           </p>
         </div>
 
-        <a className="ps-10 hover:text-teal-200 underline" target="_blank" href={book.url}>
+        <a
+          className="pt-10 hover:text-teal-200 underline"
+          target="_blank"
+          href={book.url}
+        >
           See on the internet
         </a>
-        <DeleteButton userId={loggedInUser.id} bookId={book.id}/>
-        <UpdateComment book={book}/>
+        <div className="py-10">
+          <DeleteButton userId={loggedInUser.id} bookId={book.id} />
+        </div>
       </div>
-      <div className="p-5">
+      <div className="p-20 pt-80">
+        <UpdateComment book={book} />
+      </div>
+      {/* <div className="p-5">
         <MyPageButton />
-      </div>
+      </div> */}
     </div>
   );
 };

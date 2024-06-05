@@ -50,7 +50,7 @@ router.put("/:id", tokenExtractor, async (req, res) => {
     const book = await Book.findByPk(req.params.id);
     if (user.id === book.userId) {
       await Book.update({ ...req.body }, { where: { id: req.params.id } });
-      return res.json(updatedBook);
+      return res.json("Comment updated");
     } else {
       return res.status(400).json({ error: "Action not permitted" });
     }
