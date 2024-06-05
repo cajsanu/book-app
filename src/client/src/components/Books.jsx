@@ -5,7 +5,7 @@ const Book = ({ title, author, year, rating, id }) => {
   const renderStars = (rating) => {
     const stars = []
     for (let i = 0; i < rating; i++) {
-      stars.push(<StarIcon />);
+      stars.push(<StarIcon key={i}/>);
     }
     return stars
   }
