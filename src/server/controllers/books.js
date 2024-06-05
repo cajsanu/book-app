@@ -2,9 +2,13 @@ const router = require("express").Router();
 const { sequelize } = require("../utils/db");
 const { Book, User } = require("../models");
 const { tokenExtractor } = require("../utils/middleware");
+const { Sequelize } = require("sequelize");
 
 router.get("/", async (req, res) => {
-  const books = await Book.findAll({});
+  const books = await Book.findAll({
+    group: ["book.id"],
+    order: [[Sequelize.fn("max", Sequelize.col("rating")), "DESC"]],
+  });
   res.json(books);
 });
 

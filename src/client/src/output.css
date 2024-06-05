@@ -1268,6 +1268,14 @@ select {
   padding-top: 20rem;
 }
 
+.ps-40 {
+  padding-inline-start: 10rem;
+}
+
+.ps-48 {
+  padding-inline-start: 12rem;
+}
+
 .text-center {
   text-align: center;
 }

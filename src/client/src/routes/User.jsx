@@ -21,7 +21,7 @@ export const User = () => {
 
   return (
     <div>
-      <div className="pt-10 pb-5 bg-teal-800">
+      <div className="pt-10 pb-5 bg-gradient-to-r from-teal-800 to-teal-600">
         <h1 className="p-10">{user.name}'s books</h1>
         <a className="hover:text-teal-300 underline" href={``}>About {user.name}</a>
       </div>
