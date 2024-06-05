@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import bookRequests from "../requests/books";
 import userRequests from "../requests/users";
-import { useNavigate } from "react-router-dom";
 import { MyPageButton } from "../components/MyPageButton";
+import { DeleteButton } from "../components/DeleteButton";
 
 export const Book = () => {
   const [book, setBook] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [user, setUser] = useState(null);
   const { id } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const getBookAndUser = async () => {
@@ -30,13 +29,6 @@ export const Book = () => {
     };
     getBookAndUser();
   }, []);
-
-  const handleClick = () => {
-    if (window.confirm("Are you sure you want to delete this book")) {
-      bookRequests.remove(book.id);
-      navigate(`/user/${loggedInUser.id}`);
-    }
-  };
 
   if (!book || !user) {
     return <div>Unable to find data</div>;
@@ -90,15 +82,8 @@ export const Book = () => {
         <a className="ps-10 hover:text-teal-200 underline" target="_blank" href={book.url}>
           See on the internet
         </a>
+        <DeleteButton userId={loggedInUser.id} bookId={book.id}/>
 
-        <div className="p-10">
-          <button
-            className="transition duration-150 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200"
-            onClick={handleClick}
-          >
-            Delete book
-          </button>
-        </div>
       </div>
       <div className="p-5">
         <MyPageButton />

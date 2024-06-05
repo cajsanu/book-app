@@ -30,7 +30,7 @@ export const LoggedIn = () => {
   }
 
   return (
-    <div className="bg-teal-900 p-10">
+    <div className="bg-gradient-to-r from-teal-900 to-teal-500 p-10">
       <h1 className="text-5xl p-20">Welcome {user.username}</h1>
       <div className="p-10">
         <div>

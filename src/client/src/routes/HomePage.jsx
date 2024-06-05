@@ -13,7 +13,7 @@ export const HomePage = () => {
   };
 
   return (
-    <div className="h-screen w-full bg-gradient-to-r from-teal-400 via-teal-600 to-teal-800">
+    <div className="h-screen w-full bg-gradient-to-r from-teal-500 to-teal-800">
    
       <div
         className="h-48 w-full bg-center bg-sky-500/50 opacity-60"

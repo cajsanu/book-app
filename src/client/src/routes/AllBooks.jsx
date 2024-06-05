@@ -18,7 +18,7 @@ export const AllBooks = () => {
   }
 
   return (
-    <div className="p-20">
+    <div className="p-20 bg-teal-800">
       <h1 className="pb-10">All the books</h1>
       <div className="flex justify-center">
         <Books books={books} />

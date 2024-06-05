@@ -9,7 +9,6 @@ const getAll = async () => {
 
 const create = async (newBook) => {
   const response = await axios.post(URL, newBook);
-  console.log(response.data);
   return response.data;
 };
 
@@ -23,4 +22,12 @@ const getByBookId = async (id) => {
   return response.data;
 };
 
-export default { getAll, create, getByBookId, remove };
+const updateComment = async (id, book) => {
+  const response = await axios.get(`${URL}/${id}`, book);
+  // const bookFromDB = { ...response.data };
+  // const updatedBook = { bookFromDB, comment: comment };
+  // await updatedBook.save()
+  // return updatedBook
+};
+
+export default { getAll, create, getByBookId, remove, updateComment };

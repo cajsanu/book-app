@@ -16,16 +16,19 @@ export const User = () => {
   }, []);
 
   if (!user) {
-    return <div>No user found</div>
+    return <div>No user found</div>;
   }
 
   return (
     <div>
-      <h1>{user.name}'s books</h1>
-      <p>Here are my books that I have read</p>
-      <Books books={user.books} />
-      {/* <p>And here are the ones I want to read next</p>
-      <Books books={books} /> */}
+      <div className="pt-10 pb-5 bg-teal-800">
+        <h1 className="p-10">{user.name}'s books</h1>
+        <a className="hover:text-teal-300 underline" href={``}>About {user.name}</a>
+      </div>
+
+      <div className="p-10 flex justify-center">
+        <Books books={user.books} />
+      </div>
     </div>
   );
 };
