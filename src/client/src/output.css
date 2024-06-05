@@ -960,6 +960,10 @@ select {
   border-width: 8px;
 }
 
+.border-s {
+  border-inline-start-width: 1px;
+}
+
 .border-solid {
   border-style: solid;
 }
