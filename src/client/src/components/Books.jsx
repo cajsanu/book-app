@@ -19,7 +19,7 @@ const Book = ({ title, author, year, rating, id }) => {
       </td>
       <td className="p-4 w-40">{author}</td>
       <td className="p-4 w-40">{year}</td>
-      <td className="p-4 w-40">{renderStars(rating)}</td>
+      <td className="p-4 w-40 text-yellow-700">{renderStars(rating)}</td>
     </tr>
   );
 };
