@@ -16,8 +16,6 @@ export const LoginForm = () => {
     navigate(`/user/${data.id}`);
   };
 
-  // need to check that the route /signup works
-
   return (
     <div className="p-20 lg:px-10 border-double border-8 border-teal-300 bg-emerald-100 shadow-xl">
       <div className="">

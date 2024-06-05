@@ -38,7 +38,22 @@ router.delete("/:id", tokenExtractor, async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const books = await Book.findByPk(req.params.id);
-    res.json(books);
+    return res.json(books);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.put("/:id", tokenExtractor, async (req, res) => {
+  try {
+    const user = await User.findByPk(req.decodedToken.id);
+    const book = await Book.findByPk(req.params.id);
+    if (user.id === book.userId) {
+      await Book.update({ ...req.body }, { where: { id: req.params.id } });
+      return res.json(updatedBook);
+    } else {
+      return res.status(400).json({ error: "Action not permitted" });
+    }
   } catch (err) {
     console.log(err);
   }

@@ -23,11 +23,8 @@ const getByBookId = async (id) => {
 };
 
 const updateComment = async (id, book) => {
-  const response = await axios.get(`${URL}/${id}`, book);
-  // const bookFromDB = { ...response.data };
-  // const updatedBook = { bookFromDB, comment: comment };
-  // await updatedBook.save()
-  // return updatedBook
+  const response = await axios.put(`${URL}/${id}`, book);
+  return response.data;
 };
 
 export default { getAll, create, getByBookId, remove, updateComment };

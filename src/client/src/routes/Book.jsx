@@ -4,6 +4,7 @@ import bookRequests from "../requests/books";
 import userRequests from "../requests/users";
 import { MyPageButton } from "../components/MyPageButton";
 import { DeleteButton } from "../components/DeleteButton";
+import { UpdateComment } from "../components/UpdateComment";
 
 export const Book = () => {
   const [book, setBook] = useState(null);
@@ -83,7 +84,7 @@ export const Book = () => {
           See on the internet
         </a>
         <DeleteButton userId={loggedInUser.id} bookId={book.id}/>
-
+        <UpdateComment book={book}/>
       </div>
       <div className="p-5">
         <MyPageButton />
