@@ -4,6 +4,7 @@ import bookRequests from "../requests/books";
 import userRequests from "../requests/users";
 import { DeleteButton } from "../components/DeleteButton";
 import { UpdateComment } from "../components/UpdateComment";
+import { Notification } from "../components/Alert";
 
 export const Book = () => {
   const [book, setBook] = useState(null);
@@ -57,45 +58,50 @@ export const Book = () => {
           </p>
         </div>
         <a
-            className="py-10 hover:text-teal-200 underline"
-            target="_blank"
-            href={book.url}
-          >
-            See on the internet
-          </a>
-      </div>
-    );
-  }
-
-  return (
-    <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row">
-      <div className="pt-24 ps-48 flex flex-col items-start ">
-        <p>You added this book in 2024</p>
-        <h1 className="pt-10">{book.title}</h1>
-        <p className="text-stone-900 font-semibold text-xl">By {book.author}</p>
-
-        <div className="pt-10">
-          <p className="font-semibold">
-            You rated this book {book.rating} out of 5
-          </p>
-          <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
-            {book.comment}
-          </p>
-        </div>
-
-        <a
-          className="pt-10 hover:text-teal-200 underline"
+          className="py-10 hover:text-teal-200 underline"
           target="_blank"
           href={book.url}
         >
           See on the internet
         </a>
-        <div className="py-10">
-          <DeleteButton userId={loggedInUser.id} bookId={book.id} />
-        </div>
       </div>
-      <div className="p-20 pt-80">
-        <UpdateComment book={book} />
+    );
+  }
+
+  return (
+    <div>
+      <Notification />
+      <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row">
+        <div className="pt-24 ps-48 flex flex-col items-start ">
+          <p>You added this book in 2024</p>
+          <h1 className="pt-10">{book.title}</h1>
+          <p className="text-stone-900 font-semibold text-xl">
+            By {book.author}
+          </p>
+
+          <div className="pt-10">
+            <p className="font-semibold">
+              You rated this book {book.rating} out of 5
+            </p>
+            <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
+              {book.comment}
+            </p>
+          </div>
+
+          <a
+            className="pt-10 hover:text-teal-200 underline"
+            target="_blank"
+            href={book.url}
+          >
+            See on the internet
+          </a>
+          <div className="py-10">
+            <DeleteButton userId={loggedInUser.id} bookId={book.id} />
+          </div>
+        </div>
+        <div className="p-20 pt-80">
+          <UpdateComment book={book} />
+        </div>
       </div>
     </div>
   );

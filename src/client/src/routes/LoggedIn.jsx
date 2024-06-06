@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { LogoutButton } from "../components/LogoutButton";
 import { Books } from "../components/Books";
 import { BookForm } from "../components/BookForm";
 import { useParams } from "react-router-dom";
 import userRequests from "../requests/users";
 import { Togglable } from "../components/Togglable";
+import { Notification } from "../components/Alert"
 
 export const LoggedIn = () => {
   const [user, setUser] = useState(null);
@@ -31,6 +32,7 @@ export const LoggedIn = () => {
 
   return (
     <div className="bg-gradient-to-r from-teal-900 to-teal-500 p-10">
+      <Notification />
       <h1 className="text-5xl p-20">Welcome {user.username}</h1>
       <div className="p-10">
         <div>

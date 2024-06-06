@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import bookRequests from "../requests/books";
+import AlertContext from "../contexts/AlertContext";
 
 export const BookForm = () => {
   const navigate = useNavigate();
@@ -9,15 +10,16 @@ export const BookForm = () => {
   const [year, setYear] = useState("");
   // make year so it cannot be negative
   const [url, setUrl] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+  const [alert, alertDispatch] = useContext(AlertContext);
 
-  const createBook = (event) => {
+  const createBook = async (event) => {
     event.preventDefault();
     if (!title || !author || !year || !url || !rating) {
       throw new Error("All fields except for comment need to be filled in");
     }
-    bookRequests.create({
+    const newBook = await bookRequests.create({
       title: title,
       author: author,
       url: url,
@@ -29,8 +31,10 @@ export const BookForm = () => {
     setAuthor("");
     setYear("");
     setUrl("");
-    setRating("");
+    setRating(0);
     setComment("");
+    alertDispatch({ type: "CREATE", payload: title })
+    navigate(`/books/${newBook.id}`)
   };
 
   return (
@@ -115,6 +119,7 @@ export const BookForm = () => {
             <select
               className="text-black text-sm font-medium"
               onChange={(event) => setRating(event.target.value)}
+              value={rating}
             >
               <option>0</option>
               <option>1</option>

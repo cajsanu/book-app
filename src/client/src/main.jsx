@@ -1,8 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ErrorPage, HomePage, User, Users, Book, AllBooks, LoggedIn, SignUp } from "./routes";
+import {
+  ErrorPage,
+  HomePage,
+  User,
+  Users,
+  Book,
+  AllBooks,
+  LoggedIn,
+  SignUp,
+} from "./routes";
 import "./index.css";
+import { AlertContextProvider } from "./contexts/AlertContext";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +54,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AlertContextProvider>
+      <RouterProvider router={router} />
+    </AlertContextProvider>
   </React.StrictMode>
 );

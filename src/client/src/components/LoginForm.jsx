@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { login } from "../requests/login";
 import { useNavigate } from "react-router-dom";
-import { BackButton } from "./BackButton";
+import AlertContext from "../contexts/AlertContext";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [alert, alertDispatch] = useContext(AlertContext);
 
   const logIn = async (event) => {
     event.preventDefault();
@@ -14,6 +15,7 @@ export const LoginForm = () => {
     setUsername("");
     setPassword("");
     navigate(`/user/${data.id}`);
+    alertDispatch({ type: "LOGIN", payload: username })
   };
 
   return (
