@@ -2,6 +2,7 @@ import "../App.css";
 import { useNavigate } from "react-router";
 import { LoginForm } from "../components/LoginForm";
 import { Footer } from "../components/Footer";
+import { Notification } from "../components/Alert";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export const HomePage = () => {
 
   return (
     <div>
+      <Notification />
       <div className="h-screen w-full bg-gradient-to-r from-teal-500 to-teal-800">
         <div
           className="h-48 w-full bg-center bg-sky-500/50 opacity-60"

@@ -33,7 +33,7 @@ export const BookForm = () => {
     setUrl("");
     setRating(0);
     setComment("");
-    alertDispatch({ type: "CREATE", payload: title })
+    alertDispatch({ type: "CREATE" })
     navigate(`/books/${newBook.id}`)
   };
 

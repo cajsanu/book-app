@@ -1,13 +1,17 @@
 import { logout } from "../requests/logout";
 import { useNavigate } from "react-router";
+import AlertContext from "../contexts/AlertContext";
+import { useContext } from "react";
 
 export const LogoutButton = () => {
   const navigate = useNavigate();
+  const [alert, alertDispatch] = useContext(AlertContext);
 
   const handleClick = () => {
-    if (window.confirm("Are you sure you wanrt to log out")) {
+    if (window.confirm("Are you sure you want to log out")) {
       logout();
       navigate("/");
+      alertDispatch({ type: "LOGOUT", payload: "You are now logged out"})
     }
   };
 

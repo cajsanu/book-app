@@ -9,7 +9,7 @@ const AlertReducer = (state, action) => {
     case "CREATE":
       return `Added new book: ${action.payload}`;
     case "DELETE":
-      return `Deleted ${action.payload}`;
+      return action.payload;
     case "ERROR":
       return action.payload;
     case "CLEAR":
