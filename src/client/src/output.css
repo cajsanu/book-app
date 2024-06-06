@@ -902,6 +902,22 @@ select {
   width: 0.25rem;
 }
 
+.w-3 {
+  width: 0.75rem;
+}
+
+.w-2 {
+  width: 0.5rem;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
 .table-auto {
   table-layout: auto;
 }
@@ -932,6 +948,10 @@ select {
 
 .justify-start {
   justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -1205,6 +1225,14 @@ select {
   padding: 2rem;
 }
 
+.p-40 {
+  padding: 10rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -1312,8 +1340,56 @@ select {
   padding-inline-start: 0.25rem;
 }
 
+.ps-60 {
+  padding-inline-start: 15rem;
+}
+
+.pe-40 {
+  padding-inline-end: 10rem;
+}
+
+.pe-60 {
+  padding-inline-end: 15rem;
+}
+
+.pe-80 {
+  padding-inline-end: 20rem;
+}
+
+.pe-10 {
+  padding-inline-end: 2.5rem;
+}
+
+.pt-28 {
+  padding-top: 7rem;
+}
+
+.pt-32 {
+  padding-top: 8rem;
+}
+
+.ps-4 {
+  padding-inline-start: 1rem;
+}
+
+.ps-8 {
+  padding-inline-start: 2rem;
+}
+
+.ps-16 {
+  padding-inline-start: 4rem;
+}
+
+.ps-28 {
+  padding-inline-start: 7rem;
+}
+
 .text-center {
   text-align: center;
+}
+
+.text-start {
+  text-align: start;
 }
 
 .text-2xl {
@@ -1356,6 +1432,14 @@ select {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .leading-6 {

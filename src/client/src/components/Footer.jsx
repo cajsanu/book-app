@@ -3,7 +3,7 @@ import EmailIcon from "@mui/icons-material/Email";
 
 export const Footer = () => {
   return (
-    <div className="font-semibold text-sm text-teal-700 flex">
+    <div className="text-sm text-teal-700 flex">
       <p>
         <CopyrightIcon /> Code and design by Cajsa.
       </p>
