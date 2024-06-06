@@ -19,27 +19,27 @@ export const HomePage = () => {
       <Notification />
       <div className="h-screen w-full bg-gradient-to-r from-teal-500 to-teal-800">
         <div
-          className="h-48 w-full bg-center bg-sky-500/50 opacity-60"
+          className="h-40 w-full bg-center bg-sky-500/50 opacity-70"
           style={{ backgroundImage: `url('src/images/books.jpeg')` }}
         ></div>
-        <div className="ps-60 pe-60 pt-32 flex flex-row">
-          <div className="flex justify-start">
-            <div className="text-base/loose flex-col">
-              <h1 className="text-5xl font-bold text-center">OmaKirja</h1>
-              <div className="p-10">Lorem ipsum dolor sit amet</div>
-              <div>
-              </div>
+        <div className="ps-60 pe-20 pt-32 flex flex-row">
+          <div className="flex justify-start pe-28">
+            <div className="flex-col">
+              <h1 className="text-6xl font-bold text-center">OmaKirja</h1>
+              <div className="p-10 font-medium">Lorem ipsum dolor sit amet</div>
+              <div></div>
               <div className="bg-inherit h-10">
-                <div className="flex flex-row justify-center">
-                  <div>
+                <div>
+                  <div className="flex flex-col">
                     <button
-                      className="p-2 hover:text-teal-400 rounded-full bg-teal-600"
+                      className="transition delay-150 rounded-md bg-emerald-100 px-3 py-1.5 text-sm font-semibold leading-6 text-teal-700 shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                       onClick={handleClickUsers}
                     >
                       Users
                     </button>
+                    <br/>
                     <button
-                      className="p-2 hover:text-teal-400 rounded-full bg-teal-600"
+                      className="transition delay-150 rounded-md bg-emerald-100 px-3 py-1.5 text-sm font-semibold leading-6 text-teal-700 shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                       onClick={handleClickBooks}
                     >
                       Books
@@ -49,14 +49,14 @@ export const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center flex-grow pt-10">
-            <div className="w-1/2 ">
+          <div className="flex justify-center flex-grow pb-16">
+            <div className="w-3/4 ">
               <LoginForm />
             </div>
           </div>
         </div>
       </div>
-      <div className="p-10 flex justify-start">
+      <div className="p-10 pt-20 flex justify-start">
         <Footer />
       </div>
     </div>
