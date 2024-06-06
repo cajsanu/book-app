@@ -10,12 +10,16 @@ export const LoginForm = () => {
   const [alert, alertDispatch] = useContext(AlertContext);
 
   const logIn = async (event) => {
-    event.preventDefault();
-    const data = await login({ username: username, password: password });
-    setUsername("");
-    setPassword("");
-    navigate(`/user/${data.id}`);
-    alertDispatch({ type: "LOGIN", payload: username })
+    try {
+      event.preventDefault();
+      const data = await login({ username: username, password: password });
+      setUsername("");
+      setPassword("");
+      navigate(`/user/${data.id}`);
+      alertDispatch({ type: "LOGIN", payload: username })
+    } catch (err) {
+      alertDispatch({ type: "ERROR", payload: "Could not log in" })
+    }
   };
 
   return (
@@ -66,7 +70,7 @@ export const LoginForm = () => {
           <div>
             <button
               type="submit"
-              className="transition delay-150 duration-300 flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+              className="transition delay-150 flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
             >
               Sign in
             </button>
@@ -77,7 +81,7 @@ export const LoginForm = () => {
           Don't have an account?{" "}
           <a
             href="/signup"
-            className="transition delay-150 duration-300 flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+            className="transition delay-150 flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
           >
             Sign up!
           </a>

@@ -17,7 +17,14 @@ export const BookForm = () => {
   const createBook = async (event) => {
     event.preventDefault();
     if (!title || !author || !year || !url || !rating) {
+      window.scrollTo(0, 0)
+      alertDispatch({ type: "ERROR", payload: "All fields need to be filled" })
       throw new Error("All fields except for comment need to be filled in");
+    }
+    if (Number(year) < 0 || Number(year) > 2024) {
+      window.scrollTo(0, 0)
+      alertDispatch({ type: "ERROR", payload: "Year must be a number between 0-2024" })
+      throw new Error("Year must be a number between 0-2024");
     }
     const newBook = await bookRequests.create({
       title: title,
@@ -33,19 +40,19 @@ export const BookForm = () => {
     setUrl("");
     setRating(0);
     setComment("");
-    alertDispatch({ type: "CREATE" })
-    navigate(`/books/${newBook.id}`)
+    alertDispatch({ type: "CREATE", payload: "successfully" });
+    navigate(`/books/${newBook.id}`);
   };
 
   return (
-    <div className="w-2/4 p-16 border-double border-8 border-teal-300 bg-emerald-100 shadow-xl">
-      <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-teal-600">
+    <div className="w-2/4 p-16 border-double border-8 border-teal-200 bg-teal-800 shadow-xl">
+      <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-emerald-100">
         Add a new book to your collection
       </h2>
       <div className="mt-16 sm:mx-auto sm:w-full">
         <form className="space-y-6" onSubmit={createBook}>
           <div>
-            <label className="block text-sm font-medium leading-6 text-teal-600">
+            <label className="block text-sm font-medium leading-6 text-emerald-100">
               Title
             </label>
             <div className="mt-2">
@@ -62,7 +69,7 @@ export const BookForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium leading-6 text-teal-600">
+            <label className="block text-sm font-medium leading-6 text-emerald-100">
               Author
             </label>
             <div className="mt-2">
@@ -79,7 +86,7 @@ export const BookForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium leading-6 text-teal-600">
+            <label className="block text-sm font-medium leading-6 text-emerald-100">
               Url
             </label>
             <div className="mt-2">
@@ -96,7 +103,7 @@ export const BookForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium leading-6 text-teal-600">
+            <label className="block text-sm font-medium leading-6 text-emerald-100">
               Year
             </label>
             <div className="mt-2">
@@ -113,7 +120,7 @@ export const BookForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium leading-6 text-teal-600">
+            <label className="block text-sm font-medium leading-6 text-emerald-100">
               Rating
             </label>
             <select
@@ -131,7 +138,7 @@ export const BookForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium leading-6 text-teal-600">
+            <label className="block text-sm font-medium leading-6 text-emerald-100">
               Comment
             </label>
             <div className="mt-2">

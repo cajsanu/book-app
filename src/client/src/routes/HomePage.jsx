@@ -16,12 +16,12 @@ export const HomePage = () => {
 
   return (
     <div>
-      <Notification />
       <div className="h-screen w-full bg-gradient-to-r from-teal-500 to-teal-800">
         <div
           className="h-40 w-full bg-center bg-sky-500/50 opacity-70"
           style={{ backgroundImage: `url('src/images/books.jpeg')` }}
         ></div>
+        <Notification />
         <div className="ps-60 pe-20 pt-32 flex flex-row">
           <div className="flex justify-start pe-28">
             <div className="flex-col">
@@ -37,7 +37,7 @@ export const HomePage = () => {
                     >
                       Users
                     </button>
-                    <br/>
+                    <br />
                     <button
                       className="transition delay-150 rounded-md bg-emerald-100 px-3 py-1.5 text-sm font-semibold leading-6 text-teal-700 shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                       onClick={handleClickBooks}
