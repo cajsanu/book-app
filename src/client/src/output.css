@@ -837,6 +837,26 @@ select {
   width: 100%;
 }
 
+.max-w-48 {
+  max-width: 12rem;
+}
+
+.max-w-60 {
+  max-width: 15rem;
+}
+
+.max-w-40 {
+  max-width: 10rem;
+}
+
+.max-w-96 {
+  max-width: 24rem;
+}
+
+.max-w-9 {
+  max-width: 2.25rem;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
