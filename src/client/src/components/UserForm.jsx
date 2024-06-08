@@ -1,25 +1,36 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import userRequests from "../requests/users";
 import { BackButton } from "./BackButton";
+import { Notification } from "../components/Alert"
+import AlertContext from "../contexts/AlertContext";
 
 export const UserForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [alert, alertDispatch] = useContext(AlertContext);
 
   const createUser = (event) => {
-    event.preventDefault();
-    userRequests.create({ name: name, username: username, password: password });
-    setName("");
-    setUsername("");
-    setPassword("");
+    try {
+      event.preventDefault();
+      const newUser = userRequests.create({ name: name, username: username, password: password });
+      navigate("/")
+      alertDispatch({ type: "SIGNUP", payload: username})
+      setName("");
+      setUsername("");
+      setPassword("");
+    } catch (err) {
+      alertDispatch({type: "ERROR", payload: "Unable to create new user"})
+    }
+  
   };
 
   return (
     <div className="shadow-xl w-2/4 flex-col justify-center px-6 py-12 lg:px-8 border-double border-8 border-teal-300 bg-emerald-100">
       <div className="">
+        <Notification />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-teal-600">
           Create an account
         </h2>
