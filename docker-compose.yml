@@ -18,14 +18,17 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
-
+      args:
+        DATABASE_URL: ${DATABASE_URL}
+        SECRET: ${SECRET}
+  
   postgres:
     image: postgres:13.2-alpine
     restart: unless-stopped
     ports: 
       - 5432:5432
-    environment: 
-      DATABASE_URL: ${DATABASE_URL}
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - database:/var/lib/postgresql/data
 
