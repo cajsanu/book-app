@@ -9,13 +9,14 @@ export const UserForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
+  const [age, setAge] = useState("")
   const [password, setPassword] = useState("");
   const [alert, alertDispatch] = useContext(AlertContext);
 
   const createUser = (event) => {
     try {
       event.preventDefault();
-      const newUser = userRequests.create({ name: name, username: username, password: password });
+      const newUser = userRequests.create({ name: name, username: username, age: Number(age), password: password });
       navigate("/")
       alertDispatch({ type: "SIGNUP", payload: username})
       setName("");
@@ -66,6 +67,23 @@ export const UserForm = () => {
                 type="text"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
+                required
+                className="block w-full rounded-md border-0 py-1.5 text-black focus:ring-2 focus:ring-inset focus:ring-teal-200"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium leading-6 text-teal-600 flex justify-right">
+              Age
+            </label>
+            <div className="mt-2">
+              <input
+                id="age"
+                name="age"
+                type="text"
+                value={age}
+                onChange={(event) => setAge(event.target.value)}
                 required
                 className="block w-full rounded-md border-0 py-1.5 text-black focus:ring-2 focus:ring-inset focus:ring-teal-200"
               />
