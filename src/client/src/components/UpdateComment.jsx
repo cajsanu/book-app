@@ -6,7 +6,7 @@ export const UpdateComment = ({ book }) => {
 
   const updateComment = async (event) => {
     event.preventDefault();
-    const addedComment = await bookRequests.updateComment(book.id, {
+    await bookRequests.updateComment(book.id, {
       ...book,
       comment: comment,
     });
@@ -36,7 +36,7 @@ export const UpdateComment = ({ book }) => {
             </div>
           </div>
           <button
-            className="transition duration-150 w-full rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200"
+            className="transition duration-150 w-full rounded-md bg-teal-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200"
             type="submit"
           >
             Update

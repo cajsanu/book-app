@@ -16,9 +16,9 @@ export const LoginForm = () => {
       setUsername("");
       setPassword("");
       navigate(`/user/${data.id}`);
-      alertDispatch({ type: "LOGIN", payload: username })
+      alertDispatch({ type: "LOGIN", payload: username });
     } catch (err) {
-      alertDispatch({ type: "ERROR", payload: "Could not log in" })
+      alertDispatch({ type: "ERROR", payload: "Could not log in" });
     }
   };
 
@@ -78,7 +78,7 @@ export const LoginForm = () => {
         </form>
 
         <p className="mt-10 text-center text-sm text-teal-600">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <a
             href="/signup"
             className="transition delay-150 flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"

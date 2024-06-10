@@ -19,14 +19,17 @@ export const HomePage = () => {
       <div className="h-screen w-full bg-gradient-to-r from-teal-500 to-teal-800">
         <div
           className="h-40 w-full bg-center bg-sky-500/50 opacity-70"
-          style={{ backgroundImage: `url('src/images/books.jpeg')` }}
+          style={{ backgroundImage: "url('src/images/books.jpeg')" }}
         ></div>
         <Notification />
         <div className="ps-60 pe-20 pt-32 flex flex-row">
           <div className="flex justify-start pe-28 max-w-96">
             <div className="flex-col">
               <h1 className="text-6xl font-bold text-center">OmaKirja</h1>
-              <div className="p-10 font-medium">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. </div>
+              <div className="p-10 font-medium">
+                Lorem ipsum dolor sit amet, consectetur adipisci elit, sed
+                eiusmod tempor incidunt ut labore et dolore magna aliqua.{" "}
+              </div>
               <div></div>
               <div className="bg-inherit h-10">
                 <div>

@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
     res
       .cookie("token", token, { maxAge: 60 * 60 * 1000, httpOnly: true })
       .status(200)
-      .json({id: user.id});
+      .json({ id: user.id });
   } catch (err) {
     console.log(err);
   }

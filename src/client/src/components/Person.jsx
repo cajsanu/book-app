@@ -1,7 +1,8 @@
 export const Person = ({ name, age, id }) => {
-const imgSrc = name === "Cajsa" || name === 'Alex' 
-  ? `src/images/IMG_${name}.jpg`
-  : `src/images/userIcon.jpeg`
+  const imgSrc =
+    name === "Cajsa" || name === "Alex"
+      ? `src/images/IMG_${name}.jpg`
+      : "src/images/userIcon.jpeg";
 
   return (
     <div className="p-10">
@@ -16,7 +17,10 @@ const imgSrc = name === "Cajsa" || name === 'Alex'
         {" "}
         {name}, {age}
       </p>
-      <a className="hover:text-teal-300 underline" href={`/users/${id}`}>{`${name}'s books`}</a>
+      <a
+        className="hover:text-teal-300 underline"
+        href={`/users/${id}`}
+      >{`${name}'s books`}</a>
     </div>
   );
 };

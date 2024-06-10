@@ -21,7 +21,7 @@ const errorHandler = (error, request, response, next) => {
 };
 
 const tokenExtractor = async (req, res, next) => {
-  const token = req.cookies['token'];
+  const token = req.cookies["token"];
   if (token) {
     try {
       const decodedToken = jwt.verify(token, SECRET);
@@ -32,9 +32,9 @@ const tokenExtractor = async (req, res, next) => {
       });
       if (activeToken) {
         req.decodedToken = decodedToken;
-        req.activeToken = activeToken
+        req.activeToken = activeToken;
       } else {
-        throw new Error("Token not valid")
+        throw new Error("Token not valid");
       }
     } catch (error) {
       return res.status(401).json({ error: "token invalid" });

@@ -60,6 +60,7 @@ export const Book = () => {
         <a
           className="py-10 hover:text-teal-200 underline"
           target="_blank"
+          rel="noreferrer"
           href={book.url}
         >
           See on the internet
@@ -91,6 +92,7 @@ export const Book = () => {
           <a
             className="pt-10 hover:text-teal-200 underline"
             target="_blank"
+            rel="noreferrer"
             href={book.url}
           >
             See on the internet

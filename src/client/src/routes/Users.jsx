@@ -5,7 +5,6 @@ import { Footer } from "../components/Footer";
 
 export const Users = () => {
   const [users, setUsers] = useState([]);
-  console.log(users)
 
   useEffect(() => {
     const getUsers = async () => {

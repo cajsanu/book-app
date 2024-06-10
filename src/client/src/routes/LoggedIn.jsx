@@ -1,10 +1,9 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { LogoutButton } from "../components/LogoutButton";
 import { Books } from "../components/Books";
 import { BookForm } from "../components/BookForm";
 import { useParams } from "react-router-dom";
 import userRequests from "../requests/users";
-import { Togglable } from "../components/Togglable";
 import { Notification } from "../components/Alert";
 
 export const LoggedIn = () => {
@@ -74,7 +73,7 @@ export const LoggedIn = () => {
       <a>
         <img
           className="h-20 w-full bg-center bg-sky-500/50 opacity-80"
-          style={{ backgroundImage: `url('../src/images/books.jpeg')` }}
+          style={{ backgroundImage: "url('../src/images/books.jpeg')" }}
         />
       </a>
       {showBooks ? (

@@ -11,7 +11,7 @@ export const DeleteButton = ({ bookId, userId }) => {
     if (window.confirm("Are you sure you want to delete this book")) {
       bookRequests.remove(bookId);
       navigate(`/user/${userId}`);
-      alertDispatch({ type: "DELETE", payload: "Deleted book successfully"})
+      alertDispatch({ type: "DELETE", payload: "Deleted book successfully" });
     }
   };
 

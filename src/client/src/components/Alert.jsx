@@ -7,12 +7,10 @@ export const Notification = () => {
   if (alert === null) {
     return null;
   }
-  
+
   return (
     <div>
-      <Alert severity="info">
-        {alert}
-      </Alert>
+      <Alert severity="info">{alert}</Alert>
     </div>
   );
 };

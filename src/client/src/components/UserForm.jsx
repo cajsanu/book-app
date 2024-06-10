@@ -2,30 +2,34 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import userRequests from "../requests/users";
 import { BackButton } from "./BackButton";
-import { Notification } from "../components/Alert"
+import { Notification } from "../components/Alert";
 import AlertContext from "../contexts/AlertContext";
 
 export const UserForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
-  const [age, setAge] = useState("")
+  const [age, setAge] = useState("");
   const [password, setPassword] = useState("");
   const [alert, alertDispatch] = useContext(AlertContext);
 
   const createUser = (event) => {
     try {
       event.preventDefault();
-      const newUser = userRequests.create({ name: name, username: username, age: Number(age), password: password });
-      navigate("/")
-      alertDispatch({ type: "SIGNUP", payload: username})
+      userRequests.create({
+        name: name,
+        username: username,
+        age: Number(age),
+        password: password,
+      });
+      navigate("/");
+      alertDispatch({ type: "SIGNUP", payload: username });
       setName("");
       setUsername("");
       setPassword("");
     } catch (err) {
-      alertDispatch({type: "ERROR", payload: "Unable to create new user"})
+      alertDispatch({ type: "ERROR", payload: "Unable to create new user" });
     }
-  
   };
 
   return (

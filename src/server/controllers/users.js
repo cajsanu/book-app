@@ -3,12 +3,11 @@ const { sequelize } = require("../utils/db");
 const { User, Book } = require("../models/");
 const bcrypt = require("bcrypt");
 
-
 router.get("/", async (req, res) => {
   const users = await User.findAll({
     include: {
       model: Book,
-      attributes: { exclude: ["userId"] }
+      attributes: { exclude: ["userId"] },
     },
   });
   res.json(users);
@@ -31,7 +30,7 @@ router.post("/", async (req, res, next) => {
     });
     return res.json(newUser);
   } catch (err) {
-    next(err)
+    next(err);
   }
 });
 
@@ -47,7 +46,7 @@ router.get("/:id", async (req, res, next) => {
     });
     res.json(user);
   } catch (err) {
-    next(err)
+    next(err);
   }
 });
 

@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom" 
+import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
-    return (
-        <div>
-            <h2>404 not found</h2>
-            <Link to="/">Home</Link>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h2>404 not found</h2>
+      <Link to="/">Home</Link>
+    </div>
+  );
+};
 
-export default ErrorPage
+export default ErrorPage;

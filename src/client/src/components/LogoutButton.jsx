@@ -11,7 +11,7 @@ export const LogoutButton = () => {
     if (window.confirm("Are you sure you want to log out")) {
       logout();
       navigate("/");
-      alertDispatch({ type: "LOGOUT", payload: "You are now logged out"})
+      alertDispatch({ type: "LOGOUT", payload: "You are now logged out" });
     }
   };
 

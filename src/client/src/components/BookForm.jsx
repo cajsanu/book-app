@@ -17,13 +17,16 @@ export const BookForm = () => {
   const createBook = async (event) => {
     event.preventDefault();
     if (!title || !author || !year || !url || !rating) {
-      window.scrollTo(0, 0)
-      alertDispatch({ type: "ERROR", payload: "All fields need to be filled" })
+      window.scrollTo(0, 0);
+      alertDispatch({ type: "ERROR", payload: "All fields need to be filled" });
       throw new Error("All fields except for comment need to be filled in");
     }
     if (Number(year) < 0 || Number(year) > 2024) {
-      window.scrollTo(0, 0)
-      alertDispatch({ type: "ERROR", payload: "Year must be a number between 0-2024" })
+      window.scrollTo(0, 0);
+      alertDispatch({
+        type: "ERROR",
+        payload: "Year must be a number between 0-2024",
+      });
       throw new Error("Year must be a number between 0-2024");
     }
     const newBook = await bookRequests.create({

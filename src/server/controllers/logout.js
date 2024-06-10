@@ -4,7 +4,7 @@ const { tokenExtractor } = require("../utils/middleware");
 
 router.delete("/", tokenExtractor, async (req, res) => {
   try {
-    res.clearCookie("token", { path: '/' });
+    res.clearCookie("token", { path: "/" });
     const activeToken = await ActiveToken.findOne({
       where: {
         activeToken: req.activeToken,

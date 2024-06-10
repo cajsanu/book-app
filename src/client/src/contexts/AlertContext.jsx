@@ -7,7 +7,7 @@ const AlertReducer = (state, action) => {
     case "LOGOUT":
       return action.payload;
     case "SIGNUP":
-      return `Created user ${action.payload}. Now please log in to see your account`
+      return `Created user ${action.payload}. Now please log in to see your account`;
     case "CREATE":
       return `Added new book ${action.payload}`;
     case "DELETE":
@@ -24,10 +24,7 @@ const AlertReducer = (state, action) => {
 const AlertContext = createContext();
 
 export const AlertContextProvider = (props) => {
-  const [alert, alertDispatch] = useReducer(
-    AlertReducer,
-    null
-  );
+  const [alert, alertDispatch] = useReducer(AlertReducer, null);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
