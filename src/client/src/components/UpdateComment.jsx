@@ -5,12 +5,21 @@ export const UpdateComment = ({ book }) => {
   const [comment, setComment] = useState("");
 
   const updateComment = async (event) => {
-    event.preventDefault();
-    await bookRequests.updateComment(book.id, {
-      ...book,
-      comment: comment,
-    });
-    setComment("");
+    try {
+      event.preventDefault();
+      await bookRequests.updateComment(book.id, {
+        ...book,
+        comment: comment,
+      });
+      setComment("");
+    } catch (err) {
+      console.log(err)
+      navigate("/");
+      alertDispatch({
+        type: "ERROR",
+        payload: "Session expired. Please log in",
+      });
+    }
   };
 
   return (

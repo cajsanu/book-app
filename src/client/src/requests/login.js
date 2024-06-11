@@ -11,4 +11,3 @@ export const login = async (credentials) => {
   return response.data;
 };
 
-// what happens when the token expires? the local storage should be put to false and user redirected to login

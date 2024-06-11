@@ -16,7 +16,6 @@ router.post("/", tokenExtractor, async (req, res, next) => {
   try {
     const userId = req.decodedToken.id;
     const newBook = { ...req.body, userId };
-    console.log(newBook);
     const book = await Book.create(newBook);
     return res.json(book.toJSON());
   } catch (err) {
@@ -31,7 +30,7 @@ router.delete("/:id", tokenExtractor, async (req, res, next) => {
     if (book.userId === user.id) {
       await book.destroy();
     } else {
-      return res.status(400).json({ error: "Action not permitted" });
+      return res.status(401).json({ error: "Action not permitted" });
     }
     return res.status(204).end();
   } catch (err) {
@@ -56,7 +55,7 @@ router.put("/:id", tokenExtractor, async (req, res, next) => {
       await Book.update({ ...req.body }, { where: { id: req.params.id } });
       return res.json("Comment updated");
     } else {
-      return res.status(400).json({ error: "Action not permitted" });
+      return res.status(401).json({ error: "Action not permitted" });
     }
   } catch (err) {
     next(err);

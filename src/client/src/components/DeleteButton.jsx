@@ -8,10 +8,18 @@ export const DeleteButton = ({ bookId, userId }) => {
   const [alert, alertDispatch] = useContext(AlertContext);
 
   const handleClick = () => {
-    if (window.confirm("Are you sure you want to delete this book")) {
-      bookRequests.remove(bookId);
-      navigate(`/user/${userId}`);
-      alertDispatch({ type: "DELETE", payload: "Deleted book successfully" });
+    try {
+      if (window.confirm("Are you sure you want to delete this book")) {
+        bookRequests.remove(bookId);
+        navigate(`/user/${userId}`);
+        alertDispatch({ type: "DELETE", payload: "Deleted book successfully" });
+      }
+    } catch {
+      navigate("/");
+      alertDispatch({
+        type: "ERROR",
+        payload: "Session expired. Please log in",
+      });
     }
   };
 
