@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const booksRouter = require("./controllers/books");
@@ -14,11 +15,15 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
+app.use(express.static(path.join(__dirname, "..", "client", "dist")));
+
 app.use("/api/books/", booksRouter);
 app.use("/api/users/", usersRouter);
 app.use("/api/login/", loginRouter);
 app.use("/api/logout", logoutRouter);
-app.use(express.static("dist"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "client", "dist", "index.html"));
+});
 
 const start = async () => {
   await connectToDatabase();

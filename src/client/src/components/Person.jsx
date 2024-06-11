@@ -1,8 +1,8 @@
 export const Person = ({ name, age, id }) => {
   const imgSrc =
     name === "Cajsa" || name === "Alex"
-      ? `src/images/IMG_${name}.jpg`
-      : "src/images/userIcon.jpeg";
+      ? `../IMG_${name}.jpg`
+      : "../userIcon.jpeg";
 
   return (
     <div className="p-10">

@@ -18,3 +18,4 @@ const getById = async (id) => {
 };
 
 export default { getAll, getById, create };
+

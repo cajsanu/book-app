@@ -73,7 +73,7 @@ export const LoggedIn = () => {
       <a>
         <img
           className="h-20 w-full bg-center bg-sky-500/50 opacity-80"
-          style={{ backgroundImage: "url('../src/images/books.jpeg')" }}
+          style={{ backgroundImage: "url('../books.jpeg')" }}
         />
       </a>
       {showBooks ? (
