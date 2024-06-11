@@ -48,7 +48,8 @@ export const BookForm = () => {
       setComment("");
       alertDispatch({ type: "CREATE", payload: "successfully" });
       navigate(`/books/${newBook.id}`);
-    } catch {
+    } catch (err) {
+      console.log(err);
       navigate("/");
       alertDispatch({
         type: "ERROR",

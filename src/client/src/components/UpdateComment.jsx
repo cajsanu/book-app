@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import bookRequests from "../requests/books";
+import { useNavigate } from "react-router-dom";
+import AlertContext from "../contexts/AlertContext";
 
 export const UpdateComment = ({ book }) => {
   const [comment, setComment] = useState("");
+  const navigate = useNavigate();
+  const [alert, alertDispatch] = useContext(AlertContext);
 
   const updateComment = async (event) => {
     try {
@@ -13,7 +17,7 @@ export const UpdateComment = ({ book }) => {
       });
       setComment("");
     } catch (err) {
-      console.log(err)
+      console.log(err);
       navigate("/");
       alertDispatch({
         type: "ERROR",

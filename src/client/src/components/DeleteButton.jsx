@@ -14,7 +14,8 @@ export const DeleteButton = ({ bookId, userId }) => {
         navigate(`/user/${userId}`);
         alertDispatch({ type: "DELETE", payload: "Deleted book successfully" });
       }
-    } catch {
+    } catch (err) {
+      console.log(err);
       navigate("/");
       alertDispatch({
         type: "ERROR",
