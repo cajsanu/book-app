@@ -49,7 +49,7 @@ export const BookForm = () => {
       alertDispatch({ type: "CREATE", payload: "successfully" });
       navigate(`/books/${newBook.id}`);
     } catch (err) {
-      window.localStorage.clear()
+      window.localStorage.clear();
       navigate("/");
       alertDispatch({
         type: "ERROR",
