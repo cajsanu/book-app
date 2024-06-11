@@ -31,6 +31,15 @@ export const Book = () => {
     getBookAndUser();
   }, []);
 
+  const handleCommentUpdate = async () => {
+    try {
+      const updatedBook = await bookRequests.getByBookId(id);
+      setBook(updatedBook);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   if (!book || !user) {
     return <div>Unable to find data</div>;
   }
@@ -102,7 +111,7 @@ export const Book = () => {
           </div>
         </div>
         <div className="p-20 pt-80">
-          <UpdateComment book={book} />
+          <UpdateComment book={book} onCommentUpdate={handleCommentUpdate} />
         </div>
       </div>
     </div>

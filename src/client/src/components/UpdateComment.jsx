@@ -3,7 +3,7 @@ import bookRequests from "../requests/books";
 import { useNavigate } from "react-router-dom";
 import AlertContext from "../contexts/AlertContext";
 
-export const UpdateComment = ({ book }) => {
+export const UpdateComment = ({ book, onCommentUpdate }) => {
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
   const [alert, alertDispatch] = useContext(AlertContext);
@@ -16,8 +16,9 @@ export const UpdateComment = ({ book }) => {
         comment: comment,
       });
       setComment("");
+      onCommentUpdate();
     } catch (err) {
-      console.log(err);
+      window.localStorage.clear()
       navigate("/");
       alertDispatch({
         type: "ERROR",
