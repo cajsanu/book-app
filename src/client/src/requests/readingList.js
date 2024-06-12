@@ -8,4 +8,9 @@ const create = async (userId, bookId) => {
   return response.data;
 };
 
-export default { create };
+const remove = async (id) => {
+  const response = await axios.delete(`${URL}/${id}`);
+  return response.data;
+};
+
+export default { create, remove };

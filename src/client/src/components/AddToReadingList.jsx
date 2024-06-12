@@ -7,8 +7,17 @@ export const AddToReadingList = ({ userId, bookId }) => {
 
   const handleClick = async () => {
     try {
-      await readingListRequests.create(userId, bookId);
-      alertDispatch({ type: "READ", payload: "Added book to your reading list" });
+      if (
+        window.confirm(
+          "Are you sure you want to add this book to your personal reading list"
+        )
+      ) {
+        await readingListRequests.create(userId, bookId);
+        alertDispatch({
+          type: "READ",
+          payload: "Added book to your reading list",
+        });
+      }
     } catch (err) {
       alertDispatch({
         type: "ERROR",

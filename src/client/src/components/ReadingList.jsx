@@ -1,4 +1,16 @@
+import readingListRequests from "../requests/readingList";
+
 const Book = ({ title, author, year, id }) => {
+  const handleClick = async () => {
+    if (
+      window.confirm(
+        `Are you sure you want to remove ${title} from your reading list?`
+      )
+    ) {
+      await readingListRequests.remove(id);
+    }
+  };
+
   return (
     <tr className="text-stone-800 hover:bg-emerald-100 font-medium text-start shadow-sm">
       <td className="p-4 ps-20 w-40 ">
@@ -14,7 +26,10 @@ const Book = ({ title, author, year, id }) => {
       </td>
       <td className="p-4 w-40 ps-20">{year}</td>
       <td className="p-4 w-40 ps-20">
-        <button className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600">
+        <button
+          onClick={handleClick}
+          className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+        >
           Remove
         </button>
       </td>
@@ -41,7 +56,7 @@ export const ReadingList = ({ books }) => {
               title={b.title}
               author={b.author}
               year={b.year}
-              id={b.id}
+              id={b.user_reading_list.id}
             />
           ))}
         </tbody>
