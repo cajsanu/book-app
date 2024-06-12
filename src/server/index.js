@@ -22,7 +22,7 @@ app.use("/api/books/", booksRouter);
 app.use("/api/users/", usersRouter);
 app.use("/api/login/", loginRouter);
 app.use("/api/logout", logoutRouter);
-app.use("api/readingList", readingListRouter);
+app.use("/api/readingList", readingListRouter);
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "client", "dist", "index.html"));
 });

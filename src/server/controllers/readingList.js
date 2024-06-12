@@ -1,15 +1,15 @@
 const router = require("express").Router();
-const { UserReadingList, User } = require("../models");
+const { UserReadingList, User, Book } = require("../models");
 const { tokenExtractor } = require("../utils/middleware");
 
 router.post("/", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
-    const { userId, blogId } = req.body;
+    const { userId, bookId } = req.body;
     if (user.id === userId) {
       const markBook = await UserReadingList.create({
         userId,
-        blogId,
+        bookId,
       });
       res.json(markBook);
     } else {

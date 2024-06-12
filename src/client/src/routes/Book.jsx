@@ -5,6 +5,7 @@ import userRequests from "../requests/users";
 import { DeleteButton } from "../components/DeleteButton";
 import { UpdateComment } from "../components/UpdateComment";
 import { Notification } from "../components/Alert";
+import { AddToReadingList } from "../components/AddToReadingList";
 
 export const Book = () => {
   const [book, setBook] = useState(null);
@@ -74,6 +75,9 @@ export const Book = () => {
         >
           See on the internet
         </a>
+        <div className="pt-10">
+          <AddToReadingList userId={loggedInUser.id} bookId={book.id} />
+        </div>
       </div>
     );
   }
@@ -105,6 +109,9 @@ export const Book = () => {
           >
             See on the internet
           </a>
+          <div className="pt-10">
+            <AddToReadingList userId={loggedInUser.id} bookId={book.id} />
+          </div>
           <div className="py-10">
             <DeleteButton userId={loggedInUser.id} bookId={book.id} />
           </div>
