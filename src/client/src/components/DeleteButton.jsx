@@ -15,7 +15,7 @@ export const DeleteButton = ({ bookId, userId }) => {
         alertDispatch({ type: "DELETE", payload: "Deleted book successfully" });
       }
     } catch (err) {
-      window.localStorage.clear();
+      window.localStorage.setItem("user", null);
       navigate("/");
       alertDispatch({
         type: "ERROR",

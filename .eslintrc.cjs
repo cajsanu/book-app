@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es6: true,
     node: true,
-    // "jest/globals": true,
+    "cypress/globals": true,
   },
   extends: ["eslint:recommended", "plugin:react/recommended"],
   parserOptions: {
@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "cypress"],
   rules: {
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
@@ -26,7 +26,7 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     "arrow-spacing": ["error", { before: true, after: true }],
     "react/prop-types": 0,
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
   },
   settings: {
     react: {

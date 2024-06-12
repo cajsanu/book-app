@@ -18,7 +18,7 @@ export const UpdateComment = ({ book, onCommentUpdate }) => {
       setComment("");
       onCommentUpdate();
     } catch (err) {
-      window.localStorage.clear();
+      window.localStorage.setItem("user", null);
       navigate("/");
       alertDispatch({
         type: "ERROR",
