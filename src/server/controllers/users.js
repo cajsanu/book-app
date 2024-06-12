@@ -42,6 +42,13 @@ router.get("/:id", async (req, res, next) => {
           model: Book,
           attributes: { exclude: ["userId"] },
         },
+        {
+          model: Book,
+          as: "marked_books",
+          attributes: {
+            exclude: ["userId"],
+          },
+        },
       ],
     });
     res.json(user);

@@ -40,8 +40,8 @@ router.delete("/:id", tokenExtractor, async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const books = await Book.findByPk(req.params.id);
-    return res.json(books);
+    const book = await Book.findByPk(req.params.id);
+    return res.json(book);
   } catch (err) {
     next(err);
   }

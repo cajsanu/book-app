@@ -83,7 +83,6 @@ export const Book = () => {
       <Notification />
       <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row">
         <div className="pt-24 ps-48 flex flex-col items-start ">
-          <p>You added this book in 2024</p>
           <h1 className="pt-10">{book.title}</h1>
           <p className="text-stone-900 font-semibold text-xl">
             By {book.author}
@@ -110,7 +109,7 @@ export const Book = () => {
             <DeleteButton userId={loggedInUser.id} bookId={book.id} />
           </div>
         </div>
-        <div className="p-20 pt-80">
+        <div className="ps-36 pt-80 pb-32">
           <UpdateComment book={book} onCommentUpdate={handleCommentUpdate} />
         </div>
       </div>

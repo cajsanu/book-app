@@ -22,6 +22,14 @@ export const AllBooks = () => {
     <div>
       <div className="p-20 bg-teal-800">
         <h1 className="pb-10">All the books</h1>
+        <div className="pb-10">
+          <p>Here you can see all of the books added by users.</p>
+          <p>
+            If you want to see books added by a specific user, please navigate
+            to the users page.
+          </p>
+          <p>If you want to read more about a book you can click the title.</p>
+        </div>
         <div className="flex justify-center">
           <Books books={books} />
         </div>
