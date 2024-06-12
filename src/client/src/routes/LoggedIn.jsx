@@ -70,12 +70,6 @@ export const LoggedIn = () => {
           </div>
         </div>
       </div>
-      <a>
-        <img
-          className="h-20 w-full bg-center bg-sky-500/50 opacity-80"
-          style={{ backgroundImage: "url('../books.jpeg')" }}
-        />
-      </a>
       {showBooks ? (
         <div className="flex justify-center py-10">
           <Books books={user.books} />

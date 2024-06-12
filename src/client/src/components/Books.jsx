@@ -10,7 +10,7 @@ const Book = ({ title, author, year, rating, id }) => {
   };
 
   return (
-    <tr className="text-stone-800 hover:bg-emerald-100 font-medium text-start">
+    <tr className="text-stone-800 hover:bg-emerald-100 font-medium text-start shadow-sm">
       <td className="p-4 ps-20 w-40 ">
         <a
           className="flex justify-start hover:text-teal-600"
@@ -30,10 +30,10 @@ const Book = ({ title, author, year, rating, id }) => {
 
 export const Books = ({ books }) => {
   return (
-    <div className="w-3/4 shadow-xl">
-      <table className="w-full p-10 bg-emerald-50 border-solid border-8 border-teal-600 shadow-xl">
+    <div className="w-5/6 shadow-xl">
+      <table className="w-full p-10 bg-emerald-50">
         <thead>
-          <tr className="border-solid border-2 border-teal-600 text-white bg-teal-900">
+          <tr className="text-white bg-teal-900 shadow-sm">
             <th className="text-start p-4 ps-20">Title</th>
             <th className="text-start ps-20">Author</th>
             <th className="text-start ps-20">Published</th>
