@@ -1,12 +1,20 @@
-import { useNavigate } from "react-router-dom";
 import readingListRequests from "../requests/readingList";
 import AlertContext from "../contexts/AlertContext";
 import { useContext } from "react";
 
 export const AddToReadingList = ({ userId, bookId }) => {
+  const [alert, alertDispatch] = useContext(AlertContext);
+
   const handleClick = async () => {
-    const added = await readingListRequests.create(userId, bookId);
-    console.log(added)
+    try {
+      await readingListRequests.create(userId, bookId);
+      alertDispatch({ type: "READ", payload: "Added book to your reading list" });
+    } catch (err) {
+      alertDispatch({
+        type: "ERROR",
+        payload: "Unable to add to reading list",
+      });
+    }
   };
 
   return (

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { UserReadingList, User, Book } = require("../models");
+const { UserReadingList, User } = require("../models");
 const { tokenExtractor } = require("../utils/middleware");
 
 router.post("/", tokenExtractor, async (req, res, next) => {

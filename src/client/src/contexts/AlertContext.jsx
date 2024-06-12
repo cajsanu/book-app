@@ -10,6 +10,8 @@ const AlertReducer = (state, action) => {
       return `Created user ${action.payload}. Now please log in to see your account`;
     case "CREATE":
       return `Added new book ${action.payload}`;
+    case "READ":
+      return action.payload
     case "DELETE":
       return action.payload;
     case "ERROR":

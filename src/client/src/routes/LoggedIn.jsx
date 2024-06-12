@@ -5,12 +5,14 @@ import { BookForm } from "../components/BookForm";
 import { useParams } from "react-router-dom";
 import userRequests from "../requests/users";
 import { Notification } from "../components/Alert";
+import { ReadingList } from "../components/ReadingList";
 
 export const LoggedIn = () => {
   const [user, setUser] = useState(null);
   const [userId, setUserId] = useState(null);
   const [showBookForm, setShowBookForm] = useState(false);
   const [showBooks, setShowBooks] = useState(false);
+  const [showReadingList, setShowReadingList] = useState(false)
   const { id } = useParams();
 
   useEffect(() => {
@@ -27,12 +29,20 @@ export const LoggedIn = () => {
   const handleAddBook = () => {
     setShowBookForm(true);
     setShowBooks(false);
+    setShowReadingList(false)
   };
 
   const handleShowBooks = () => {
     setShowBooks(true);
     setShowBookForm(false);
+    setShowReadingList(false)
   };
+
+  const handleReadingList = () => {
+    setShowReadingList(true)
+    setShowBooks(false);
+    setShowBookForm(false);
+  }
 
   if (!userId) {
     return <div>You are not logged in</div>;
@@ -64,6 +74,14 @@ export const LoggedIn = () => {
                 Add book
               </button>
             </div>
+            <div>
+            <button
+                className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+                onClick={handleReadingList}
+              >
+                Reading list
+              </button>
+            </div>
             <div className="">
               <LogoutButton />
             </div>
@@ -78,6 +96,11 @@ export const LoggedIn = () => {
       {showBookForm ? (
         <div className="flex justify-center py-10">
           <BookForm />
+        </div>
+      ) : null}
+      {showReadingList ? (
+        <div className="flex justify-center py-10">
+          <ReadingList books={user.marked_books} />
         </div>
       ) : null}
     </div>
