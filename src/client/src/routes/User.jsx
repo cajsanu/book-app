@@ -25,9 +25,8 @@ export const User = () => {
       <ToLoggedIn />
       <div className="pt-10 pb-5 bg-gradient-to-r from-teal-800 to-teal-600">
         <h1 className="p-10">{user.name}&apos;s books</h1>
-        <a className="hover:text-teal-300 underline" href={""}>
-          About {user.name}
-        </a>
+        <p>Hi there, I&apos;m {user.name}!</p>
+        <p>Here are all my books that I have read.</p>
       </div>
 
       <div className="p-10 flex justify-center">

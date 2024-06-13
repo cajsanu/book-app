@@ -10,10 +10,10 @@ const Book = ({ title, author, year, rating, id }) => {
   };
 
   return (
-    <tr className="text-stone-800 hover:bg-emerald-100 font-medium text-start shadow-sm">
+    <tr className="text-stone-800 hover:bg-teal-700 hover:text-white font-medium text-start shadow-sm">
       <td className="p-4 ps-20 w-40 ">
         <a
-          className="flex justify-start hover:text-teal-600"
+          className="flex justify-start hover:text-teal-300"
           href={`/books/${id}`}
         >
           {title}
@@ -23,7 +23,7 @@ const Book = ({ title, author, year, rating, id }) => {
         <p className="flex justify-start">{author}</p>
       </td>
       <td className="p-4 w-40 ps-20">{year}</td>
-      <td className="p-4 w-40 ps-20 text-yellow-700">{renderStars(rating)}</td>
+      <td className="p-4 w-40 ps-20 text-yellow-600">{renderStars(rating)}</td>
     </tr>
   );
 };
