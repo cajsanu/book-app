@@ -82,20 +82,26 @@ export const Book = () => {
     );
   }
 
+  const bookOfUser = loggedInUser.id === book.userId ? true : false;
+
   return (
     <div>
       <Notification />
       <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row">
-        <div className="pt-24 ps-48 flex flex-col items-start ">
+        <div className="py-24 ps-48 flex flex-col items-start ">
           <h1 className="pt-10">{book.title}</h1>
           <p className="text-stone-900 font-semibold text-xl">
             By {book.author}
           </p>
 
           <div className="pt-10">
-            <p className="font-semibold">
-              You rated this book {book.rating} out of 5
-            </p>
+            {bookOfUser ? (
+              <p>You rated this book {book.rating} out of 5 </p>
+            ) : (
+              <p className="font-semibold">
+                {user.name} rated this book {book.rating} out of 5
+              </p>
+            )}
             <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
               {book.comment}
             </p>
@@ -112,13 +118,17 @@ export const Book = () => {
           <div className="pt-10">
             <AddToReadingList userId={loggedInUser.id} bookId={book.id} />
           </div>
-          <div className="py-10">
-            <DeleteButton userId={loggedInUser.id} bookId={book.id} />
+          {bookOfUser ? (
+            <div className="py-10">
+              <DeleteButton userId={loggedInUser.id} bookId={book.id} />
+            </div>
+          ) : null}
+        </div>
+        {bookOfUser ? (
+          <div className="ps-36 pt-80 pb-32">
+            <UpdateComment book={book} onCommentUpdate={handleCommentUpdate} />
           </div>
-        </div>
-        <div className="ps-36 pt-80 pb-32">
-          <UpdateComment book={book} onCommentUpdate={handleCommentUpdate} />
-        </div>
+        ) : null}
       </div>
     </div>
   );
