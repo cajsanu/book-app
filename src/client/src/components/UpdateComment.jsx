@@ -52,7 +52,7 @@ export const UpdateComment = ({ book, onCommentUpdate }) => {
             </div>
           </div>
           <button
-            className="transition duration-150 w-full rounded-md bg-teal-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200"
+            className="transition duration-150 w-full rounded-md bg-teal-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-800"
             type="submit"
           >
             Update

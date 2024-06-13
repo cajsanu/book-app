@@ -34,10 +34,10 @@ const Book = ({ title, author, year, bookId, listId, onRemove }) => {
   };
 
   return (
-    <tr className="text-stone-800 hover:bg-emerald-100 font-medium text-start shadow-sm">
+    <tr className="text-stone-800 hover:bg-teal-500 font-medium text-start shadow-sm">
       <td className="p-4 ps-20 w-40 ">
         <a
-          className="flex justify-start hover:text-teal-600"
+          className="flex justify-start hover:text-teal-200"
           href={`/books/${bookId}`}
         >
           {title}
@@ -50,7 +50,7 @@ const Book = ({ title, author, year, bookId, listId, onRemove }) => {
       <td className="p-4 w-40 ps-20">
         <button
           onClick={handleClick}
-          className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+          className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
         >
           Remove
         </button>

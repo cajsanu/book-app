@@ -63,22 +63,22 @@ export const LoggedIn = () => {
 
   return (
     <div>
-      <div className="bg-gradient-to-r from-teal-900 to-teal-500 p-10">
+      <div className="bg-gradient-to-r from-teal-900 to-teal-500 p-20">
         <Notification />
         <h1 className="text-5xl p-10">Welcome {user.username}</h1>
         <div className="flex justify-center">
-          <div className="w-1/3 bg-emerald-100 p-2 rounded-md flex flex-row justify-between">
-            <div className="">
+          <div className="w-2/4 bg-emerald-100 px-6 p-2 rounded-md flex flex-row justify-between">
+            <div>
               <button
-                className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+                className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                 onClick={handleShowBooks}
               >
                 My books
               </button>
             </div>
-            <div className="">
+            <div>
               <button
-                className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+                className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                 onClick={handleAddBook}
               >
                 Add book
@@ -86,7 +86,7 @@ export const LoggedIn = () => {
             </div>
             <div>
               <button
-                className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+                className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                 onClick={handleReadingList}
               >
                 Reading list
@@ -113,6 +113,13 @@ export const LoggedIn = () => {
           <ReadingList books={user.marked_books} onRemove={handleRemove} />
         </div>
       ) : null}
+      <div className="pb-32"></div>
+      <div className="border-solid border-8 border-teal-900">
+      <div
+        className="h-32 w-full bg-center bg-sky-500/50 opacity-70"
+        style={{ backgroundImage: "url('../books.jpeg')" }}
+      ></div>
+      </div>
     </div>
   );
 };

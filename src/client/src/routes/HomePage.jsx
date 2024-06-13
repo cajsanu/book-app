@@ -37,14 +37,14 @@ export const HomePage = () => {
                 <div>
                   <div className="flex flex-col">
                     <button
-                      className="transition delay-150 rounded-md bg-emerald-100 px-3 py-1.5 text-sm font-semibold leading-6 text-teal-700 shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+                      className="transition delay-150 rounded-md bg-emerald-100 px-3 py-1.5 text-sm font-semibold leading-6 text-teal-800 shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                       onClick={handleClickUsers}
                     >
                       Users
                     </button>
                     <br />
                     <button
-                      className="transition delay-150 rounded-md bg-emerald-100 px-3 py-1.5 text-sm font-semibold leading-6 text-teal-700 shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+                      className="transition delay-150 rounded-md bg-emerald-100 px-3 py-1.5 text-sm font-semibold leading-6 text-teal-800 shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                       onClick={handleClickBooks}
                     >
                       Books

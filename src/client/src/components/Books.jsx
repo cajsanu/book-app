@@ -16,7 +16,7 @@ const Book = ({ title, author, year, rating, id }) => {
           className="flex justify-start hover:text-teal-300"
           href={`/books/${id}`}
         >
-          {title}
+          {title} 
         </a>
       </td>
       <td className="p-4 w-40 ps-20">
