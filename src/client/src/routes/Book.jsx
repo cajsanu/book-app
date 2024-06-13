@@ -6,6 +6,7 @@ import { DeleteButton } from "../components/DeleteButton";
 import { UpdateComment } from "../components/UpdateComment";
 import { Notification } from "../components/Alert";
 import { AddToReadingList } from "../components/AddToReadingList";
+import { ToLoggedIn } from "../components/ToLoggedIn";
 
 export const Book = () => {
   const [book, setBook] = useState(null);
@@ -84,6 +85,7 @@ export const Book = () => {
   return (
     <div>
       <Notification />
+      <ToLoggedIn />
       <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row">
         <div className="py-24 ps-48 flex flex-col items-start ">
           <h1 className="pt-10">{book.title}</h1>

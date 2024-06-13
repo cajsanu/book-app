@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import bookRequests from "../requests/books";
 import { Books } from "../components/Books";
 import { Footer } from "../components/Footer";
+import { ToLoggedIn } from "../components/ToLoggedIn";
 
 export const AllBooks = () => {
   const [books, setBooks] = useState(null);
@@ -20,6 +21,7 @@ export const AllBooks = () => {
 
   return (
     <div>
+      <ToLoggedIn />
       <div className="p-20 bg-teal-800">
         <h1 className="pb-10">All the books</h1>
         <div className="pb-10">

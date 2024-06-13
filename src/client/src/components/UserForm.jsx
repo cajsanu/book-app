@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import userRequests from "../requests/users";
-import { BackButton } from "./BackButton";
 import { Notification } from "../components/Alert";
 import AlertContext from "../contexts/AlertContext";
 
@@ -121,10 +120,6 @@ export const UserForm = () => {
             >
               Sign up
             </button>
-            <br />
-            <div>
-              <BackButton />
-            </div>
           </div>
         </form>
       </div>

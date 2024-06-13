@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { LoginForm } from "../components/LoginForm";
 import { Footer } from "../components/Footer";
 import { Notification } from "../components/Alert";
+import { ToLoggedIn } from "../components/ToLoggedIn";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export const HomePage = () => {
           style={{ backgroundImage: "url('../books.jpeg')" }}
         ></div>
         <Notification />
+        <ToLoggedIn />
         <div className="ps-60 pe-20 pt-32 flex flex-row">
           <div className="flex justify-start pe-28 max-w-96">
             <div className="flex-col">

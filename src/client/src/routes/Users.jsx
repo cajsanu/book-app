@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Person } from "../components/Person";
 import userRequests from "../requests/users";
 import { Footer } from "../components/Footer";
+import { ToLoggedIn } from "../components/ToLoggedIn";
 
 export const Users = () => {
   const [users, setUsers] = useState([]);
@@ -16,6 +17,7 @@ export const Users = () => {
 
   return (
     <div>
+      <ToLoggedIn />
       <div className="pt-20 bg-gradient-to-r from-teal-500 to-teal-800">
         <h1 className="">Users</h1>
         <div className="flex flex-row p-10 overflow-auto">
