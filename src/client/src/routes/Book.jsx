@@ -115,14 +115,16 @@ export const Book = () => {
           >
             See on the internet
           </a>
-          <div className="pt-10">
-            <AddToReadingList userId={loggedInUser.id} bookId={book.id} />
-          </div>
+
           {bookOfUser ? (
             <div className="py-10">
               <DeleteButton userId={loggedInUser.id} bookId={book.id} />
             </div>
-          ) : null}
+          ) : (
+            <div className="pt-10">
+              <AddToReadingList userId={loggedInUser.id} bookId={book.id} />
+            </div>
+          )}
         </div>
         {bookOfUser ? (
           <div className="ps-36 pt-80 pb-32">

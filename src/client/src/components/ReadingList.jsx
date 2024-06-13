@@ -56,7 +56,7 @@ export const ReadingList = ({ books }) => {
               title={b.title}
               author={b.author}
               year={b.year}
-              id={b.user_reading_list.id}
+              id={b.user_reading_list.bookId}
             />
           ))}
         </tbody>
