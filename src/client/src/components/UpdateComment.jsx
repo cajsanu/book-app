@@ -18,12 +18,14 @@ export const UpdateComment = ({ book, onCommentUpdate }) => {
       setComment("");
       onCommentUpdate();
     } catch (err) {
-      window.localStorage.setItem("user", null);
-      navigate("/");
-      alertDispatch({
-        type: "ERROR",
-        payload: "Session expired. Please log in",
-      });
+      if (err.response.status === 401) {
+        window.localStorage.setItem("user", null);
+        navigate("/");
+        alertDispatch({
+          type: "ERROR",
+          payload: "Session expired. Please log in",
+        });
+      }
     }
   };
 

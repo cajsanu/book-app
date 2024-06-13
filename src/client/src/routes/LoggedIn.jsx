@@ -12,7 +12,7 @@ export const LoggedIn = () => {
   const [userId, setUserId] = useState(null);
   const [showBookForm, setShowBookForm] = useState(false);
   const [showBooks, setShowBooks] = useState(false);
-  const [showReadingList, setShowReadingList] = useState(false)
+  const [showReadingList, setShowReadingList] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,20 +29,30 @@ export const LoggedIn = () => {
   const handleAddBook = () => {
     setShowBookForm(true);
     setShowBooks(false);
-    setShowReadingList(false)
+    setShowReadingList(false);
   };
 
   const handleShowBooks = () => {
     setShowBooks(true);
     setShowBookForm(false);
-    setShowReadingList(false)
+    setShowReadingList(false);
   };
 
   const handleReadingList = () => {
-    setShowReadingList(true)
+    setShowReadingList(true);
     setShowBooks(false);
     setShowBookForm(false);
-  }
+  };
+
+  const handleRemove = async () => {
+    console.log("removing");
+    try {
+      const user = await userRequests.getById(id);
+      setUser(user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   if (!userId) {
     return <div>You are not logged in</div>;
@@ -75,7 +85,7 @@ export const LoggedIn = () => {
               </button>
             </div>
             <div>
-            <button
+              <button
                 className="transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                 onClick={handleReadingList}
               >
@@ -100,7 +110,7 @@ export const LoggedIn = () => {
       ) : null}
       {showReadingList ? (
         <div className="flex justify-center py-10">
-          <ReadingList books={user.marked_books} />
+          <ReadingList books={user.marked_books} onRemove={handleRemove} />
         </div>
       ) : null}
     </div>

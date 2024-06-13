@@ -1,13 +1,35 @@
 import readingListRequests from "../requests/readingList";
+import AlertContext from "../contexts/AlertContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Book = ({ title, author, year, id }) => {
+const Book = ({ title, author, year, bookId, listId, onRemove }) => {
+  const [alert, alertDispatch] = useContext(AlertContext);
+  const navigate = useNavigate();
+
   const handleClick = async () => {
     if (
       window.confirm(
         `Are you sure you want to remove ${title} from your reading list?`
       )
     ) {
-      await readingListRequests.remove(id);
+      try {
+        await readingListRequests.remove(listId);
+        alertDispatch({
+          type: "READ",
+          payload: `Removed ${title} from reading list`,
+        });
+        onRemove();
+      } catch (err) {
+        if (err.response.status === 401) {
+          window.localStorage.setItem("user", null);
+          navigate("/");
+          alertDispatch({
+            type: "ERROR",
+            payload: "Session expired. Please log in",
+          });
+        }
+      }
     }
   };
 
@@ -16,7 +38,7 @@ const Book = ({ title, author, year, id }) => {
       <td className="p-4 ps-20 w-40 ">
         <a
           className="flex justify-start hover:text-teal-600"
-          href={`/books/${id}`}
+          href={`/books/${bookId}`}
         >
           {title}
         </a>
@@ -37,7 +59,7 @@ const Book = ({ title, author, year, id }) => {
   );
 };
 
-export const ReadingList = ({ books }) => {
+export const ReadingList = ({ books, onRemove }) => {
   return (
     <div className="w-5/6 shadow-xl">
       <table className="w-full p-10 bg-emerald-50">
@@ -56,7 +78,9 @@ export const ReadingList = ({ books }) => {
               title={b.title}
               author={b.author}
               year={b.year}
-              id={b.user_reading_list.bookId}
+              bookId={b.user_reading_list.bookId}
+              listId={b.user_reading_list.id}
+              onRemove={onRemove}
             />
           ))}
         </tbody>
