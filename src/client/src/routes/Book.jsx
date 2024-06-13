@@ -75,9 +75,6 @@ export const Book = () => {
         >
           See on the internet
         </a>
-        <div className="pt-10">
-          <AddToReadingList userId={loggedInUser.id} bookId={book.id} />
-        </div>
       </div>
     );
   }
