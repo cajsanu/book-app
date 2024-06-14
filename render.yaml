@@ -19,3 +19,4 @@ services:
 databases:
   - name: book-app-db
     plan: free
+    region: frankfurt
