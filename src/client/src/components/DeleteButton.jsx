@@ -7,21 +7,21 @@ export const DeleteButton = ({ bookId, userId }) => {
   const navigate = useNavigate();
   const [alert, alertDispatch] = useContext(AlertContext);
 
-  const handleClick = () => {
-    try {
-      if (window.confirm("Are you sure you want to delete this book")) {
-        bookRequests.remove(bookId);
+  const handleClick = async () => {
+    if (window.confirm("Are you sure you want to delete this book")) {
+      try {
+        await bookRequests.remove(bookId);
         navigate(`/user/${userId}`);
         alertDispatch({ type: "DELETE", payload: "Deleted book successfully" });
-      }
-    } catch (err) {
-      if (err.response.status === 401) {
-        window.localStorage.setItem("user", null);
-        navigate("/");
-        alertDispatch({
-          type: "ERROR",
-          payload: "Session expired. Please log in",
-        });
+      } catch (err) {
+        if (err.response.status === 401) {
+          window.localStorage.setItem("user", null);
+          navigate("/");
+          alertDispatch({
+            type: "ERROR",
+            payload: "Session expired. Please log in",
+          });
+        }
       }
     }
   };

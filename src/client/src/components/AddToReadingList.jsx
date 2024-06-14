@@ -19,10 +19,19 @@ export const AddToReadingList = ({ userId, bookId }) => {
         });
       }
     } catch (err) {
-      alertDispatch({
-        type: "ERROR",
-        payload: "Unable to add to reading list",
-      });
+      if (err.response.status === 401) {
+        window.localStorage.setItem("user", null);
+        navigate("/");
+        alertDispatch({
+          type: "ERROR",
+          payload: "Session expired. Please log in",
+        });
+      } else {
+        alertDispatch({
+          type: "ERROR",
+          payload: "Unable to add to reading list",
+        });
+      }
     }
   };
 
