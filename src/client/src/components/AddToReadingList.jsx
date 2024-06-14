@@ -1,9 +1,11 @@
 import readingListRequests from "../requests/readingList";
 import AlertContext from "../contexts/AlertContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AddToReadingList = ({ userId, bookId }) => {
   const [alert, alertDispatch] = useContext(AlertContext);
+  const navigate = useNavigate();
 
   const handleClick = async () => {
     try {

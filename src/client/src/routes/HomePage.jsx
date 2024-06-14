@@ -1,20 +1,14 @@
 import "../App.css";
-import { useNavigate } from "react-router";
-import { LoginForm } from "../components/LoginForm";
-import { Footer } from "../components/Footer";
-import { Notification } from "../components/Alert";
-import { ToLoggedIn } from "../components/ToLoggedIn";
+import {
+  LoginForm,
+  Footer,
+  Notification,
+  ToLoggedIn,
+  ToUsers,
+  ToBooks,
+} from "../components";
 
 export const HomePage = () => {
-  const navigate = useNavigate();
-
-  const handleClickUsers = () => {
-    navigate("/users");
-  };
-  const handleClickBooks = () => {
-    navigate("/books");
-  };
-
   return (
     <div>
       <div className="h-screen w-full bg-gradient-to-r from-teal-500 to-teal-800">
@@ -32,23 +26,12 @@ export const HomePage = () => {
                 &quot;If you don&apos;t like to read, you haven&apos;t found the
                 right book.&quot; - J.K. Rowling
               </div>
-              <div></div>
               <div className="bg-inherit h-10">
                 <div>
                   <div className="flex flex-col">
-                    <button
-                      className="transition delay-150 rounded-md bg-emerald-100 px-3 py-1.5 text-sm font-semibold leading-6 text-teal-800 shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
-                      onClick={handleClickUsers}
-                    >
-                      Users
-                    </button>
+                    <ToUsers />
                     <br />
-                    <button
-                      className="transition delay-150 rounded-md bg-emerald-100 px-3 py-1.5 text-sm font-semibold leading-6 text-teal-800 shadow-sm hover:bg-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
-                      onClick={handleClickBooks}
-                    >
-                      Books
-                    </button>
+                    <ToBooks />
                   </div>
                 </div>
               </div>

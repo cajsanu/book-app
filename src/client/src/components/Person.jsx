@@ -8,7 +8,7 @@ export const Person = ({ name, age, id }) => {
     <div className="p-10">
       <a>
         <img
-          className="min-w-48 min-h-64 rounded-md outline outline-4 outline-transparent hover:outline-teal-300"
+          className="min-w-48 min-h-64 max-w-48 rounded-md outline outline-4 outline-transparent hover:outline-teal-300"
           src={imgSrc}
           alt={`${name}'s picture`}
         />

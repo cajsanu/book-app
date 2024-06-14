@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { LogoutButton } from "../components/LogoutButton";
-import { Books } from "../components/Books";
-import { BookForm } from "../components/BookForm";
+import {
+  LogoutButton,
+  Books,
+  BookForm,
+  Notification,
+  ReadingList,
+  ToBooks,
+  ToUsers,
+} from "../components";
 import { useParams } from "react-router-dom";
 import userRequests from "../requests/users";
-import { Notification } from "../components/Alert";
-import { ReadingList } from "../components/ReadingList";
 
 export const LoggedIn = () => {
   const [user, setUser] = useState(null);
@@ -92,6 +96,12 @@ export const LoggedIn = () => {
                 Reading list
               </button>
             </div>
+            {/* <div>
+              <ToBooks />
+            </div> */}
+            <div>
+              <ToUsers />
+            </div>
             <div>
               <LogoutButton />
             </div>
@@ -99,26 +109,25 @@ export const LoggedIn = () => {
         </div>
       </div>
       {showBooks ? (
-        <div className="flex justify-center py-10">
+        <div className="flex justify-center py-20">
           <Books books={user.books} />
         </div>
       ) : null}
       {showBookForm ? (
-        <div className="flex justify-center py-10">
+        <div className="flex justify-center py-20">
           <BookForm />
         </div>
       ) : null}
       {showReadingList ? (
-        <div className="flex justify-center py-10">
+        <div className="flex justify-center py-20">
           <ReadingList books={user.marked_books} onRemove={handleRemove} />
         </div>
       ) : null}
-      <div className="pb-32"></div>
       <div className="border-solid border-8 border-teal-900">
-      <div
-        className="h-32 w-full bg-center bg-sky-500/50 opacity-70"
-        style={{ backgroundImage: "url('../books.jpeg')" }}
-      ></div>
+        <div
+          className="h-32 w-full bg-center bg-sky-500/50 opacity-70"
+          style={{ backgroundImage: "url('../books.jpeg')" }}
+        ></div>
       </div>
     </div>
   );

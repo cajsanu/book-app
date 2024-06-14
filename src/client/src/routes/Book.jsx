@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import bookRequests from "../requests/books";
 import userRequests from "../requests/users";
-import { DeleteButton } from "../components/DeleteButton";
-import { UpdateComment } from "../components/UpdateComment";
-import { Notification } from "../components/Alert";
-import { AddToReadingList } from "../components/AddToReadingList";
-import { ToLoggedIn } from "../components/ToLoggedIn";
+import {
+  DeleteButton,
+  Notification,
+  AddToReadingList,
+  ToLoggedIn,
+  UpdateComment,
+} from "../components";
 
 export const Book = () => {
   const [book, setBook] = useState(null);

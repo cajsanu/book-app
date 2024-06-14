@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { Person } from "../components/Person";
+import { Person, Footer, ToLoggedIn } from "../components";
 import userRequests from "../requests/users";
-import { Footer } from "../components/Footer";
-import { ToLoggedIn } from "../components/ToLoggedIn";
 
 export const Users = () => {
   const [users, setUsers] = useState([]);
@@ -20,13 +18,13 @@ export const Users = () => {
       <ToLoggedIn />
       <div className="pt-20 bg-gradient-to-r from-teal-500 to-teal-800">
         <h1 className="">Users</h1>
-        <div className="flex flex-row p-10 overflow-auto">
+        <div className="flex flex-row justify-center p-10 overflow-auto">
           {users.map((u) => (
             <Person key={u.id} name={u.name} age={u.age} id={u.id} />
           ))}
         </div>
       </div>
-      <div className="p-10 flex justify-start">
+      <div className="p-10 pt-16 flex justify-start">
         <Footer />
       </div>
     </div>

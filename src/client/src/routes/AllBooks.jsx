@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import bookRequests from "../requests/books";
-import { Books } from "../components/Books";
-import { Footer } from "../components/Footer";
-import { ToLoggedIn } from "../components/ToLoggedIn";
+import { Books, Footer, ToLoggedIn } from "../components";
 
 export const AllBooks = () => {
   const [books, setBooks] = useState(null);

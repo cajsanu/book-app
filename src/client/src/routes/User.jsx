@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
-import { Books } from "../components/Books";
+import { Books, ToLoggedIn } from "../components";
 import userRequests from "../requests/users";
 import { useEffect, useState } from "react";
-import { ToLoggedIn } from "../components/ToLoggedIn";
 
 export const User = () => {
   const [user, setUser] = useState(null);
@@ -26,7 +25,7 @@ export const User = () => {
       <div className="pt-10 pb-5 bg-gradient-to-r from-teal-800 to-teal-600">
         <h1 className="p-10">{user.name}&apos;s books</h1>
         <p>Hi there, I&apos;m {user.name}!</p>
-        <p>Here are all my books that I have read.</p>
+        <p>Here are all my books that I have added.</p>
       </div>
 
       <div className="p-10 flex justify-center">
