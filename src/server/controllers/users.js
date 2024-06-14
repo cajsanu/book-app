@@ -40,14 +40,13 @@ router.get("/:id", async (req, res, next) => {
       include: [
         {
           model: Book,
+          as: "read_books",
           attributes: { exclude: ["userId"] },
         },
         {
           model: Book,
           as: "marked_books",
-          attributes: {
-            exclude: ["userId"],
-          },
+          attributes: { exclude: ["userId"] },
         },
       ],
     });

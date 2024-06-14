@@ -11,7 +11,7 @@ import {
 export const HomePage = () => {
   return (
     <div>
-      <div className="h-screen w-full bg-gradient-to-r from-teal-500 to-teal-800">
+      <div className="h-screen w-full bg-gradient-to-r from-teal-400 to-teal-800">
         <div
           className="h-40 w-full bg-center bg-sky-500/50 opacity-70"
           style={{ backgroundImage: "url('../books.jpeg')" }}
