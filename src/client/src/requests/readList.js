@@ -2,6 +2,21 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 const URL = "/api/readList";
 
+const getReadBooks = async () => {
+  const response = await axios.get(URL);
+  return response.data;
+};
+
+const getById = async (id) => {
+  const response = await axios.get(`${URL}/${id}`);
+  return response.data;
+};
+
+const updateComment = async (id, book) => {
+  const response = await axios.put(`${URL}/${id}`, book);
+  return response.data;
+};
+
 const create = async (userId, bookId) => {
   const ids = { userId: userId, bookId: bookId };
   const response = await axios.post(URL, ids);
@@ -13,4 +28,4 @@ const remove = async (id) => {
   return response.data;
 };
 
-export default { create, remove };
+export default { getReadBooks, getById, create, remove, updateComment };

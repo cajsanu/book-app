@@ -58,19 +58,4 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/:id", tokenExtractor, async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.decodedToken.id);
-    const book = await Book.findByPk(req.params.id);
-    if (user.id === book.userId) {
-      await Book.update({ ...req.body }, { where: { id: req.params.id } });
-      return res.json("Comment updated");
-    } else {
-      return res.status(401).json({ error: "Action not permitted" });
-    }
-  } catch (err) {
-    next(err);
-  }
-});
-
 module.exports = router;

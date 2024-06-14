@@ -21,21 +21,9 @@ Book.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
-      validate: {
-        max: 5,
-        min: 0,
-      },
-    },
     year: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    comment: {
-      type: DataTypes.TEXT,
     },
   },
   {

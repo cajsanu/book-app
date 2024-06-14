@@ -29,7 +29,7 @@ export const User = () => {
       </div>
 
       <div className="p-10 flex justify-center">
-        <Books books={user.books} />
+        <Books books={user.read_books} />
       </div>
     </div>
   );

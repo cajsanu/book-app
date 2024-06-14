@@ -7,6 +7,9 @@ const ActiveToken = require("./ActiveToken");
 User.belongsToMany(Book, { through: ReadBooksList, as: "read_books" });
 Book.belongsToMany(User, { through: ReadBooksList, as: "read_by_user" });
 
+ReadBooksList.belongsTo(Book)
+Book.hasMany(ReadBooksList)
+
 User.belongsToMany(Book, { through: UserReadingList, as: "marked_books" });
 Book.belongsToMany(User, { through: UserReadingList, as: "users_marked" });
 
