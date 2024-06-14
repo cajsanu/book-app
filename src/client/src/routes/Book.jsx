@@ -28,9 +28,10 @@ export const Book = () => {
       if (loggedUser) {
         const user = await userRequests.getById(loggedUser.userId);
         setLoggedInUser(user);
+        setUser(user);
       }
-      const user = await userRequests.getById(book.userId);
-      setUser(user);
+      // const user = await userRequests.getById(1);
+      // setUser(user);
     };
     getBookAndUser();
   }, []);
@@ -45,7 +46,7 @@ export const Book = () => {
   };
 
   if (!book || !user) {
-    return <div>Unable to find data</div>;
+    return <div>Unable to find book</div>;
   }
   if (!loggedInUser) {
     return (
@@ -82,7 +83,9 @@ export const Book = () => {
     );
   }
 
-  const bookOfUser = loggedInUser.id === book.userId ? true : false;
+  console.log(user);
+
+  const bookOfUser = loggedInUser.id === 1 ? true : false;
 
   return (
     <div>

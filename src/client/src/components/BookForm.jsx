@@ -40,6 +40,7 @@ export const BookForm = () => {
         rating: rating,
         comment: comment,
       });
+      console.log(newBook);
       setTitle("");
       setAuthor("");
       setYear("");

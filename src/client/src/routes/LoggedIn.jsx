@@ -110,7 +110,7 @@ export const LoggedIn = () => {
       </div>
       {showBooks ? (
         <div className="flex justify-center py-20">
-          <Books books={user.books} />
+          <Books books={user.read_books} />
         </div>
       ) : null}
       {showBookForm ? (

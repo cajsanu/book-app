@@ -7,7 +7,7 @@ const AlertReducer = (state, action) => {
     case "LOGOUT":
       return action.payload;
     case "SIGNUP":
-      return `Created user ${action.payload}. Now please log in to see your account`;
+      return `Created user ${action.payload}`;
     case "CREATE":
       return `Added new book ${action.payload}`;
     case "READ":

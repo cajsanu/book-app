@@ -12,16 +12,16 @@ export const UserForm = () => {
   const [password, setPassword] = useState("");
   const [alert, alertDispatch] = useContext(AlertContext);
 
-  const createUser = (event) => {
+  const createUser = async (event) => {
     try {
       event.preventDefault();
-      userRequests.create({
+      const user = await userRequests.create({
         name: name,
         username: username,
         age: Number(age),
         password: password,
       });
-      navigate("/");
+      navigate(`/user/${user.id}`);
       alertDispatch({ type: "SIGNUP", payload: username });
       setName("");
       setUsername("");

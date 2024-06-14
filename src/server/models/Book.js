@@ -37,11 +37,6 @@ Book.init(
     comment: {
       type: DataTypes.TEXT,
     },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: { model: "users", key: "id" },
-    },
   },
   {
     sequelize,

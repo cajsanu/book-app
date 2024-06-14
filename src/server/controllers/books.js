@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { sequelize } = require("../utils/db");
-const { Book, User } = require("../models");
+const { Book, User, ReadBooksList } = require("../models");
 const { tokenExtractor } = require("../utils/middleware");
 const { Sequelize } = require("sequelize");
 
@@ -14,9 +14,20 @@ router.get("/", async (req, res) => {
 
 router.post("/", tokenExtractor, async (req, res, next) => {
   try {
-    const userId = req.decodedToken.id;
-    const newBook = { ...req.body, userId };
-    const book = await Book.create(newBook);
+    const newBook = { ...req.body };
+    const user = await User.findByPk(req.decodedToken.id);
+    const bookExists = await Book.findOne({
+      where: {
+        title: newBook.title,
+        author: newBook.author,
+        year: newBook.year,
+      },
+    });
+    const book = !bookExists ? await Book.create(newBook) : bookExists;
+    const read = await ReadBooksList.create({
+      userId: user.id,
+      bookId: book.id,
+    });
     return res.json(book.toJSON());
   } catch (err) {
     next(err);
