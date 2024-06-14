@@ -1,12 +1,8 @@
 name: Deployment pipeline
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches: [main]
-    types: [opened, synchronize]
+  release:
+    types: [published]
 
 jobs:
   simple_deployment_pipeline:
@@ -21,4 +17,11 @@ jobs:
         run: npm install
       - name: Check style
         run: npm run eslint
-  
+      - name: Build and push Docker image
+        run: |
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker build -t cajsanu/book-app:production .
+          docker push cajsanu/book-app:production
+      - name: call Render.io hook to trigger the deploy
+        run: |
+          curl ${{ secrets.RENDER_DEPLOY_HOOK }}
