@@ -20,6 +20,18 @@ ReadBooksList.init(
       allowNull: false,
       references: { model: "book", key: "id" },
     },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      validate: {
+        max: 5,
+        min: 0,
+      },
+    },
+    comment: {
+      type: DataTypes.TEXT,
+    },
   },
   {
     sequelize,

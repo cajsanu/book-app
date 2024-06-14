@@ -21,6 +21,7 @@ export const UserForm = () => {
         age: Number(age),
         password: password,
       });
+      window.localStorage.setItem("user", JSON.stringify({ userId: user.id }));
       navigate(`/user/${user.id}`);
       alertDispatch({ type: "SIGNUP", payload: username });
       setName("");

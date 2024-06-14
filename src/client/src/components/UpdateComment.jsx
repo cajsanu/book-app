@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import bookRequests from "../requests/books";
+import readListRequests from "../requests/readList";
 import { useNavigate } from "react-router-dom";
 import AlertContext from "../contexts/AlertContext";
 
@@ -11,8 +11,7 @@ export const UpdateComment = ({ book, onCommentUpdate }) => {
   const updateComment = async (event) => {
     try {
       event.preventDefault();
-      await bookRequests.updateComment(book.id, {
-        ...book,
+      await readListRequests.updateComment(book.id, {
         comment: comment,
       });
       setComment("");

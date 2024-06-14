@@ -23,10 +23,19 @@ router.post("/", tokenExtractor, async (req, res, next) => {
         year: newBook.year,
       },
     });
-    const book = !bookExists ? await Book.create(newBook) : bookExists;
-    const read = await ReadBooksList.create({
+    const book = !bookExists
+      ? await Book.create({
+          title: newBook.title,
+          author: newBook.author,
+          url: newBook.url,
+          year: newBook.year,
+        })
+      : bookExists;
+    await ReadBooksList.create({
       userId: user.id,
       bookId: book.id,
+      rating: newBook.rating,
+      comment: newBook.comment,
     });
     return res.json(book.toJSON());
   } catch (err) {
