@@ -4,7 +4,8 @@ services:
     name: book-app
     runtime: image
     region: frankfurt
-    image: docker.io/cajsanu/book-app:production
+    image:
+      url: docker.io/cajsanu/book-app:production
     envVars:
       - key: DATABASE_URL
         fromDatabase:
