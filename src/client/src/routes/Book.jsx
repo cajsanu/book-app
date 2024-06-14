@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import bookRequests from "../requests/books";
 import userRequests from "../requests/users";
-import readBooksRequests from "../requests/readList"
+import readBooksRequests from "../requests/readList";
 import {
   DeleteButton,
   Notification,
@@ -13,15 +13,15 @@ import {
 
 export const Book = () => {
   const [book, setBook] = useState(null);
-  const [books, setBooks] = useState([])
+  const [books, setBooks] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [user, setUser] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
     const getBookAndUser = async () => {
-      const books = await readBooksRequests.getById(id)
-      setBooks(books)
+      const books = await readBooksRequests.getById(id);
+      setBooks(books);
       const book = await bookRequests.getByBookId(id);
       setBook(book);
       const response = window.localStorage.getItem("user");
@@ -38,7 +38,7 @@ export const Book = () => {
     getBookAndUser();
   }, []);
 
-  console.log(books)
+  console.log(books);
 
   const handleCommentUpdate = async () => {
     try {
@@ -87,7 +87,7 @@ export const Book = () => {
     );
   }
 
-  const userIds = books.map((b) => b.userId)
+  const userIds = books.map((b) => b.userId);
   const bookOfUser = userIds.includes(loggedInUser.id) ? true : false;
 
   return (

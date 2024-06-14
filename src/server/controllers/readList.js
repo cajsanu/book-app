@@ -37,7 +37,10 @@ router.put("/:id", tokenExtractor, async (req, res, next) => {
       where: { userId: user.id, bookId: req.params.id },
     });
     console.log(user, book, "!!!!!");
-    await ReadBooksList.update({comment: req.body.comment}, {  where: { userId: user.id, bookId: req.params.id } });
+    await ReadBooksList.update(
+      { comment: req.body.comment },
+      { where: { userId: user.id, bookId: req.params.id } }
+    );
     return res.json("Comment updated");
   } catch (err) {
     next(err);
