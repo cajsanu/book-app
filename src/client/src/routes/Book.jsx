@@ -7,7 +7,7 @@ import {
   AddToReadingList,
   ToLoggedIn,
   UpdateComment,
-  Reviews
+  Reviews,
 } from "../components";
 
 export const Book = () => {
@@ -64,30 +64,7 @@ export const Book = () => {
             By {bookReviews.book.author}
           </p>
 
-          {/* this part is still fucked bc if its not the users book then rating and comment are missing */}
-          <Reviews reviews={bookReviews.reviews} loggedInUser={loggedInUser}/>
-          {/* <div className="pt-10">
-            {bookReviews.reviews.map((r) => (
-              <div>
-                <p>{r.rating}</p>
-                <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
-                  {r.comment}
-                </p>
-              </div>
-            ))}
-            {bookOfUser ? (
-              <div>
-                <p>You rated this book {userReview.rating} out of 5 </p>
-                <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
-                  {userReview.comment}
-                </p>
-              </div>
-            ) : (
-              <p className="font-semibold">
-                {loggedInUser.name} rated this book out of 5
-              </p>
-            )}
-          </div> */}
+          <Reviews reviews={bookReviews.reviews} loggedInUser={loggedInUser} />
 
           <a
             className="pt-10 hover:text-teal-200 underline"

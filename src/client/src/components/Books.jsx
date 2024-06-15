@@ -29,6 +29,7 @@ const Book = ({ title, author, year, rating, id }) => {
 };
 
 export const Books = ({ books }) => {
+  console.log(books)
   return (
     <div className="w-5/6 shadow-xl">
       <table className="w-full p-10 bg-emerald-50">
@@ -41,14 +42,14 @@ export const Books = ({ books }) => {
           </tr>
         </thead>
         <tbody>
-          {books.map((b) => (
+          {books.map((book) => (
             <Book
-              key={b.id}
-              title={b.title}
-              author={b.author}
-              year={b.year}
-              rating={b.rating}
-              id={b.id}
+              key={book.id}
+              title={book.title}
+              author={book.author}
+              year={book.year}
+              rating={book.read_books_list.rating}
+              id={book.id}
             />
           ))}
         </tbody>

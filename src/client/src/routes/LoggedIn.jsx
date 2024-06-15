@@ -65,6 +65,8 @@ export const LoggedIn = () => {
     return <div>No user found</div>;
   }
 
+  console.log(user)
+
   return (
     <div>
       <div className="bg-gradient-to-r from-teal-900 to-teal-500 p-20">
