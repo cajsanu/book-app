@@ -18,7 +18,7 @@ export const Users = () => {
       <ToLoggedIn />
       <div className="pt-20 bg-gradient-to-r from-teal-500 to-teal-800 text-white">
         <h1 className="">Users</h1>
-        <div className="flex w-full flex-row justify-center p-10 overflow-auto">
+        <div className="flex flex-row flex-wrap justify-center p-10 overflow-auto">
           {users.map((u) => (
             <Person key={u.id} name={u.name} age={u.age} id={u.id} />
           ))}

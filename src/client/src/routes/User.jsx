@@ -22,14 +22,16 @@ export const User = () => {
   return (
     <div>
       <ToLoggedIn />
-      <div className="pt-10 pb-5 bg-gradient-to-r from-teal-800 to-teal-600">
-        <h1 className="p-10">{user.name}&apos;s books</h1>
-        <p>Hi there, I&apos;m {user.name}!</p>
-        <p>Here are all my books that I have added.</p>
-      </div>
+      <div className="flex flex-col text-white">
+        <div className="pt-10 pb-5 bg-gradient-to-r from-teal-800 to-teal-600">
+          <h1 className="p-10">{user.name}&apos;s books</h1>
+          <p>Hi there, I&apos;m {user.name}!</p>
+          <p>Here are all my books that I have added.</p>
+        </div>
 
-      <div className="p-10 flex justify-center">
-        <Books books={user.read_books} />
+        <div className="p-10 flex justify-center">
+          <Books books={user.read_books} />
+        </div>
       </div>
     </div>
   );
