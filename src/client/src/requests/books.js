@@ -3,7 +3,7 @@ axios.defaults.withCredentials = true;
 const URL = "/api/books";
 
 const getAll = async (search) => {
-  const response = await axios.get(`${URL}?search=${search}`);
+  const response = await axios.get(URL + (search ? `?search=${search}` : ""));
   return response.data;
 };
 

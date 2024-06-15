@@ -116,6 +116,7 @@ export const BookForm = () => {
                   className="block w-full rounded-md border-0 py-1.5 text-black focus:ring-2 focus:ring-inset focus:ring-teal-200"
                   />
                 )}
+                getOptionKey={(book) => book.id}
                 inputValue={title}
                 filterOptions={(x) => x}
                 isOptionEqualToValue={(option, value) => option.id === value.id}
