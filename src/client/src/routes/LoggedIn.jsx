@@ -96,9 +96,9 @@ export const LoggedIn = () => {
                 Reading list
               </button>
             </div>
-            {/* <div>
+            <div>
               <ToBooks />
-            </div> */}
+            </div>
             <div>
               <ToUsers />
             </div>
