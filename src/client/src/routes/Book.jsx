@@ -67,7 +67,7 @@ export const Book = () => {
           <Reviews reviews={bookReviews.reviews} loggedInUser={loggedInUser} />
 
           <a
-            className="pt-10 hover:text-teal-200 underline"
+            className="pt-10 hover:text-teal-200 underline text-white"
             target="_blank"
             rel="noreferrer"
             href={bookReviews.book.url}

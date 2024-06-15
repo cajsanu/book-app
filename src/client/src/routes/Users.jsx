@@ -16,7 +16,7 @@ export const Users = () => {
   return (
     <div>
       <ToLoggedIn />
-      <div className="pt-20 bg-gradient-to-r from-teal-500 to-teal-800">
+      <div className="pt-20 bg-gradient-to-r from-teal-500 to-teal-800 text-white">
         <h1 className="">Users</h1>
         <div className="flex flex-row justify-center p-10 overflow-auto">
           {users.map((u) => (

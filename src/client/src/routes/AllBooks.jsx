@@ -20,7 +20,7 @@ export const AllBooks = () => {
   return (
     <div>
       <ToLoggedIn />
-      <div className="p-20 bg-teal-800">
+      <div className="p-20 bg-teal-800 text-white">
         <h1 className="pb-10">All the books</h1>
         <div className="pb-10">
           <p>Here you can see all of the books added by users.</p>

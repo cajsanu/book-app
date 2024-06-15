@@ -67,7 +67,7 @@ export const LoggedIn = () => {
 
   return (
     <div>
-      <div className="bg-gradient-to-r from-teal-900 to-teal-500 p-20">
+      <div className="bg-gradient-to-r from-teal-900 to-teal-500 p-20 text-white">
         <Notification />
         <h1 className="text-5xl p-10">Welcome {user.username}</h1>
         <div className="flex justify-center">

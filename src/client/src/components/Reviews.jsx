@@ -21,11 +21,11 @@ export const Reviews = ({ reviews, loggedInUser }) => {
 
   return (
     <div className="pt-10">
-      <p className="p-10 font-semibold">
+      <p className="p-10 font-semibold text-white">
         Average rating for this book is {avRating}
       </p>
       {reviews.map((review) => (
-        <div className="pb-8" key={review.id}>
+        <div className="pb-8 text-white" key={review.id}>
           {loggedInUser.userId === review.user.id ? (
             <p>Comment by you</p>
           ) : (
