@@ -31,7 +31,7 @@ export const Reviews = ({ reviews }) => {
   return (
     <div className="pt-10">
       <p className="py-10 flex flex-start font-semibold text-white">
-        Average rating for this book is {avRating}
+        Average rating for this book is {avRating.toFixed(2)}
       </p>
       {reviews.map((review) => (
         <div className="pb-8 text-white flex-center" key={review.id}>
