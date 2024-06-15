@@ -8,7 +8,7 @@ export const DeleteButton = ({ reviewId, userId }) => {
   const [alert, alertDispatch] = useContext(AlertContext);
 
   const handleClick = async () => {
-    if (window.confirm("Are you sure you want to delete this book")) {
+    if (window.confirm("Are you sure you want to delete this review. Deleting it will also remove it from \"My books\" collection")) {
       try {
         await reviewRequests.remove(reviewId);
         navigate(`/user/${userId}`);
@@ -32,7 +32,7 @@ export const DeleteButton = ({ reviewId, userId }) => {
         className="transition duration-150 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-800"
         onClick={handleClick}
       >
-        Delete book
+        Delete my review
       </button>
     </div>
   );
