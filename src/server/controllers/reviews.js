@@ -29,10 +29,9 @@ router.get("/:id", async (req, res, next) => {
 router.put("/:id", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
-    const book = await Review.findOne({
+    await Review.findOne({
       where: { userId: user.id, bookId: req.params.id },
     });
-    console.log(user, book, "!!!!!");
     await Review.update(
       { comment: req.body.comment },
       { where: { userId: user.id, bookId: req.params.id } }
@@ -52,7 +51,7 @@ router.post("/", tokenExtractor, async (req, res, next) => {
         userId,
         bookId,
         rating,
-        comment
+        comment,
       });
       res.json(readBook);
     } else {
@@ -72,6 +71,7 @@ router.delete("/:id", tokenExtractor, async (req, res, next) => {
     } else {
       return res.status(401).json({ error: "Action not permitted" });
     }
+    return res.status(204).end();
   } catch (err) {
     next(err);
   }

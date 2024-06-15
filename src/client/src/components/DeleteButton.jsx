@@ -10,7 +10,9 @@ export const DeleteButton = ({ reviewId, userId }) => {
   const handleClick = async () => {
     if (window.confirm("Are you sure you want to delete this book")) {
       try {
-        await reviewRequests.remove(reviewId);
+        console.log("removing")
+        const removed = await reviewRequests.remove(reviewId);
+        console.log(removed)
         navigate(`/user/${userId}`);
         alertDispatch({ type: "DELETE", payload: "Deleted book successfully" });
       } catch (err) {
