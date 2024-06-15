@@ -122,7 +122,6 @@ export const BookForm = () => {
                   setSelectedBook(value);
                   setTitle(value.title);
                   setAuthor(value.author);
-                  setUrl(value.url);
                   setYear(value.year);
                 }}
                 onInputChange={(event, value) => {
