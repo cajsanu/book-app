@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import userRequests from "../requests/users";
 import reviewRequests from "../requests/reviews";
 import {
   DeleteButton,
@@ -20,7 +19,6 @@ export const Book = () => {
     const getBookAndUser = async () => {
       const bookReviews = await reviewRequests.getById(id);
       setBookReviews(bookReviews);
-      setBook(bookReviews.book);
       const response = window.localStorage.getItem("user");
       const loggedUser = JSON.parse(response);
       if (!loggedUser) {
@@ -139,7 +137,7 @@ export const Book = () => {
           ) : (
             <div className="pt-10">
               <AddToReadingList
-                userId={loggedInUser.id}
+                userId={loggedInUser.userId}
                 bookId={bookReviews.book.id}
               />
             </div>

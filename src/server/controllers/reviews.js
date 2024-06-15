@@ -27,7 +27,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.put("/:id", tokenExtractor, async (req, res, next) => {
-  console.log(req.params.id)
+  console.log(req.params.id);
   try {
     const user = await User.findByPk(req.decodedToken.id);
     const review = await Review.findByPk(req.params.id);
