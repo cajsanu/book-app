@@ -39,6 +39,13 @@ Review.init(
     underscored: true,
     timestamps: false,
     modelName: "read_books_list",
+    // uniquness index on userId and bookId
+    indexes: [
+      {
+        unique: true,
+        fields: ["userId", "bookId"],
+      },
+    ],
   }
 );
 

@@ -2,8 +2,8 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 const URL = "/api/books";
 
-const getAll = async () => {
-  const response = await axios.get(URL);
+const getAll = async (search) => {
+  const response = await axios.get(`${URL}?search=${search}`);
   return response.data;
 };
 

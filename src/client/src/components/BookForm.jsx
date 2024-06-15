@@ -1,10 +1,33 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+import { Autocomplete, TextField, styled } from "@mui/material";
 import { useNavigate } from "react-router";
 import bookRequests from "../requests/books";
 import AlertContext from "../contexts/AlertContext";
+import { useDebounce } from "../hooks/useDebounce";
+import { set } from "lodash";
+
+const StyledAutocomplete = styled(Autocomplete)(() => ({
+  ".MuiOutlinedInput-root": {
+    padding: 0,
+    border: 0,
+    outline: 0,
+  },
+  ".MuiAutocomplete-inputFocused": {
+    padding: 0,
+    border: 0,
+    outline: 0,
+    "&:focus": {
+      ring: "1px solid #2563EB",
+    },
+  },
+}));
 
 export const BookForm = () => {
   const navigate = useNavigate();
+
+  const [books, setBooks] = useState([]);
+  const [selectedBook, setSelectedBook] = useState(null);
+
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [year, setYear] = useState("");
@@ -13,10 +36,23 @@ export const BookForm = () => {
   const [comment, setComment] = useState("");
   const [alert, alertDispatch] = useContext(AlertContext);
 
+  const debouncedSearch = useDebounce(title, 700);
+  useEffect(() => {
+    const fetchBooks = async () => {
+      if (debouncedSearch && debouncedSearch.length > 2) {
+        const searchedBooks = await bookRequests.getAll(debouncedSearch);
+        setBooks(searchedBooks);
+      } else {
+        setBooks([]);
+      }
+    };
+    fetchBooks();
+  }, [debouncedSearch]);
+
   const createBook = async (event) => {
     try {
       event.preventDefault();
-      if (!title || !author || !year || !url || !rating) {
+      if (!title || !author || !year || !url) {
         window.scrollTo(0, 0);
         alertDispatch({
           type: "ERROR",
@@ -70,14 +106,30 @@ export const BookForm = () => {
               Title
             </label>
             <div className="mt-2">
-              <input
-                id="Title"
-                name="title"
-                type="text"
-                value={title}
-                onChange={(event) => setTitle(event.target.value)}
-                required
-                className="block w-full rounded-md border-0 py-1.5 text-black focus:ring-2 focus:ring-inset focus:ring-teal-200"
+              <StyledAutocomplete
+                className="rounded-md bg-white"
+                freeSolo
+                options={books || []}
+                getOptionLabel={(book) => book.title}
+                renderInput={(params) => (
+                  <TextField {...params} required
+                  className="block w-full rounded-md border-0 py-1.5 text-black focus:ring-2 focus:ring-inset focus:ring-teal-200"
+                  />
+                )}
+                inputValue={title}
+                filterOptions={(x) => x}
+                isOptionEqualToValue={(option, value) => option.id === value.id}
+                value={selectedBook}
+                onChange={(_, value) => {
+                  setSelectedBook(value);
+                  setTitle(value.title);
+                  setAuthor(value.author);
+                  setUrl(value.url);
+                  setYear(value.year);
+                }}
+                onInputChange={(event, value) => {
+                  setTitle(value);
+                }}
               />
             </div>
           </div>
