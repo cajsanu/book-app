@@ -2,7 +2,7 @@ import StarIcon from "@mui/icons-material/Star";
 
 const Book = ({ title, author, year, rating, id }) => {
   const renderStars = (rating) => {
-    if (rating === null || rating === undefined) return null
+    if (rating === null || rating === undefined) return [];
 
     const stars = [];
     for (let i = 0; i < rating; i++) {
@@ -59,10 +59,12 @@ export const Books = ({ books }) => {
                 title={book.title}
                 author={book.author}
                 year={book.year}
-                rating={book.read_books_list ? book.read_books_list.rating : average}
+                rating={
+                  book.read_books_list ? book.read_books_list.rating : average
+                }
                 id={book.id}
               />
-            )
+            );
           })}
         </tbody>
       </table>
