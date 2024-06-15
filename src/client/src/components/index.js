@@ -13,6 +13,7 @@ import { Person } from "./Person";
 import { ToLoggedIn } from "./ToLoggedIn";
 import { UpdateComment } from "./UpdateComment";
 import { UserForm } from "./UserForm";
+import { Reviews } from "./Reviews";
 
 export {
   LogoutButton,
@@ -30,4 +31,5 @@ export {
   ToLoggedIn,
   UpdateComment,
   UserForm,
+  Reviews
 };

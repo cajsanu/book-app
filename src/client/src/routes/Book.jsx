@@ -7,12 +7,12 @@ import {
   AddToReadingList,
   ToLoggedIn,
   UpdateComment,
+  Reviews
 } from "../components";
 
 export const Book = () => {
   const [bookReviews, setBookReviews] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
-  // const [user, setUser] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -47,42 +47,6 @@ export const Book = () => {
   if (!loggedInUser) {
     return <div>no logged in user</div>;
   }
-  // if (!loggedInUser) {
-  //   return (
-  //     <div className="pt-24 ps-48 flex flex-col items-start bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400">
-  //       <p>
-  //         <a
-  //           className="hover:text-teal-200 underline"
-  //           href={`/users/${user.id}`}
-  //         >
-  //           {user.username}
-  //         </a>{" "}
-  //         added this book in 2024
-  //       </p>
-  //       <h1 className="pt-10">{bookReviews.book.title}</h1>
-  //       <p className="text-stone-900 font-semibold text-lg">By {bookReviews.book.author}</p>
-
-  //       <div className="pt-10">
-  //         <p className="font-semibold">
-  //           {user.username} rated this book {bookReviews.book.rating} out of 5
-  //         </p>
-  //         <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
-  //           {bookReviews.book.comment}
-  //         </p>
-  //       </div>
-  //       <a
-  //         className="py-10 hover:text-teal-200 underline"
-  //         target="_blank"
-  //         rel="noreferrer"
-  //         href={bookReviews.book.url}
-  //       >
-  //         See on the internet
-  //       </a>
-  //     </div>
-  //   );
-  // }
-
-  console.log(loggedInUser);
 
   const userReview = bookReviews.reviews.find(
     (r) => r.userId === loggedInUser.userId
@@ -100,10 +64,17 @@ export const Book = () => {
             By {bookReviews.book.author}
           </p>
 
-
           {/* this part is still fucked bc if its not the users book then rating and comment are missing */}
-
-          <div className="pt-10">
+          <Reviews reviews={bookReviews.reviews} loggedInUser={loggedInUser}/>
+          {/* <div className="pt-10">
+            {bookReviews.reviews.map((r) => (
+              <div>
+                <p>{r.rating}</p>
+                <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
+                  {r.comment}
+                </p>
+              </div>
+            ))}
             {bookOfUser ? (
               <div>
                 <p>You rated this book {userReview.rating} out of 5 </p>
@@ -116,7 +87,7 @@ export const Book = () => {
                 {loggedInUser.name} rated this book out of 5
               </p>
             )}
-          </div>
+          </div> */}
 
           <a
             className="pt-10 hover:text-teal-200 underline"

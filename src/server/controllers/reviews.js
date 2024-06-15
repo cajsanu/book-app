@@ -11,13 +11,19 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:bookId", async (req, res, next) => {
   try {
-    const book = await Book.findByPk(req.params.id);
+    const book = await Book.findByPk(req.params.bookId);
     const reviews = await Review.findAll({
       where: {
-        bookId: req.params.id,
+        bookId: req.params.bookId,
       },
+      include: {
+        model: User,
+        attributes: {
+          exclude: ["password"]
+        }
+      }
     });
 
     return res.json({ book, reviews });
