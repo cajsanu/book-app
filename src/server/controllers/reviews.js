@@ -45,7 +45,7 @@ router.put("/:id", tokenExtractor, async (req, res, next) => {
 router.post("/", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
-    const { userId, bookId } = req.body;
+    const { userId, bookId, rating, comment } = req.body;
     if (user.id === userId) {
       const readBook = await Review.create({
         userId,

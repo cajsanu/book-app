@@ -22,7 +22,7 @@ export const Book = () => {
     const getBookAndUser = async () => {
       const bookReviews = await reviewRequests.getById(id);
       setBookReviews(bookReviews);
-      setBook(bookReviews.book)
+      setBook(bookReviews.book);
       const response = window.localStorage.getItem("user");
       const loggedUser = JSON.parse(response);
       if (!loggedUser) {
@@ -88,7 +88,7 @@ export const Book = () => {
 
   const userReview = bookReviews.reviews.find(r => r.userId === loggedInUser.id);
   const bookOfUser = userReview ? true : false;
-  console.log(userReview)
+  console.log(userReview);
 
   return (
     <div>
