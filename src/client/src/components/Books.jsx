@@ -5,7 +5,7 @@ const Book = ({ title, author, year, rating, id }) => {
     if (rating === null || rating === undefined) return [];
 
     const stars = [];
-    for (let i = 0; i < rating; i++) {
+    for (let i = 0; i < Math.round(rating); i++) {
       stars.push(<StarIcon key={i} />);
     }
     return stars;
