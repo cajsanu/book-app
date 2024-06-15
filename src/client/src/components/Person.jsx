@@ -6,7 +6,7 @@ export const Person = ({ name, age, id }) => {
 
   return (
     <div className="p-10">
-      <a>
+      <a href={`/users/${id}`}>
         <img
           className="min-w-48 min-h-64 max-w-48 rounded-md outline outline-4 outline-transparent hover:outline-teal-300"
           src={imgSrc}
