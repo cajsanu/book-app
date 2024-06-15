@@ -27,15 +27,13 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.put("/:id", tokenExtractor, async (req, res, next) => {
+  console.log(req.params.id)
   try {
     const user = await User.findByPk(req.decodedToken.id);
-    await Review.findOne({
-      where: { userId: user.id, bookId: req.params.id },
-    });
-    await Review.update(
-      { comment: req.body.comment },
-      { where: { userId: user.id, bookId: req.params.id } }
-    );
+    const review = await Review.findByPk(req.params.id);
+    if (user.id === review.userId) {
+      await review.update({ comment: req.body.comment });
+    }
     return res.json("Comment updated");
   } catch (err) {
     next(err);

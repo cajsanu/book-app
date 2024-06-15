@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
-import readListRequests from "../requests/reviews";
+import reviewRequests from "../requests/reviews";
 import { useNavigate } from "react-router-dom";
 import AlertContext from "../contexts/AlertContext";
 
-export const UpdateComment = ({ book, onCommentUpdate }) => {
+export const UpdateComment = ({ review, onCommentUpdate }) => {
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
   const [alert, alertDispatch] = useContext(AlertContext);
@@ -11,7 +11,7 @@ export const UpdateComment = ({ book, onCommentUpdate }) => {
   const updateComment = async (event) => {
     try {
       event.preventDefault();
-      await readListRequests.updateComment(book.id, {
+      await reviewRequests.updateComment(review.id, {
         comment: comment,
       });
       setComment("");

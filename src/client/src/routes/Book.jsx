@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import bookRequests from "../requests/books";
 import userRequests from "../requests/users";
 import reviewRequests from "../requests/reviews";
 import {
@@ -12,10 +11,9 @@ import {
 } from "../components";
 
 export const Book = () => {
-  const [book, setBook] = useState(null);
   const [bookReviews, setBookReviews] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,66 +27,69 @@ export const Book = () => {
         setLoggedInUser(null);
       }
       if (loggedUser) {
-        const user = await userRequests.getById(loggedUser.userId);
-        setLoggedInUser(user);
-        setUser(user);
+        setLoggedInUser(loggedUser);
       }
     };
     getBookAndUser();
   }, []);
 
-  console.log(bookReviews);
-
   const handleCommentUpdate = async () => {
     try {
-      const updatedBook = await bookRequests.getByBookId(id);
-      setBook(updatedBook);
+      const updatedComment = await reviewRequests.getById(id);
+      setBookReviews(updatedComment);
     } catch (err) {
       console.error(err);
     }
   };
 
-  if (!book || !user) {
+  if (!bookReviews.book) {
     return <div>Unable to find book</div>;
   }
+
   if (!loggedInUser) {
-    return (
-      <div className="pt-24 ps-48 flex flex-col items-start bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400">
-        <p>
-          <a
-            className="hover:text-teal-200 underline"
-            href={`/users/${user.id}`}
-          >
-            {user.username}
-          </a>{" "}
-          added this book in 2024
-        </p>
-        <h1 className="pt-10">{book.title}</h1>
-        <p className="text-stone-900 font-semibold text-lg">By {book.author}</p>
-
-        <div className="pt-10">
-          <p className="font-semibold">
-            {user.username} rated this book {book.rating} out of 5
-          </p>
-          <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
-            {book.comment}
-          </p>
-        </div>
-        <a
-          className="py-10 hover:text-teal-200 underline"
-          target="_blank"
-          rel="noreferrer"
-          href={book.url}
-        >
-          See on the internet
-        </a>
-      </div>
-    );
+    return <div>no logged in user</div>;
   }
+  // if (!loggedInUser) {
+  //   return (
+  //     <div className="pt-24 ps-48 flex flex-col items-start bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400">
+  //       <p>
+  //         <a
+  //           className="hover:text-teal-200 underline"
+  //           href={`/users/${user.id}`}
+  //         >
+  //           {user.username}
+  //         </a>{" "}
+  //         added this book in 2024
+  //       </p>
+  //       <h1 className="pt-10">{bookReviews.book.title}</h1>
+  //       <p className="text-stone-900 font-semibold text-lg">By {bookReviews.book.author}</p>
 
-  const userReview = bookReviews.reviews.find(r => r.userId === loggedInUser.id);
+  //       <div className="pt-10">
+  //         <p className="font-semibold">
+  //           {user.username} rated this book {bookReviews.book.rating} out of 5
+  //         </p>
+  //         <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
+  //           {bookReviews.book.comment}
+  //         </p>
+  //       </div>
+  //       <a
+  //         className="py-10 hover:text-teal-200 underline"
+  //         target="_blank"
+  //         rel="noreferrer"
+  //         href={bookReviews.book.url}
+  //       >
+  //         See on the internet
+  //       </a>
+  //     </div>
+  //   );
+  // }
+
+  console.log(loggedInUser);
+
+  const userReview = bookReviews.reviews.find(
+    (r) => r.userId === loggedInUser.userId
+  );
   const bookOfUser = userReview ? true : false;
-  console.log(userReview);
 
   return (
     <div>
@@ -96,46 +97,60 @@ export const Book = () => {
       <ToLoggedIn />
       <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row">
         <div className="py-24 ps-48 flex flex-col items-start ">
-          <h1 className="pt-10">{book.title}</h1>
+          <h1 className="pt-10">{bookReviews.book.title}</h1>
           <p className="text-stone-900 font-semibold text-xl">
-            By {book.author}
+            By {bookReviews.book.author}
           </p>
+
+
+          {/* this part is still fucked bc if its not the users book then rating and comment are missing */}
 
           <div className="pt-10">
             {bookOfUser ? (
-              <p>You rated this book {userReview.rating} out of 5 </p>
+              <div>
+                <p>You rated this book {userReview.rating} out of 5 </p>
+                <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
+                  {userReview.comment}
+                </p>
+              </div>
             ) : (
               <p className="font-semibold">
-                {user.name} rated this book {userReview.rating} out of 5
+                {loggedInUser.name} rated this book out of 5
               </p>
             )}
-            <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
-              {userReview.comment}
-            </p>
           </div>
 
           <a
             className="pt-10 hover:text-teal-200 underline"
             target="_blank"
             rel="noreferrer"
-            href={book.url}
+            href={bookReviews.book.url}
           >
             See on the internet
           </a>
 
           {bookOfUser ? (
             <div className="py-10">
-              <DeleteButton userId={loggedInUser.id} reviewId={userReview.id} />
+              <DeleteButton
+                userId={loggedInUser.userId}
+                reviewId={userReview.id}
+              />
             </div>
           ) : (
             <div className="pt-10">
-              <AddToReadingList userId={loggedInUser.id} bookId={book.id} />
+              <AddToReadingList
+                userId={loggedInUser.id}
+                bookId={bookReviews.book.id}
+              />
             </div>
           )}
         </div>
         {bookOfUser ? (
           <div className="ps-36 pt-80 pb-32">
-            <UpdateComment book={userReview} onCommentUpdate={handleCommentUpdate} />
+            <UpdateComment
+              review={userReview}
+              onCommentUpdate={handleCommentUpdate}
+            />
           </div>
         ) : null}
       </div>

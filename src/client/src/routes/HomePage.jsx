@@ -21,8 +21,8 @@ export const HomePage = () => {
         <div className="ps-60 pe-20 pt-32 flex flex-row">
           <div className="flex justify-start pe-28 max-w-96">
             <div className="flex-col">
-              <h1 className="text-6xl font-bold text-center">BookShelf</h1>
-              <div className="p-10 font-medium">
+              <h1 className="text-6xl text-white font-bold text-center">BookShelf</h1>
+              <div className="p-10 font-medium text-white">
                 &quot;If you don&apos;t like to read, you haven&apos;t found the
                 right book.&quot; - J.K. Rowling
               </div>
