@@ -2,6 +2,8 @@ import StarIcon from "@mui/icons-material/Star";
 
 const Book = ({ title, author, year, rating, id }) => {
   const renderStars = (rating) => {
+    if (rating === null || rating === undefined) return null
+
     const stars = [];
     for (let i = 0; i < rating; i++) {
       stars.push(<StarIcon key={i} />);
@@ -29,7 +31,6 @@ const Book = ({ title, author, year, rating, id }) => {
 };
 
 export const Books = ({ books }) => {
-  console.log(books)
   return (
     <div className="w-5/6 shadow-xl">
       <table className="w-full p-10 bg-emerald-50">
@@ -42,16 +43,27 @@ export const Books = ({ books }) => {
           </tr>
         </thead>
         <tbody>
-          {books.map((book) => (
-            <Book
-              key={book.id}
-              title={book.title}
-              author={book.author}
-              year={book.year}
-              rating={book.read_books_list.rating}
-              id={book.id}
-            />
-          ))}
+          {books.map((book) => {
+            const ratings = book.reviewed_books?.map((review) => review.rating);
+            const average =
+              ratings?.length > 0
+                ? ratings?.reduce(
+                    (accumulator, currentValue) => accumulator + currentValue,
+                    0
+                  ) / ratings?.length
+                : null;
+
+            return (
+              <Book
+                key={book.id}
+                title={book.title}
+                author={book.author}
+                year={book.year}
+                rating={book.read_books_list ? book.read_books_list.rating : average}
+                id={book.id}
+              />
+            )
+          })}
         </tbody>
       </table>
     </div>

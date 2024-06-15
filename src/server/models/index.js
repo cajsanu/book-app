@@ -8,7 +8,7 @@ User.belongsToMany(Book, { through: Review, as: "read_books" });
 Book.belongsToMany(User, { through: Review, as: "read_by_user" });
 
 Review.belongsTo(Book);
-Book.hasMany(Review);
+Book.hasMany(Review, { as: "reviewed_books" });
 
 Review.belongsTo(User);
 User.hasMany(Review);

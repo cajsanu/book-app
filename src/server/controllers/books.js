@@ -14,24 +14,30 @@ router.get("/", async (req, res) => {
           {
             title: {
               [Sequelize.Op.iLike]: `${search}%`,
-            }
+            },
           },
           {
             title: {
               [Sequelize.Op.iLike]: `% ${search}%`,
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       group: ["book.id"],
       order: [[Sequelize.fn("min", Sequelize.col("title"))]],
-      limit: 100
+      limit: 100,
     });
     return res.json(books);
   } else {
     const books = await Book.findAll({
-      group: ["book.id"],
+      group: ["book.id", "reviewed_books.id"],
       order: [[Sequelize.fn("min", Sequelize.col("title"))]],
+      include: [
+        {
+          model: Review,
+          as: "reviewed_books",
+        },
+      ],
     });
     res.json(books);
   }
@@ -65,7 +71,7 @@ router.post("/", tokenExtractor, async (req, res, next) => {
         comment: newBook.comment,
       },
       {
-        conflictFields: ["user_id", "book_id"]
+        conflictFields: ["user_id", "book_id"],
       }
     );
 
@@ -79,8 +85,8 @@ router.delete("/:id", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id, {
       attributes: {
-        exclude: ["password"]
-      }
+        exclude: ["password"],
+      },
     });
     const book = await Book.findByPk(req.params.id);
     if (book.userId === user.id) {
