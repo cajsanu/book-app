@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import userRequests from "../requests/users";
 import { Notification } from "../components/Alert";
+import { login } from "../requests/login";
 import AlertContext from "../contexts/AlertContext";
 
 export const UserForm = () => {
@@ -15,12 +16,20 @@ export const UserForm = () => {
   const createUser = async (event) => {
     try {
       event.preventDefault();
+      if (password.length < 10) {
+        alertDispatch({
+          type: "ERROR",
+          payload: "Password must be more than 10 characters",
+        });
+        return;
+      }
       const user = await userRequests.create({
         name: name,
         username: username,
         age: Number(age),
         password: password,
       });
+      await login({ username: username, password: password });
       window.localStorage.setItem("user", JSON.stringify({ userId: user.id }));
       navigate(`/user/${user.id}`);
       alertDispatch({ type: "SIGNUP", payload: username });
