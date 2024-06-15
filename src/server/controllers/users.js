@@ -4,7 +4,11 @@ const { User, Book } = require("../models/");
 const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res) => {
-  const users = await User.findAll({});
+  const users = await User.findAll({
+    attributes: {
+      exclude: ["password"]
+    },
+  });
   res.json(users);
 });
 
@@ -23,7 +27,12 @@ router.post("/", async (req, res, next) => {
       age: req.body.age,
       password: passwordHash,
     });
-    return res.json(newUser);
+    return res.json({
+      id: newUser.id,
+      name: newUser.name,
+      username: newUser.username,
+      age: newUser.age
+    });
   } catch (err) {
     next(err);
   }
@@ -32,6 +41,9 @@ router.post("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id, {
+      attributes: {
+        exclude: ["password"]
+      },
       include: [
         {
           model: Book,

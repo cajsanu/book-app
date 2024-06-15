@@ -47,7 +47,11 @@ router.post("/", tokenExtractor, async (req, res, next) => {
 
 router.delete("/:id", tokenExtractor, async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.decodedToken.id);
+    const user = await User.findByPk(req.decodedToken.id, {
+      attributes: {
+        exclude: ["password"]
+      }
+    });
     const book = await Book.findByPk(req.params.id);
     if (book.userId === user.id) {
       await book.destroy();
