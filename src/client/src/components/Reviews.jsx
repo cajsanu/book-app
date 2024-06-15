@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import userRequests from "../requests/users";
 
-export const Reviews = ({ reviews, loggedInUser }) => {
+export const Reviews = ({ reviews }) => {
+  const [loggedInUser, setLoggedInUser] = useState(null);
   const [avRating, setAvRating] = useState(null);
 
   useEffect(() => {
@@ -15,6 +16,14 @@ export const Reviews = ({ reviews, loggedInUser }) => {
             ) / ratings.length
           : 0;
       setAvRating(average);
+      const response = window.localStorage.getItem("user");
+      const loggedUser = JSON.parse(response);
+      if (!loggedUser) {
+        setLoggedInUser(null);
+      }
+      if (loggedUser) {
+        setLoggedInUser(loggedUser);
+      }
     };
     getAverageRating();
   }, []);
@@ -26,8 +35,12 @@ export const Reviews = ({ reviews, loggedInUser }) => {
       </p>
       {reviews.map((review) => (
         <div className="pb-8 text-white" key={review.id}>
-          {loggedInUser.userId === review.user.id ? (
-            <p>Comment by you</p>
+          {loggedInUser ? (
+            loggedInUser.userId === review.user.id ? (
+              <p>Comment by you</p>
+            ) : (
+              <p>Comment by {review.user.name}</p>
+            )
           ) : (
             <p>Comment by {review.user.name}</p>
           )}

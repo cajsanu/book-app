@@ -44,13 +44,9 @@ export const Book = () => {
     return <div>Unable to find book</div>;
   }
 
-  if (!loggedInUser) {
-    return <div>no logged in user</div>;
-  }
-
-  const userReview = bookReviews.reviews.find(
-    (r) => r.userId === loggedInUser.userId
-  );
+  const userReview = loggedInUser
+    ? bookReviews.reviews.find((r) => r.userId === loggedInUser.userId)
+    : null;
   const bookOfUser = userReview ? true : false;
 
   return (
@@ -64,16 +60,7 @@ export const Book = () => {
             By {bookReviews.book.author}
           </p>
 
-          <Reviews reviews={bookReviews.reviews} loggedInUser={loggedInUser} />
-
-          <a
-            className="pt-10 hover:text-teal-200 underline text-white"
-            target="_blank"
-            rel="noreferrer"
-            href={bookReviews.book.url}
-          >
-            See on the internet
-          </a>
+          <Reviews reviews={bookReviews.reviews} />
 
           {bookOfUser ? (
             <div className="py-10">
@@ -84,10 +71,12 @@ export const Book = () => {
             </div>
           ) : (
             <div className="pt-10">
-              <AddToReadingList
-                userId={loggedInUser.userId}
-                bookId={bookReviews.book.id}
-              />
+              {!loggedInUser ? null : (
+                <AddToReadingList
+                  userId={loggedInUser.userId}
+                  bookId={bookReviews.book.id}
+                />
+              )}
             </div>
           )}
         </div>
