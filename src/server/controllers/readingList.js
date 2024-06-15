@@ -4,7 +4,11 @@ const { tokenExtractor } = require("../utils/middleware");
 
 router.post("/", tokenExtractor, async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.decodedToken.id);
+    const user = await User.findByPk(req.decodedToken.id, {
+      attributes: {
+        exclude: ["password"]
+      },
+    });
     const { userId, bookId } = req.body;
     if (user.id === userId) {
       const markBook = await UserReadingList.create({
@@ -22,7 +26,11 @@ router.post("/", tokenExtractor, async (req, res, next) => {
 
 router.delete("/:id", tokenExtractor, async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.decodedToken.id);
+    const user = await User.findByPk(req.decodedToken.id, {
+      attributes: {
+        exclude: ["password"]
+      },
+    });
     const book = await UserReadingList.findByPk(req.params.id);
     if (book.userId === user.id) {
       await book.destroy();
