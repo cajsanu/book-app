@@ -20,6 +20,7 @@ Book.init(
     url: {
       type: DataTypes.TEXT,
       allowNull: false,
+      defaultValue: "",
     },
     year: {
       type: DataTypes.INTEGER,

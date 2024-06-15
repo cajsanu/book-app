@@ -58,7 +58,6 @@ router.post("/", tokenExtractor, async (req, res, next) => {
       ? await Book.create({
           title: newBook.title,
           author: newBook.author,
-          url: newBook.url,
           year: newBook.year,
         })
       : bookExists;

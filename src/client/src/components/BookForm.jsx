@@ -31,7 +31,6 @@ export const BookForm = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [year, setYear] = useState("");
-  const [url, setUrl] = useState("");
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [alert, alertDispatch] = useContext(AlertContext);
@@ -52,7 +51,7 @@ export const BookForm = () => {
   const createBook = async (event) => {
     try {
       event.preventDefault();
-      if (!title || !author || !year || !url) {
+      if (!title || !author || !year) {
         window.scrollTo(0, 0);
         alertDispatch({
           type: "ERROR",
@@ -71,7 +70,6 @@ export const BookForm = () => {
       const newBook = await bookRequests.create({
         title: title,
         author: author,
-        url: url,
         year: year,
         rating: rating,
         comment: comment,
@@ -79,7 +77,6 @@ export const BookForm = () => {
       setTitle("");
       setAuthor("");
       setYear("");
-      setUrl("");
       setRating(0);
       setComment("");
       alertDispatch({ type: "CREATE", payload: "successfully" });
@@ -146,23 +143,6 @@ export const BookForm = () => {
                 type="text"
                 value={author}
                 onChange={(event) => setAuthor(event.target.value)}
-                required
-                className="block w-full rounded-md border-0 py-1.5 text-black focus:ring-2 focus:ring-inset focus:ring-teal-200"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium leading-6 text-emerald-100">
-              Url
-            </label>
-            <div className="mt-2">
-              <input
-                id="url"
-                name="url"
-                type="url"
-                value={url}
-                onChange={(event) => setUrl(event.target.value)}
                 required
                 className="block w-full rounded-md border-0 py-1.5 text-black focus:ring-2 focus:ring-inset focus:ring-teal-200"
               />
