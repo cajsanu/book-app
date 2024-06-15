@@ -5,12 +5,36 @@ const { tokenExtractor } = require("../utils/middleware");
 const { Sequelize } = require("sequelize");
 
 router.get("/", async (req, res) => {
-  console.log("here!!!");
-  const books = await Book.findAll({
-    group: ["book.id"],
-    order: [[Sequelize.fn("max", Sequelize.col("title"))]],
-  });
-  res.json(books);
+  const search = req.query.search;
+
+  if (search && search.length > 2) {
+    const books = await Book.findAll({
+      where: {
+        [Sequelize.Op.or]: [
+          {
+            title: {
+              [Sequelize.Op.iLike]: `${search}%`,
+            }
+          },
+          {
+            title: {
+              [Sequelize.Op.iLike]: `% ${search}%`,
+            }
+          }
+        ]
+      },
+      group: ["book.id"],
+      order: [[Sequelize.fn("min", Sequelize.col("title"))]],
+      limit: 100
+    });
+    return res.json(books);
+  } else {
+    const books = await Book.findAll({
+      group: ["book.id"],
+      order: [[Sequelize.fn("min", Sequelize.col("title"))]],
+    });
+    res.json(books);
+  }
 });
 
 router.post("/", tokenExtractor, async (req, res, next) => {
@@ -32,13 +56,19 @@ router.post("/", tokenExtractor, async (req, res, next) => {
           year: newBook.year,
         })
       : bookExists;
-    const review = await Review.create({
-      userId: user.id,
-      bookId: book.id,
-      rating: newBook.rating,
-      comment: newBook.comment,
-    });
-    console.log(review, "?????");
+
+    const review = await Review.upsert(
+      {
+        userId: user.id,
+        bookId: book.id,
+        rating: newBook.rating,
+        comment: newBook.comment,
+      },
+      {
+        conflictFields: ["user_id", "book_id"]
+      }
+    );
+
     return res.json(book.toJSON());
   } catch (err) {
     next(err);
