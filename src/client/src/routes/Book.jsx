@@ -57,7 +57,7 @@ export const Book = () => {
     <div>
       <Notification />
       <ToLoggedIn />
-      <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row">
+      <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row text-white">
         <div className="py-24 ps-48 flex flex-col items-start ">
           <h1 className="pt-10">{bookReviews.book.title}</h1>
           <p className="text-stone-900 font-semibold text-xl">
