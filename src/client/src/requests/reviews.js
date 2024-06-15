@@ -1,8 +1,8 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
-const URL = "/api/readList";
+const URL = "/api/review";
 
-const getReadBooks = async () => {
+const getReviews = async () => {
   const response = await axios.get(URL);
   return response.data;
 };
@@ -28,4 +28,4 @@ const remove = async (id) => {
   return response.data;
 };
 
-export default { getReadBooks, getById, create, remove, updateComment };
+export default { getReviews, getById, create, remove, updateComment };

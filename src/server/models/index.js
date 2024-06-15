@@ -1,14 +1,14 @@
 const Book = require("./Book");
 const User = require("./User");
 const UserReadingList = require("./ReadingList");
-const ReadBooksList = require("./ReadBooksList");
+const Review = require("./Review");
 const ActiveToken = require("./ActiveToken");
 
-User.belongsToMany(Book, { through: ReadBooksList, as: "read_books" });
-Book.belongsToMany(User, { through: ReadBooksList, as: "read_by_user" });
+User.belongsToMany(Book, { through: Review, as: "read_books" });
+Book.belongsToMany(User, { through: Review, as: "read_by_user" });
 
-ReadBooksList.belongsTo(Book);
-Book.hasMany(ReadBooksList);
+Review.belongsTo(Book);
+Book.hasMany(Review);
 
 User.belongsToMany(Book, { through: UserReadingList, as: "marked_books" });
 Book.belongsToMany(User, { through: UserReadingList, as: "users_marked" });
@@ -17,6 +17,6 @@ module.exports = {
   Book,
   User,
   UserReadingList,
-  ReadBooksList,
+  Review,
   ActiveToken,
 };

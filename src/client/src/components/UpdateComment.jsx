@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import readListRequests from "../requests/readList";
+import readListRequests from "../requests/reviews";
 import { useNavigate } from "react-router-dom";
 import AlertContext from "../contexts/AlertContext";
 

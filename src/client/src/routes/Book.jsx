@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import bookRequests from "../requests/books";
 import userRequests from "../requests/users";
-import readBooksRequests from "../requests/readList";
+import reviewRequests from "../requests/reviews";
 import {
   DeleteButton,
   Notification,
@@ -13,17 +13,16 @@ import {
 
 export const Book = () => {
   const [book, setBook] = useState(null);
-  const [books, setBooks] = useState([]);
+  const [bookReviews, setBookReviews] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [user, setUser] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
     const getBookAndUser = async () => {
-      const books = await readBooksRequests.getById(id);
-      setBooks(books);
-      const book = await bookRequests.getByBookId(id);
-      setBook(book);
+      const bookReviews = await reviewRequests.getById(id);
+      setBookReviews(bookReviews);
+      setBook(bookReviews.book)
       const response = window.localStorage.getItem("user");
       const loggedUser = JSON.parse(response);
       if (!loggedUser) {
@@ -38,7 +37,7 @@ export const Book = () => {
     getBookAndUser();
   }, []);
 
-  console.log(books);
+  console.log(bookReviews);
 
   const handleCommentUpdate = async () => {
     try {
@@ -87,8 +86,9 @@ export const Book = () => {
     );
   }
 
-  const userIds = books.map((b) => b.userId);
-  const bookOfUser = userIds.includes(loggedInUser.id) ? true : false;
+  const userReview = bookReviews.reviews.find(r => r.userId === loggedInUser.id);
+  const bookOfUser = userReview ? true : false;
+  console.log(userReview)
 
   return (
     <div>
@@ -103,14 +103,14 @@ export const Book = () => {
 
           <div className="pt-10">
             {bookOfUser ? (
-              <p>You rated this book {book.rating} out of 5 </p>
+              <p>You rated this book {userReview.rating} out of 5 </p>
             ) : (
               <p className="font-semibold">
-                {user.name} rated this book {book.rating} out of 5
+                {user.name} rated this book {userReview.rating} out of 5
               </p>
             )}
             <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">
-              {book.comment}
+              {userReview.comment}
             </p>
           </div>
 
@@ -125,7 +125,7 @@ export const Book = () => {
 
           {bookOfUser ? (
             <div className="py-10">
-              <DeleteButton userId={loggedInUser.id} bookId={book.id} />
+              <DeleteButton userId={loggedInUser.id} reviewId={userReview.id} />
             </div>
           ) : (
             <div className="pt-10">
@@ -135,7 +135,7 @@ export const Book = () => {
         </div>
         {bookOfUser ? (
           <div className="ps-36 pt-80 pb-32">
-            <UpdateComment book={book} onCommentUpdate={handleCommentUpdate} />
+            <UpdateComment book={userReview} onCommentUpdate={handleCommentUpdate} />
           </div>
         ) : null}
       </div>

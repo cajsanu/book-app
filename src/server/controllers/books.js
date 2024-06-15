@@ -1,13 +1,14 @@
 const router = require("express").Router();
 const { sequelize } = require("../utils/db");
-const { Book, User, ReadBooksList } = require("../models");
+const { Book, User, Review } = require("../models");
 const { tokenExtractor } = require("../utils/middleware");
 const { Sequelize } = require("sequelize");
 
 router.get("/", async (req, res) => {
+  console.log("here!!!")
   const books = await Book.findAll({
     group: ["book.id"],
-    order: [[Sequelize.fn("max", Sequelize.col("rating")), "DESC"]],
+    order: [[Sequelize.fn("max", Sequelize.col("title"))]],
   });
   res.json(books);
 });
@@ -31,12 +32,13 @@ router.post("/", tokenExtractor, async (req, res, next) => {
           year: newBook.year,
         })
       : bookExists;
-    await ReadBooksList.create({
+    const review = await Review.create({
       userId: user.id,
       bookId: book.id,
       rating: newBook.rating,
       comment: newBook.comment,
     });
+    console.log(review, "?????")
     return res.json(book.toJSON());
   } catch (err) {
     next(err);

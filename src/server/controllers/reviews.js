@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { ReadBooksList, User, Book } = require("../models");
+const { Review, User, Book } = require("../models");
 const { tokenExtractor } = require("../utils/middleware");
 
 router.get("/", async (req, res, next) => {
   try {
-    const readBooks = await ReadBooksList.findAll({});
+    const readBooks = await Review.findAll({});
     return res.json(readBooks);
   } catch (err) {
     next(err);
@@ -13,18 +13,14 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const book = await ReadBooksList.findAll({
+    const book = await Book.findByPk(req.params.id);
+    const reviews = await Review.findAll({
       where: {
         bookId: req.params.id,
       },
-      include: [
-        {
-          model: Book,
-          as: "book",
-        },
-      ],
     });
-    return res.json(book);
+
+    return res.json({ book, reviews });
   } catch (err) {
     next(err);
   }
@@ -33,11 +29,11 @@ router.get("/:id", async (req, res, next) => {
 router.put("/:id", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
-    const book = await ReadBooksList.findOne({
+    const book = await Review.findOne({
       where: { userId: user.id, bookId: req.params.id },
     });
     console.log(user, book, "!!!!!");
-    await ReadBooksList.update(
+    await Review.update(
       { comment: req.body.comment },
       { where: { userId: user.id, bookId: req.params.id } }
     );
@@ -52,9 +48,11 @@ router.post("/", tokenExtractor, async (req, res, next) => {
     const user = await User.findByPk(req.decodedToken.id);
     const { userId, bookId } = req.body;
     if (user.id === userId) {
-      const readBook = await ReadBooksList.create({
+      const readBook = await Review.create({
         userId,
         bookId,
+        rating,
+        comment
       });
       res.json(readBook);
     } else {
@@ -68,9 +66,9 @@ router.post("/", tokenExtractor, async (req, res, next) => {
 router.delete("/:id", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
-    const book = await ReadBooksList.findByPk(req.params.id);
-    if (book.userId === user.id) {
-      await book.destroy();
+    const review = await Review.findByPk(req.params.id);
+    if (review.userId === user.id) {
+      await review.destroy();
     } else {
       return res.status(401).json({ error: "Action not permitted" });
     }

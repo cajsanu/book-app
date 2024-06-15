@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import bookRequests from "../requests/books";
+import reviewRequests from "../requests/reviews";
 import AlertContext from "../contexts/AlertContext";
 import { useContext } from "react";
 
-export const DeleteButton = ({ bookId, userId }) => {
+export const DeleteButton = ({ reviewId, userId }) => {
   const navigate = useNavigate();
   const [alert, alertDispatch] = useContext(AlertContext);
 
   const handleClick = async () => {
     if (window.confirm("Are you sure you want to delete this book")) {
       try {
-        await bookRequests.remove(bookId);
+        await reviewRequests.remove(reviewId);
         navigate(`/user/${userId}`);
         alertDispatch({ type: "DELETE", payload: "Deleted book successfully" });
       } catch (err) {
