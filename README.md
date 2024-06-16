@@ -4,9 +4,6 @@
 
 ## Overview
 
-![langing page]()
-![all books page]()
-
 BookShelf is a web application designed for book enthusiasts to manage their reading lists, view and interact with other users and their book collections, and share their reading experiences through comments and ratings. The application is built with a React.js frontend and a Node.js/Express backend, utilizing Axios for API requests. PostgreSQL is used as the database, and the application employs JWT for secure authentication. The frontend is styled using Tailwind CSS.
 
 The application is deployed using Render.io and can be found at [https://book-app-vdho.onrender.com](https://book-app-vdho.onrender.com)
@@ -25,6 +22,11 @@ docker compose --file docker-compose.dev.yml up
 ```
 
 2. In another terminal do
+```
+npm run dev
+```
+
+3. In the third terminal do
 ```
 cd src/client && npm run dev
 ```
