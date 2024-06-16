@@ -92,7 +92,7 @@ export const BookForm = () => {
   };
 
   return (
-    <div className="w-2/4 p-16 border-double border-8 border-teal-200 bg-teal-800 shadow-xl">
+    <div className="md:w-5/6 lg:w-3/6 p-16 border-double border-8 border-teal-200 bg-teal-800 shadow-xl">
       <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-emerald-100">
         Add a new book to your collection
       </h2>

@@ -29,14 +29,13 @@ export const UpdateComment = ({ review, onCommentUpdate }) => {
   };
 
   return (
-    <div>
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm pt-20">
         <form className="space-y-6" onSubmit={updateComment}>
           <div>
-            <label className="block font-medium leading-6 text-teal-900 flex justify-right">
+            <label className="font-medium leading-6 text-teal-900 flex justify-content-left">
               New comment
             </label>
-            <div className="text-sm">
+            <div className="text-sm flex justify-content-left">
               Obs. making a new comment will replace the old one
             </div>
             <div className="mt-2">
@@ -58,6 +57,5 @@ export const UpdateComment = ({ review, onCommentUpdate }) => {
           </button>
         </form>
       </div>
-    </div>
   );
 };

@@ -4,11 +4,11 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 export const Footer = () => {
   return (
-    <div className="text-sm text-teal-700 flex">
+    <div className="text-sm text-teal-700 flex flex-wrap justify-start p-16 gap-8">
       <p>
         <CopyrightIcon /> Cajsa Nummelin
       </p>
-      <p className="ps-10">
+      <p className="">
         <EmailIcon />{" "}
         <a
           className="underline hover:text-white"
@@ -17,7 +17,7 @@ export const Footer = () => {
           cajsa.nummelin@gmail.com
         </a>
       </p>
-      <p className="ps-10">
+      <p className="">
         <GitHubIcon />{" "}
         <a
           className="hover:text-white underline"

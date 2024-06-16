@@ -32,7 +32,7 @@ const Book = ({ title, author, year, rating, id }) => {
 
 export const Books = ({ books }) => {
   return (
-    <div className="w-5/6 shadow-xl">
+    <div className="lg:w-5/6 shadow-xl">
       <table className="w-full p-10 bg-emerald-50">
         <thead>
           <tr className="text-white bg-teal-900 shadow-sm">

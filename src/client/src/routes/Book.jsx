@@ -50,44 +50,57 @@ export const Book = () => {
   const bookOfUser = userReview ? true : false;
 
   return (
-    <div>
-      <Notification />
+    <div className="flex flex-col w-fit">
       <ToLoggedIn />
-      <div className="bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row text-white">
-        <div className="py-24 ps-48 flex flex-col items-start ">
-          <h1 className="pt-10">{bookReviews.book.title}</h1>
-          <p className="text-stone-900 font-semibold text-xl">
-            By {bookReviews.book.author}
-          </p>
-
-          <Reviews reviews={bookReviews.reviews} />
-
-          {bookOfUser ? (
-            <div className="py-10">
-              <DeleteButton
-                userId={loggedInUser.userId}
-                reviewId={userReview.id}
-              />
-            </div>
-          ) : (
-            <div className="pt-10">
-              {!loggedInUser ? null : (
-                <AddToReadingList
-                  userId={loggedInUser.userId}
-                  bookId={bookReviews.book.id}
-                />
-              )}
-            </div>
-          )}
-        </div>
-        {bookOfUser ? (
-          <div className="ps-36 pt-80 pb-32">
-            <UpdateComment
-              review={userReview}
-              onCommentUpdate={handleCommentUpdate}
-            />
+      <Notification />
+      <div className="w-full bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row text-white">
+        <div className="py-24 px-48 flex flex-col">
+          <div className="flex flex-col">
+            <h1 className="">{bookReviews.book.title}</h1>
+            <p className="text-stone-900 font-semibold text-xl">
+              By {bookReviews.book.author}
+            </p>
           </div>
-        ) : null}
+
+          <div className="p-20 flex flex-row justify-between flex-wrap">
+            <div>
+              <div>
+                <Reviews reviews={bookReviews.reviews} />
+              </div>
+
+              <div>
+                {bookOfUser ? (
+                  <div className="flex justify-content-left pt-6">
+                    <DeleteButton
+                      userId={loggedInUser.userId}
+                      reviewId={userReview.id}
+                    />
+                  </div>
+                ) : (
+                  <div className="flex justify-content-left">
+                    {!loggedInUser ? null : (
+                      <AddToReadingList
+                        userId={loggedInUser.userId}
+                        bookId={bookReviews.book.id}
+                      />
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div>
+              {bookOfUser ? (
+                <div>
+                  <UpdateComment
+                    review={userReview}
+                    onCommentUpdate={handleCommentUpdate}
+                  />
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

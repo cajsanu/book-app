@@ -29,20 +29,20 @@ export const Reviews = ({ reviews }) => {
   }, []);
 
   return (
-    <div className="pt-10">
-      {avRating ? <p className="py-10 flex flex-start font-semibold text-white">
+    <div className="">
+      {avRating ? <p className="py-10 font-semibold text-white flex justify-content-left">
         Average rating for this book is {avRating.toFixed(1)}
       </p> : null}
       {reviews.map((review) => (
-        <div className="pb-8 text-white flex-center" key={review.id}>
+        <div className="text-white" key={review.id}>
           {loggedInUser ? (
             loggedInUser.userId === review.user.id ? (
-              <p>Comment by you</p>
+              <p className="flex justify-content-left pb-1">Comment by you</p>
             ) : (
-              <p>Comment by {review.user.name}</p>
+              <p className="flex justify-content-left">Comment by {review.user.name}</p>
             )
           ) : (
-            <p>Comment by {review.user.name}</p>
+            <p className="flex justify-content-left">Comment by {review.user.name}</p>
           )}
 
           <p className="transition duration-150 place-content-center w-96 p-5 rounded-md border-double border-4 border-teal-600 hover:border-emerald-300 bg-white text-sm text-black">

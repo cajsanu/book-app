@@ -24,9 +24,7 @@ export const Users = () => {
           ))}
         </div>
       </div>
-      <div className="p-10 pt-16 flex justify-start">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
