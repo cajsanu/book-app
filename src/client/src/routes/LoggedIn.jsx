@@ -11,7 +11,8 @@ import {
 import { useParams } from "react-router-dom";
 import userRequests from "../requests/users";
 
-const ButtonClass = "transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+const ButtonClass =
+  "transition delay-150 duration-300 rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-200 hover:text-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600";
 
 export const LoggedIn = () => {
   const [user, setUser] = useState(null);
@@ -74,33 +75,23 @@ export const LoggedIn = () => {
         <h1 className="text-5xl p-10">Welcome {user.username}</h1>
         <div className="flex justify-center">
           <div className="bg-emerald-100 px-6 p-2 rounded-md flex flex md:flex-row flex-col justify-around flex-wrap gap-6">
-              <button
-                className={ButtonClass}
-                onClick={handleShowBooks}
-              >
-                My books
-              </button>
-        
-              <button
-                className={ButtonClass}
-                onClick={handleAddBook}
-              >
-                Add book
-              </button>
+            <button className={ButtonClass} onClick={handleShowBooks}>
+              My books
+            </button>
 
-              <button
-                className={ButtonClass}
-                onClick={handleReadingList}
-              >
-                Reading list
-              </button>
-         
-              <ToBooks />
-        
-              <ToUsers />
-            
-              <LogoutButton />
-       
+            <button className={ButtonClass} onClick={handleAddBook}>
+              Add book
+            </button>
+
+            <button className={ButtonClass} onClick={handleReadingList}>
+              Reading list
+            </button>
+
+            <ToBooks />
+
+            <ToUsers />
+
+            <LogoutButton />
           </div>
         </div>
       </div>
