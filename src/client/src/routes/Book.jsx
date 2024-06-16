@@ -50,10 +50,10 @@ export const Book = () => {
   const bookOfUser = userReview ? true : false;
 
   return (
-    <div className="flex flex-col w-fit">
+    <div className="flex flex-col">
       <ToLoggedIn />
       <Notification />
-      <div className="w-full bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row text-white">
+      <div className="w-full bg-gradient-to-r from-teal-800 via-teal-600 to-teal-400 flex flex-row justify-center text-white">
         <div className="py-24 px-48 flex flex-col">
           <div className="flex flex-col">
             <h1 className="">{bookReviews.book.title}</h1>
@@ -62,7 +62,7 @@ export const Book = () => {
             </p>
           </div>
 
-          <div className="p-20 flex flex-row justify-between flex-wrap">
+          <div className="p-20 flex flex-row justify-between flex-wrap ">
             <div>
               <div>
                 <Reviews reviews={bookReviews.reviews} />
