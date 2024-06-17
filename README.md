@@ -2,7 +2,7 @@
 
 [https://book-app-vdho.onrender.com](https://book-app-vdho.onrender.com)
 
-![BookShelf landing](src/client/public/landingPage.png)  ![BookShelf allBooks](src/client/public/allBooksPage.png)
+![BookShelf landing](src/client/public/landingPage.png)
 
 ## Overview
 
@@ -40,9 +40,9 @@ cd src/client && npm run dev
 - View other users and their book collections.
 - User authentication with login and logout.
 - Add new books to personal collection.
+- Write comments and rate books in personal collections.
 - Add other users' books to personal reading list.
-- Delete books from personal collection.
-- Write comments on books in personal collections.
+- Delete books/reviews from personal collection.
 
 ## Development and production using Docker
 
